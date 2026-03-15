@@ -1,0 +1,11142 @@
+
+<!-- saved from url=(0030)https://iss.moex.com/iss/index -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta content="extension" property="gosuslugi.plugin.extension.content"></head><body><h1>engines</h1>
+<table>
+<tbody><tr>
+<th>id (int32)</th>
+<th>name (string:45)</th>
+<th>title (string:765)</th>
+</tr>
+<tr>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+</tr>
+<tr>
+<td>2</td>
+<td>state</td>
+<td>Рынок ГЦБ (размещение)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>currency</td>
+<td>Валютный рынок</td>
+</tr>
+<tr>
+<td>4</td>
+<td>futures</td>
+<td>Срочный рынок</td>
+</tr>
+<tr>
+<td>5</td>
+<td>commodity</td>
+<td>Товарный рынок</td>
+</tr>
+<tr>
+<td>6</td>
+<td>interventions</td>
+<td>Товарные интервенции</td>
+</tr>
+<tr>
+<td>7</td>
+<td>offboard</td>
+<td>ОТС-система</td>
+</tr>
+<tr>
+<td>9</td>
+<td>agro</td>
+<td>Агро</td>
+</tr>
+<tr>
+<td>1012</td>
+<td>otc</td>
+<td>ОТС с ЦК</td>
+</tr>
+<tr>
+<td>1282</td>
+<td>quotes</td>
+<td>Квоты</td>
+</tr>
+<tr>
+<td>1326</td>
+<td>money</td>
+<td>Денежный рынок</td>
+</tr>
+</tbody></table>
+<br><br>
+
+<h1>markets</h1>
+<table>
+<tbody><tr>
+<th>id (int32)</th>
+<th>trade_engine_id (int32)</th>
+<th>trade_engine_name (string:45)</th>
+<th>trade_engine_title (string:765)</th>
+<th>market_name (string:45)</th>
+<th>market_title (string:765)</th>
+<th>market_id (int32)</th>
+<th>marketplace (string:48)</th>
+<th>is_otc (int32)</th>
+<th>has_history_files (int32)</th>
+<th>has_history_trades_files (int32)</th>
+<th>has_trades (int32)</th>
+<th>has_history (int32)</th>
+<th>has_candles (int32)</th>
+<th>has_orderbook (int32)</th>
+<th>has_tradingsession (int32)</th>
+<th>has_extra_yields (int32)</th>
+<th>has_delay (int32)</th>
+</tr>
+<tr>
+<td>1328</td>
+<td>1326</td>
+<td>money</td>
+<td>Денежный рынок</td>
+<td>repo</td>
+<td>РЕПО ФК</td>
+<td>1328</td>
+<td>MONEY</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1327</td>
+<td>1326</td>
+<td>money</td>
+<td>Денежный рынок</td>
+<td>deposit</td>
+<td>Депозиты ФК</td>
+<td>1327</td>
+<td>MONEY</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1341</td>
+<td>3</td>
+<td>currency</td>
+<td>Валютный рынок</td>
+<td>otcindices</td>
+<td>Внебиржевые индексы</td>
+<td>1341</td>
+<td>INDICES</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>5</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>index</td>
+<td>Индексы фондового рынка</td>
+<td>5</td>
+<td>INDICES</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>shares</td>
+<td>Рынок акций</td>
+<td>1</td>
+<td>MXSE</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>bonds</td>
+<td>Рынок облигаций</td>
+<td>2</td>
+<td>MXSE</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>4</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>ndm</td>
+<td>Режим переговорных сделок</td>
+<td>4</td>
+<td>null</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>29</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>otc</td>
+<td>ОТС</td>
+<td>29</td>
+<td>null</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>27</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>ccp</td>
+<td>РЕПО с ЦК</td>
+<td>27</td>
+<td>MXSE</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>35</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>deposit</td>
+<td>Депозиты с ЦК</td>
+<td>35</td>
+<td>null</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>3</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>repo</td>
+<td>Рынок сделок РЕПО</td>
+<td>3</td>
+<td>null</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>28</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>qnv</td>
+<td>Квал. инвесторы</td>
+<td>28</td>
+<td>null</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>36</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>mamc</td>
+<td>Мультивалютный рынок смешанных активов</td>
+<td>36</td>
+<td>null</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>47</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>foreignshares</td>
+<td>Иностранные ц.б.</td>
+<td>47</td>
+<td>MXSE</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>49</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>foreignndm</td>
+<td>Иностранные ц.б. РПС</td>
+<td>49</td>
+<td>null</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>33</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>moexboard</td>
+<td>MOEX Board</td>
+<td>33</td>
+<td>null</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>46</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>gcc</td>
+<td>РЕПО с ЦК с КСУ</td>
+<td>46</td>
+<td>MXSE</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>54</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>credit</td>
+<td>Рынок кредитов</td>
+<td>54</td>
+<td>null</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>10</td>
+<td>3</td>
+<td>currency</td>
+<td>Валютный рынок</td>
+<td>selt</td>
+<td>Биржевые сделки с ЦК</td>
+<td>10</td>
+<td>MXCX</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>34</td>
+<td>3</td>
+<td>currency</td>
+<td>Валютный рынок</td>
+<td>futures</td>
+<td>Поставочные фьючерсы</td>
+<td>34</td>
+<td>MXCX</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>41</td>
+<td>3</td>
+<td>currency</td>
+<td>Валютный рынок</td>
+<td>index</td>
+<td>Валютный фиксинг</td>
+<td>41</td>
+<td>FIXING</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>45</td>
+<td>3</td>
+<td>currency</td>
+<td>Валютный рынок</td>
+<td>otc</td>
+<td>Внебиржевой</td>
+<td>45</td>
+<td>MXCX</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>22</td>
+<td>4</td>
+<td>futures</td>
+<td>Срочный рынок</td>
+<td>forts</td>
+<td>Фьючерсы</td>
+<td>22</td>
+<td>FORTS</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>24</td>
+<td>4</td>
+<td>futures</td>
+<td>Срочный рынок</td>
+<td>options</td>
+<td>Опционы</td>
+<td>24</td>
+<td>OPTIONS</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>37</td>
+<td>4</td>
+<td>futures</td>
+<td>Срочный рынок</td>
+<td>fortsiqs</td>
+<td>Фьючерсы IQS</td>
+<td>37</td>
+<td>null</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>38</td>
+<td>4</td>
+<td>futures</td>
+<td>Срочный рынок</td>
+<td>optionsiqs</td>
+<td>Опционы IQS</td>
+<td>38</td>
+<td>null</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>12</td>
+<td>4</td>
+<td>futures</td>
+<td>Срочный рынок</td>
+<td>main</td>
+<td>Срочные инструменты</td>
+<td>12</td>
+<td>null</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>9</td>
+<td>2</td>
+<td>state</td>
+<td>Рынок ГЦБ (размещение)</td>
+<td>index</td>
+<td>Индексы ГКО/ОФЗ</td>
+<td>9</td>
+<td>null</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>6</td>
+<td>2</td>
+<td>state</td>
+<td>Рынок ГЦБ (размещение)</td>
+<td>bonds</td>
+<td>Облигации ГЦБ</td>
+<td>6</td>
+<td>null</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>7</td>
+<td>2</td>
+<td>state</td>
+<td>Рынок ГЦБ (размещение)</td>
+<td>repo</td>
+<td>Междилерское РЕПО</td>
+<td>7</td>
+<td>null</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>8</td>
+<td>2</td>
+<td>state</td>
+<td>Рынок ГЦБ (размещение)</td>
+<td>ndm</td>
+<td>Внесистемные сделки</td>
+<td>8</td>
+<td>null</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1257</td>
+<td>1012</td>
+<td>otc</td>
+<td>ОТС с ЦК</td>
+<td>shares</td>
+<td>Акции</td>
+<td>1257</td>
+<td>null</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>39</td>
+<td>7</td>
+<td>offboard</td>
+<td>ОТС-система</td>
+<td>bonds</td>
+<td>Облигации</td>
+<td>39</td>
+<td>null</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1262</td>
+<td>1012</td>
+<td>otc</td>
+<td>ОТС с ЦК</td>
+<td>sharesndm</td>
+<td>Акции с ЦК</td>
+<td>1262</td>
+<td>null</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1013</td>
+<td>1012</td>
+<td>otc</td>
+<td>ОТС с ЦК</td>
+<td>bonds</td>
+<td>Облигации</td>
+<td>1013</td>
+<td>null</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1014</td>
+<td>1012</td>
+<td>otc</td>
+<td>ОТС с ЦК</td>
+<td>ndm</td>
+<td>Облигации c ЦК</td>
+<td>1014</td>
+<td>null</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1279</td>
+<td>1282</td>
+<td>quotes</td>
+<td>Квоты</td>
+<td>bonds</td>
+<td>Квоты облигации</td>
+<td>1279</td>
+<td>null</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1015</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>nonresndm</td>
+<td>Режим переговорных сделок (нерезиденты)</td>
+<td>1015</td>
+<td>null</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1017</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>nonresrepo</td>
+<td>Рынок РЕПО (нерезиденты)</td>
+<td>1017</td>
+<td>null</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1019</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>nonresccp</td>
+<td>Рынок РЕПО с ЦК (нерезиденты)</td>
+<td>1019</td>
+<td>null</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>18</td>
+<td>5</td>
+<td>commodity</td>
+<td>Товарный рынок</td>
+<td>futures</td>
+<td>Секция стандартных контрактов АО НТБ</td>
+<td>18</td>
+<td>null</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>20</td>
+<td>6</td>
+<td>interventions</td>
+<td>Товарные интервенции</td>
+<td>grain</td>
+<td>Интервенции по зерну</td>
+<td>20</td>
+<td>null</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>51</td>
+<td>9</td>
+<td>agro</td>
+<td>Агро</td>
+<td>spot</td>
+<td>Спот рынок</td>
+<td>51</td>
+<td>MXAGRO</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1031</td>
+<td>9</td>
+<td>agro</td>
+<td>Агро</td>
+<td>auctions</td>
+<td>Аукционы НТБ</td>
+<td>1031</td>
+<td>null</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1084</td>
+<td>9</td>
+<td>agro</td>
+<td>Агро</td>
+<td>buyauctions</td>
+<td>Закупочные аукционы НТБ</td>
+<td>1084</td>
+<td>null</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1366</td>
+<td>9</td>
+<td>agro</td>
+<td>Агро</td>
+<td>saleauctions</td>
+<td>Товарные интервенции НТБ</td>
+<td>1366</td>
+<td>null</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>23</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>standard</td>
+<td>Standard</td>
+<td>23</td>
+<td>null</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>25</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>classica</td>
+<td>Classica</td>
+<td>25</td>
+<td>null</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+</tbody></table>
+<br><br>
+
+<h1>boards</h1>
+<table>
+<tbody><tr>
+<th>id (int32)</th>
+<th>board_group_id (int32)</th>
+<th>engine_id (int32)</th>
+<th>market_id (int32)</th>
+<th>boardid (string:12)</th>
+<th>board_title (string:381)</th>
+<th>is_traded (int32)</th>
+<th>has_candles (int32)</th>
+<th>is_primary (int32)</th>
+</tr>
+<tr>
+<td>177</td>
+<td>57</td>
+<td>1</td>
+<td>1</td>
+<td>TQIF</td>
+<td>Т+: Паи - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>178</td>
+<td>57</td>
+<td>1</td>
+<td>1</td>
+<td>TQTF</td>
+<td>Т+: ETF - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>129</td>
+<td>57</td>
+<td>1</td>
+<td>1</td>
+<td>TQBR</td>
+<td>Т+: Акции и ДР - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>130</td>
+<td>57</td>
+<td>1</td>
+<td>1</td>
+<td>TQBS</td>
+<td>Т+: А2-Акции и паи - безадрес.</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>131</td>
+<td>57</td>
+<td>1</td>
+<td>1</td>
+<td>TQNL</td>
+<td>Т+: Б-Акции и паи - безадрес.</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>132</td>
+<td>57</td>
+<td>1</td>
+<td>1</td>
+<td>TQLV</td>
+<td>Т+: В-Акции и ДР - безадрес.</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>133</td>
+<td>57</td>
+<td>1</td>
+<td>1</td>
+<td>TQLI</td>
+<td>Т+: И-Акции - безадрес.</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>134</td>
+<td>57</td>
+<td>1</td>
+<td>1</td>
+<td>TQNE</td>
+<td>Т+: Акции, паи и ДР внесписочные - безадрес.</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>158</td>
+<td>57</td>
+<td>1</td>
+<td>1</td>
+<td>TQDE</td>
+<td>Т+: Акции Д - безадрес.</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>401</td>
+<td>57</td>
+<td>1</td>
+<td>1</td>
+<td>TQPI</td>
+<td>Т+: Акции ПИР - безадрес.</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>225</td>
+<td>156</td>
+<td>1</td>
+<td>1</td>
+<td>TQTD</td>
+<td>Т+: ETF (USD) - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>429</td>
+<td>156</td>
+<td>1</td>
+<td>1</td>
+<td>TQFD</td>
+<td>Т+: ПАИ (USD) - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>431</td>
+<td>156</td>
+<td>1</td>
+<td>1</td>
+<td>TQPD</td>
+<td>Т+: Акции ПИР (USD) - безадрес.</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>315</td>
+<td>159</td>
+<td>1</td>
+<td>1</td>
+<td>EQTU</td>
+<td>Т0: ETF (EUR) - безадрес.</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>313</td>
+<td>157</td>
+<td>1</td>
+<td>1</td>
+<td>TQBE</td>
+<td>Т+: Акции и ДР (EUR) - безадрес.</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>314</td>
+<td>157</td>
+<td>1</td>
+<td>1</td>
+<td>TQTE</td>
+<td>Т+: ETF (EUR) - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>441</td>
+<td>157</td>
+<td>1</td>
+<td>1</td>
+<td>TQFE</td>
+<td>Т+: ПАИ (EUR) - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>443</td>
+<td>157</td>
+<td>1</td>
+<td>1</td>
+<td>TQPE</td>
+<td>Т+: Акции ПИР (EUR) - безадрес.</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1216</td>
+<td>1215</td>
+<td>1</td>
+<td>1</td>
+<td>TQTY</td>
+<td>Т+: ПАИ (CNY) - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1217</td>
+<td>1215</td>
+<td>1</td>
+<td>1</td>
+<td>TQPY</td>
+<td>Т+: Акции ПИР (CNY) - безадрес.</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1239</td>
+<td>1238</td>
+<td>1</td>
+<td>1</td>
+<td>TQTH</td>
+<td>Т+: ПАИ (HKD) - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1240</td>
+<td>1238</td>
+<td>1</td>
+<td>1</td>
+<td>TQPH</td>
+<td>Т+: Акции ПИР (HKD) - безадрес.</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>6</td>
+<td>1</td>
+<td>1</td>
+<td>EQBR</td>
+<td>Основной режим: А1-Акции и паи - безадрес.</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>6</td>
+<td>1</td>
+<td>1</td>
+<td>EQBS</td>
+<td>Основной режим: А2-Акции и паи - безадрес.</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>4</td>
+<td>6</td>
+<td>1</td>
+<td>1</td>
+<td>EQNL</td>
+<td>Основной режим: Б-Акции и паи - безадрес.</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>3</td>
+<td>6</td>
+<td>1</td>
+<td>1</td>
+<td>EQLV</td>
+<td>Основной режим: В-Акции и РДР - безадрес.</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>117</td>
+<td>6</td>
+<td>1</td>
+<td>1</td>
+<td>EQDE</td>
+<td>Основной режим: Акции Д - безадрес.</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>28</td>
+<td>6</td>
+<td>1</td>
+<td>1</td>
+<td>EQLI</td>
+<td>Основной режим: И-Акции - безадрес.</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>5</td>
+<td>6</td>
+<td>1</td>
+<td>1</td>
+<td>EQNE</td>
+<td>Основной режим: Акции и паи внесписочные - безадрес.</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>36</td>
+<td>21</td>
+<td>1</td>
+<td>1</td>
+<td>SMAL</td>
+<td>Т+: Неполные лоты (акции) - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>305</td>
+<td>42</td>
+<td>1</td>
+<td>1</td>
+<td>TQDP</td>
+<td>Крупные пакеты - Акции - безадрес.</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>100</td>
+<td>42</td>
+<td>1</td>
+<td>1</td>
+<td>EQDP</td>
+<td>Крупные пакеты - Акции - безадрес.</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>95</td>
+<td>30</td>
+<td>1</td>
+<td>1</td>
+<td>EQCC</td>
+<td>ЦК - режим основных торгов - безадрес.</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>281</td>
+<td>125</td>
+<td>1</td>
+<td>1</td>
+<td>SPEQ</td>
+<td>Поставка по СК (акции)</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>260</td>
+<td>99</td>
+<td>1</td>
+<td>1</td>
+<td>EQTD</td>
+<td>Т0: ETF (USD) - безадрес.</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>135</td>
+<td>58</td>
+<td>1</td>
+<td>2</td>
+<td>TQOB</td>
+<td>Т+: Гособлигации - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>136</td>
+<td>58</td>
+<td>1</td>
+<td>2</td>
+<td>TQOS</td>
+<td>Т+: А2-Облигации - безадрес.</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>137</td>
+<td>58</td>
+<td>1</td>
+<td>2</td>
+<td>TQNO</td>
+<td>Т+: Б-Облигации - безадрес.</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>138</td>
+<td>58</td>
+<td>1</td>
+<td>2</td>
+<td>TQOV</td>
+<td>Т+: В-Облигации - безадрес.</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>139</td>
+<td>58</td>
+<td>1</td>
+<td>2</td>
+<td>TQNB</td>
+<td>Т+: Облигации внесписочные - безадрес.</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>140</td>
+<td>58</td>
+<td>1</td>
+<td>2</td>
+<td>TQUS</td>
+<td>Т+: Облигации внеспис. в ин.валюте - безадрес.</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>349</td>
+<td>58</td>
+<td>1</td>
+<td>2</td>
+<td>TQCB</td>
+<td>Т+: Облигации - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>361</td>
+<td>58</td>
+<td>1</td>
+<td>2</td>
+<td>TQRD</td>
+<td>Т+: Облигации Д - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>377</td>
+<td>58</td>
+<td>1</td>
+<td>2</td>
+<td>TQIR</td>
+<td>Т+ Облигации ПИР - безадрес.</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>226</td>
+<td>193</td>
+<td>1</td>
+<td>2</td>
+<td>TQOD</td>
+<td>Т+: Облигации (USD) - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>363</td>
+<td>193</td>
+<td>1</td>
+<td>2</td>
+<td>TQUD</td>
+<td>Т+: Облигации Д (USD) - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>383</td>
+<td>193</td>
+<td>1</td>
+<td>2</td>
+<td>TQIU</td>
+<td>Т+: Облигации ПИР (USD) - безадрес.</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>357</td>
+<td>207</td>
+<td>1</td>
+<td>2</td>
+<td>TQOE</td>
+<td>Т+: Облигации (EUR) - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>365</td>
+<td>207</td>
+<td>1</td>
+<td>2</td>
+<td>TQED</td>
+<td>Т+: Облигации Д (EUR) - безадрес</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>389</td>
+<td>207</td>
+<td>1</td>
+<td>2</td>
+<td>TQIE</td>
+<td>Т+: Облигации ПИР (EUR) - безадрес.</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1101</td>
+<td>245</td>
+<td>1</td>
+<td>2</td>
+<td>TQOY</td>
+<td>Т+: Облигации (CNY) - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>395</td>
+<td>245</td>
+<td>1</td>
+<td>2</td>
+<td>TQIY</td>
+<td>Т+: Облигации ПИР (CNY) - безадрес.</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>179</td>
+<td>68</td>
+<td>1</td>
+<td>2</td>
+<td>TQTC</td>
+<td>T+: ETC - безадрес.</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>8</td>
+<td>7</td>
+<td>1</td>
+<td>2</td>
+<td>EQOB</td>
+<td>Т0 Облигации - безадрес.</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>9</td>
+<td>7</td>
+<td>1</td>
+<td>2</td>
+<td>EQOS</td>
+<td>Основной режим: А2-Облигации - безадрес.</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>7</td>
+<td>7</td>
+<td>1</td>
+<td>2</td>
+<td>EQNO</td>
+<td>Основной режим: Б-Облигации - безадрес.</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>29</td>
+<td>7</td>
+<td>1</td>
+<td>2</td>
+<td>EQOV</td>
+<td>Основной режим: В-Облигации - безадрес.</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>93</td>
+<td>7</td>
+<td>1</td>
+<td>2</td>
+<td>EQDB</td>
+<td>Основной режим: Облигации Д - безадрес.</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>6</td>
+<td>7</td>
+<td>1</td>
+<td>2</td>
+<td>EQNB</td>
+<td>Основной режим: Облигации внесписочные - безадрес.</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>88</td>
+<td>7</td>
+<td>1</td>
+<td>2</td>
+<td>EQUS</td>
+<td>Основной режим: Облигации внеспис. в ин.валюте - безадрес.</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>165</td>
+<td>7</td>
+<td>1</td>
+<td>2</td>
+<td>EQEO</td>
+<td>Основной режим: Облигации (EUR) - безадрес.</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>176</td>
+<td>69</td>
+<td>1</td>
+<td>2</td>
+<td>EQTC</td>
+<td>T0 ETC - безадрес.</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>37</td>
+<td>67</td>
+<td>1</td>
+<td>2</td>
+<td>EQEU</td>
+<td>Облигации (USD) - безадрес.</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>228</td>
+<td>67</td>
+<td>1</td>
+<td>2</td>
+<td>EQGO</td>
+<td>Облигации (GBP) - безадрес.</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>229</td>
+<td>67</td>
+<td>1</td>
+<td>2</td>
+<td>EQYO</td>
+<td>Облигации (CNY) - безадрес.</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>122</td>
+<td>122</td>
+<td>1</td>
+<td>2</td>
+<td>AUBB</td>
+<td>Выкуп: Аукцион - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>121</td>
+<td>123</td>
+<td>1</td>
+<td>2</td>
+<td>AUCT</td>
+<td>Размещение: Аукцион - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>407</td>
+<td>257</td>
+<td>1</td>
+<td>2</td>
+<td>PACT</td>
+<td>Аукцион: адресные заявки</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>227</td>
+<td>77</td>
+<td>1</td>
+<td>2</td>
+<td>TQDB</td>
+<td>Крупные пакеты: Облигации - безадрес.</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>119</td>
+<td>105</td>
+<td>1</td>
+<td>2</td>
+<td>SPOB</td>
+<td>Поставка по ОФЗ</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>323</td>
+<td>167</td>
+<td>1</td>
+<td>2</td>
+<td>TQDU</td>
+<td>Крупные пакеты – Облигации (USD) - безадрес.</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>34</td>
+<td>1</td>
+<td>1</td>
+<td>3</td>
+<td>RPEQ</td>
+<td>РЕПО: Акции и паи - адрес.</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>254</td>
+<td>2</td>
+<td>1</td>
+<td>3</td>
+<td>RPEY</td>
+<td>РЕПО в ин.валюте (CNY) - адрес.</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>238</td>
+<td>2</td>
+<td>1</td>
+<td>3</td>
+<td>RPGO</td>
+<td>РЕПО c облигациями (GBP) - адрес.</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>23</td>
+<td>95</td>
+<td>1</td>
+<td>3</td>
+<td>RPMA</td>
+<td>РЕПО c акциями - адрес.</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>35</td>
+<td>94</td>
+<td>1</td>
+<td>3</td>
+<td>RPEU</td>
+<td>РЕПО в ин. валюте (USD) - адрес.</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>162</td>
+<td>94</td>
+<td>1</td>
+<td>3</td>
+<td>RPUA</td>
+<td>РЕПО c акциями (USD) - адрес.</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>163</td>
+<td>94</td>
+<td>1</td>
+<td>3</td>
+<td>RPUO</td>
+<td>РЕПО c облигациями (USD) - адрес.</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>164</td>
+<td>90</td>
+<td>1</td>
+<td>3</td>
+<td>RPEO</td>
+<td>РЕПО в ин. валюте (EUR) - адрес.</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>24</td>
+<td>201</td>
+<td>1</td>
+<td>3</td>
+<td>RPMO</td>
+<td>РЕПО-М - адрес.</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1427</td>
+<td>1426</td>
+<td>1</td>
+<td>3</td>
+<td>RPEK</td>
+<td>РЕПО-М в ин. валюте: (KZT) - адрес.</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1429</td>
+<td>1428</td>
+<td>1</td>
+<td>3</td>
+<td>RPEB</td>
+<td>РЕПО-М в ин. валюте: (BYN) - адрес.</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>96</td>
+<td>31</td>
+<td>1</td>
+<td>3</td>
+<td>RPCC</td>
+<td>РЕПО с ЦК - адрес.</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1365</td>
+<td>1364</td>
+<td>1</td>
+<td>3</td>
+<td>RAGK</td>
+<td>Аукцион РЕПО - адрес.</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1363</td>
+<td>1362</td>
+<td>1</td>
+<td>3</td>
+<td>RPDM</td>
+<td>Лимит РЕПО с ДФМ - адрес.</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>154</td>
+<td>193</td>
+<td>1</td>
+<td>4</td>
+<td>PTEU</td>
+<td>РПС с ЦК: Облигации (USD) - адрес.</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>173</td>
+<td>59</td>
+<td>1</td>
+<td>4</td>
+<td>PTIF</td>
+<td>РПС с ЦК: Паи - адрес.</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>175</td>
+<td>59</td>
+<td>1</td>
+<td>4</td>
+<td>PTTC</td>
+<td>РПС с ЦК: ETC - адрес.</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>174</td>
+<td>59</td>
+<td>1</td>
+<td>4</td>
+<td>PTTF</td>
+<td>РПС с ЦК: ETF - адрес.</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>142</td>
+<td>59</td>
+<td>1</td>
+<td>4</td>
+<td>PTEQ</td>
+<td>РПС с ЦК: Акции и ДР - адрес.</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>143</td>
+<td>59</td>
+<td>1</td>
+<td>4</td>
+<td>PTES</td>
+<td>РПС С ЦК: А2-Акции и паи - адрес.</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>144</td>
+<td>59</td>
+<td>1</td>
+<td>4</td>
+<td>PTNL</td>
+<td>РПС С ЦК: Б-Акции и паи - адрес.</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>145</td>
+<td>59</td>
+<td>1</td>
+<td>4</td>
+<td>PTLV</td>
+<td>РПС С ЦК: В-Акции и ДР - адрес.</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>146</td>
+<td>59</td>
+<td>1</td>
+<td>4</td>
+<td>PTLI</td>
+<td>РПС С ЦК: И-Акции - адрес.</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>147</td>
+<td>59</td>
+<td>1</td>
+<td>4</td>
+<td>PTNE</td>
+<td>РПС С ЦК: Акции, паи и ДР внесписочные - адрес.</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>150</td>
+<td>59</td>
+<td>1</td>
+<td>4</td>
+<td>PTNO</td>
+<td>РПС С ЦК: Б-Облигации - адрес.</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>153</td>
+<td>59</td>
+<td>1</td>
+<td>4</td>
+<td>PTUS</td>
+<td>РПС С ЦК: Облигации в ин.валюте - адрес.</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>161</td>
+<td>59</td>
+<td>1</td>
+<td>4</td>
+<td>PTDE</td>
+<td>РПС с ЦК: Акции Д - адрес.</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>405</td>
+<td>59</td>
+<td>1</td>
+<td>4</td>
+<td>PTPI</td>
+<td>РПС с ЦК: Акции ПИР - адрес.</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>231</td>
+<td>73</td>
+<td>1</td>
+<td>4</td>
+<td>PTTD</td>
+<td>РПС с ЦК: ETF (USD) - адрес.</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>433</td>
+<td>73</td>
+<td>1</td>
+<td>4</td>
+<td>PTFD</td>
+<td>РПС с ЦК: Паи (USD) - адресн.</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>435</td>
+<td>73</td>
+<td>1</td>
+<td>4</td>
+<td>PTPD</td>
+<td>РПС с ЦК: Акции ПИР (USD) - адресн.</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>318</td>
+<td>163</td>
+<td>1</td>
+<td>4</td>
+<td>PTSE</td>
+<td>РПС с ЦК: Акции и ДР (EUR) - адрес.</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>319</td>
+<td>163</td>
+<td>1</td>
+<td>4</td>
+<td>PTTE</td>
+<td>РПС с ЦК: ETF (EUR) - адрес.</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>445</td>
+<td>163</td>
+<td>1</td>
+<td>4</td>
+<td>PTFE</td>
+<td>РПС с ЦК: Паи (EUR) - адрес.</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>447</td>
+<td>163</td>
+<td>1</td>
+<td>4</td>
+<td>PTPE</td>
+<td>РПС с ЦК: Акции ПИР (EUR) - адрес.</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>170</td>
+<td>8</td>
+<td>1</td>
+<td>4</td>
+<td>PSIF</td>
+<td>РПС: Паи - адрес.</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>172</td>
+<td>8</td>
+<td>1</td>
+<td>4</td>
+<td>PSTC</td>
+<td>РПС: ETC - адрес.</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>171</td>
+<td>8</td>
+<td>1</td>
+<td>4</td>
+<td>PSTF</td>
+<td>РПС: ETF - адрес.</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>11</td>
+<td>8</td>
+<td>1</td>
+<td>4</td>
+<td>PSEQ</td>
+<td>РПС: Акции - адрес.</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>12</td>
+<td>8</td>
+<td>1</td>
+<td>4</td>
+<td>PSES</td>
+<td>РПС: А2-Акции и паи - адрес.</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>15</td>
+<td>8</td>
+<td>1</td>
+<td>4</td>
+<td>PSNL</td>
+<td>РПС: Б-Акции и паи - адрес.</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>32</td>
+<td>8</td>
+<td>1</td>
+<td>4</td>
+<td>PSLV</td>
+<td>РПС: В-Акции и ДР - адрес.</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>118</td>
+<td>8</td>
+<td>1</td>
+<td>4</td>
+<td>PSDE</td>
+<td>РПС: Акции Д - адрес.</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>31</td>
+<td>8</td>
+<td>1</td>
+<td>4</td>
+<td>PSLI</td>
+<td>РПС: И-Акции - адрес.</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>14</td>
+<td>8</td>
+<td>1</td>
+<td>4</td>
+<td>PSNE</td>
+<td>РПС: Акции, паи и ДР внесписочные - адрес.</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>18</td>
+<td>8</td>
+<td>1</td>
+<td>4</td>
+<td>PSOS</td>
+<td>РПС: А2-Облигации - адрес.</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>16</td>
+<td>8</td>
+<td>1</td>
+<td>4</td>
+<td>PSNO</td>
+<td>РПС: Б-Облигации - адрес.</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>33</td>
+<td>8</td>
+<td>1</td>
+<td>4</td>
+<td>PSOV</td>
+<td>РПС: В-Облигации - адрес.</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>13</td>
+<td>8</td>
+<td>1</td>
+<td>4</td>
+<td>PSNB</td>
+<td>РПС: Облигации внесписочные - адрес.</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>89</td>
+<td>8</td>
+<td>1</td>
+<td>4</td>
+<td>PSUS</td>
+<td>РПС: Облигации в ин.валюте - адрес.</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>403</td>
+<td>8</td>
+<td>1</td>
+<td>4</td>
+<td>PSPI</td>
+<td>РПС: Акции ПИР - адрес.</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>234</td>
+<td>74</td>
+<td>1</td>
+<td>4</td>
+<td>PSTD</td>
+<td>РПС: ETF (USD) - адрес.</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>437</td>
+<td>74</td>
+<td>1</td>
+<td>4</td>
+<td>PSFD</td>
+<td>РПС: ПАИ (USD) - адресн.</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>439</td>
+<td>74</td>
+<td>1</td>
+<td>4</td>
+<td>PSPD</td>
+<td>РПС: Акции ПИР (USD) - адресн.</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>316</td>
+<td>160</td>
+<td>1</td>
+<td>4</td>
+<td>PSSE</td>
+<td>РПС: Акции и ДР (расч. в EUR) - адрес.</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>317</td>
+<td>160</td>
+<td>1</td>
+<td>4</td>
+<td>PSTE</td>
+<td>РПС: ETF (расч. в EUR) - адрес.</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>449</td>
+<td>160</td>
+<td>1</td>
+<td>4</td>
+<td>PSFE</td>
+<td>РПС: ПАИ (EUR) - адрес.</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>451</td>
+<td>160</td>
+<td>1</td>
+<td>4</td>
+<td>PSPE</td>
+<td>РПС: Акции ПИР (EUR) - адрес.</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>17</td>
+<td>284</td>
+<td>1</td>
+<td>4</td>
+<td>PSOB</td>
+<td>РПС: Облигации - адрес.</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>92</td>
+<td>284</td>
+<td>1</td>
+<td>4</td>
+<td>PSDB</td>
+<td>РПС: Облигации Д - адрес.</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>379</td>
+<td>284</td>
+<td>1</td>
+<td>4</td>
+<td>PSIR</td>
+<td>РПС: Облигации ПИР - адрес.</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>30</td>
+<td>285</td>
+<td>1</td>
+<td>4</td>
+<td>PSEU</td>
+<td>РПС: Облигации (USD) - адрес.</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>375</td>
+<td>285</td>
+<td>1</td>
+<td>4</td>
+<td>PSUD</td>
+<td>РПС: Облигации Д (USD) - адрес.</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>385</td>
+<td>285</td>
+<td>1</td>
+<td>4</td>
+<td>PSIU</td>
+<td>РПС: Облигации ПИР (USD) - адрес.</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>160</td>
+<td>286</td>
+<td>1</td>
+<td>4</td>
+<td>PSEO</td>
+<td>РПС: Облигации (EUR) - адрес.</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>373</td>
+<td>286</td>
+<td>1</td>
+<td>4</td>
+<td>PSED</td>
+<td>РПС: Облигации Д (EUR) - адрес.</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>391</td>
+<td>286</td>
+<td>1</td>
+<td>4</td>
+<td>PSIE</td>
+<td>РПС: Облигации ПИР (EUR) - адрес.</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>235</td>
+<td>106</td>
+<td>1</td>
+<td>4</td>
+<td>PSGO</td>
+<td>РПС: Облигации (GBP) - адрес.</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>98</td>
+<td>107</td>
+<td>1</td>
+<td>4</td>
+<td>PSAU</td>
+<td>Размещение - адрес.</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>99</td>
+<td>107</td>
+<td>1</td>
+<td>4</td>
+<td>PAUS</td>
+<td>Размещение (USD) - адрес.</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>159</td>
+<td>107</td>
+<td>1</td>
+<td>4</td>
+<td>PAEU</td>
+<td>Размещение (EUR) - адрес.</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>169</td>
+<td>107</td>
+<td>1</td>
+<td>4</td>
+<td>PAGB</td>
+<td>Размещение (GBP) - адрес.</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>237</td>
+<td>1430</td>
+<td>1</td>
+<td>4</td>
+<td>PACY</td>
+<td>Размещение (CNY) - адрес.</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>120</td>
+<td>108</td>
+<td>1</td>
+<td>4</td>
+<td>PSBB</td>
+<td>Выкуп - адрес.</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>278</td>
+<td>121</td>
+<td>1</td>
+<td>4</td>
+<td>PSBE</td>
+<td>Выкуп (EUR) - адрес.</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>282</td>
+<td>126</td>
+<td>1</td>
+<td>4</td>
+<td>OTCB</td>
+<td>Анонимный РПС - адрес.</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>353</td>
+<td>203</td>
+<td>1</td>
+<td>4</td>
+<td>OTCU</td>
+<td>Анонимный РПС (USD) - адрес.</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>355</td>
+<td>205</td>
+<td>1</td>
+<td>4</td>
+<td>OTCE</td>
+<td>Анонимный РПС (EUR) - адрес.</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>277</td>
+<td>124</td>
+<td>1</td>
+<td>4</td>
+<td>PSBU</td>
+<td>Выкуп (USD) - адрес.</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1290</td>
+<td>1289</td>
+<td>1</td>
+<td>4</td>
+<td>PSBY</td>
+<td>Выкуп (CNY) - адрес.</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>148</td>
+<td>282</td>
+<td>1</td>
+<td>4</td>
+<td>PTOB</td>
+<td>РПС с ЦК: Облигации - адрес.</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>149</td>
+<td>282</td>
+<td>1</td>
+<td>4</td>
+<td>PTOS</td>
+<td>РПС С ЦК: А2-Облигации - адрес.</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>151</td>
+<td>282</td>
+<td>1</td>
+<td>4</td>
+<td>PTOV</td>
+<td>РПС С ЦК: В-Облигации - адрес.</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>152</td>
+<td>282</td>
+<td>1</td>
+<td>4</td>
+<td>PTNB</td>
+<td>РПС С ЦК: Облигации внесписочные - адрес.</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>367</td>
+<td>282</td>
+<td>1</td>
+<td>4</td>
+<td>PTDB</td>
+<td>РПС с ЦК: Д Облигации - адрес.</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>381</td>
+<td>282</td>
+<td>1</td>
+<td>4</td>
+<td>PTIR</td>
+<td>РПС с ЦК: Облигации ПИР - адрес.</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>232</td>
+<td>283</td>
+<td>1</td>
+<td>4</td>
+<td>PTOD</td>
+<td>РПС с ЦК: Облигации (USD) - адрес.</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>371</td>
+<td>283</td>
+<td>1</td>
+<td>4</td>
+<td>PTUD</td>
+<td>РПС с ЦК: Д Облигации (USD) - адрес.</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>387</td>
+<td>283</td>
+<td>1</td>
+<td>4</td>
+<td>PTIU</td>
+<td>РПС с ЦК: Облигации ПИР (USD) - адрес.</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>359</td>
+<td>209</td>
+<td>1</td>
+<td>4</td>
+<td>PTOE</td>
+<td>РПС с ЦК: Облигации (EUR) - адрес.</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>369</td>
+<td>209</td>
+<td>1</td>
+<td>4</td>
+<td>PTED</td>
+<td>РПС с ЦК: Д Облигации (EUR) - адрес.</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>393</td>
+<td>209</td>
+<td>1</td>
+<td>4</td>
+<td>PTIE</td>
+<td>РПС с ЦК: Облигации ПИР (EUR) - адрес.</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>236</td>
+<td>247</td>
+<td>1</td>
+<td>4</td>
+<td>PSYO</td>
+<td>РПС: Облигации (CNY) - адрес.</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>397</td>
+<td>247</td>
+<td>1</td>
+<td>4</td>
+<td>PSIY</td>
+<td>РПС: Облигации ПИР (CNY) - адрес.</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>97</td>
+<td>32</td>
+<td>1</td>
+<td>4</td>
+<td>PSCC</td>
+<td>РПС с ЦК - адрес.</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>399</td>
+<td>249</td>
+<td>1</td>
+<td>4</td>
+<td>PTIY</td>
+<td>РПС с ЦК: Облигации ПИР (CNY) - адрес.</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1151</td>
+<td>249</td>
+<td>1</td>
+<td>4</td>
+<td>PTOY</td>
+<td>РПС с ЦК: Облигации (CNY) - адрес.</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1219</td>
+<td>1218</td>
+<td>1</td>
+<td>4</td>
+<td>PSTY</td>
+<td>РПС: ПАИ (CNY) - адрес.</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1220</td>
+<td>1218</td>
+<td>1</td>
+<td>4</td>
+<td>PSPY</td>
+<td>РПС: Акции ПИР (CNY) - адрес.</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1222</td>
+<td>1221</td>
+<td>1</td>
+<td>4</td>
+<td>PTTY</td>
+<td>РПС с ЦК: Паи (CNY) - адрес.</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1223</td>
+<td>1221</td>
+<td>1</td>
+<td>4</td>
+<td>PTPY</td>
+<td>РПС с ЦК: Акции ПИР (CNY) - адрес.</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1242</td>
+<td>1241</td>
+<td>1</td>
+<td>4</td>
+<td>PSTH</td>
+<td>РПС: ПАИ (HKD) - адресн.</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1243</td>
+<td>1241</td>
+<td>1</td>
+<td>4</td>
+<td>PSPH</td>
+<td>РПС: Акции ПИР (HKD) - адресн.</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1245</td>
+<td>1244</td>
+<td>1</td>
+<td>4</td>
+<td>PTTH</td>
+<td>РПС с ЦК: Паи (HKD) - адресн.</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1246</td>
+<td>1244</td>
+<td>1</td>
+<td>4</td>
+<td>PTPH</td>
+<td>РПС с ЦК: Акции ПИР (HKD) - адресн.</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>44</td>
+<td>9</td>
+<td>1</td>
+<td>5</td>
+<td>SNDX</td>
+<td>Индексы фондового рынка</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>102</td>
+<td>9</td>
+<td>1</td>
+<td>5</td>
+<td>RTSI</td>
+<td>Индексы РТС</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>265</td>
+<td>104</td>
+<td>1</td>
+<td>5</td>
+<td>INAV</td>
+<td>INAV</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>312</td>
+<td>155</td>
+<td>1</td>
+<td>5</td>
+<td>MMIX</td>
+<td>Money Market IndeX</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1029</td>
+<td>1028</td>
+<td>1</td>
+<td>5</td>
+<td>AGRO</td>
+<td>Индексы НТБ</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1154</td>
+<td>1153</td>
+<td>1</td>
+<td>5</td>
+<td>INPF</td>
+<td>Ценовой фиксинг</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>500</td>
+<td>287</td>
+<td>1</td>
+<td>5</td>
+<td>SDII</td>
+<td>Индексы СПФИ</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>104</td>
+<td>36</td>
+<td>1</td>
+<td>23</td>
+<td>STMR</td>
+<td>Standard: дневная сессия - безадрес.</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>105</td>
+<td>36</td>
+<td>1</td>
+<td>23</td>
+<td>SDMR</td>
+<td>Standard: вечерняя сессия - безадрес.</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>106</td>
+<td>40</td>
+<td>1</td>
+<td>23</td>
+<td>STRP</td>
+<td>Standard: сделки репо, дневная сессия - адрес.</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>107</td>
+<td>40</td>
+<td>1</td>
+<td>23</td>
+<td>SDRP</td>
+<td>Standard: сделки репо, вечерняя сессия - адрес.</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>108</td>
+<td>41</td>
+<td>1</td>
+<td>23</td>
+<td>STAD</td>
+<td>Standard: дневная сессия - адрес.</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>109</td>
+<td>41</td>
+<td>1</td>
+<td>23</td>
+<td>SDAD</td>
+<td>Standard: вечерняя сессия - адрес.</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>112</td>
+<td>43</td>
+<td>1</td>
+<td>25</td>
+<td>CLMR</td>
+<td>Classica - безадрес.</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>113</td>
+<td>44</td>
+<td>1</td>
+<td>25</td>
+<td>CLAD</td>
+<td>Classica - адрес.</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>123</td>
+<td>50</td>
+<td>1</td>
+<td>27</td>
+<td>EQRP</td>
+<td>РЕПО с ЦК 1 день - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>239</td>
+<td>92</td>
+<td>1</td>
+<td>27</td>
+<td>EQRD</td>
+<td>РЕПО с ЦК 1 день (USD) - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>240</td>
+<td>93</td>
+<td>1</td>
+<td>27</td>
+<td>EQRE</td>
+<td>РЕПО с ЦК 1 день (EUR) - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>309</td>
+<td>152</td>
+<td>1</td>
+<td>27</td>
+<td>EQRY</td>
+<td>РЕПО с ЦК 1 день (CNY) - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>241</td>
+<td>76</td>
+<td>1</td>
+<td>27</td>
+<td>EQWP</td>
+<td>РЕПО с ЦК 7 дн. - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>245</td>
+<td>78</td>
+<td>1</td>
+<td>27</td>
+<td>EQWD</td>
+<td>РЕПО с ЦК 7 дней (USD) - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>246</td>
+<td>79</td>
+<td>1</td>
+<td>27</td>
+<td>EQWE</td>
+<td>РЕПО с ЦК 7 дней (EUR) - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1117</td>
+<td>1116</td>
+<td>1</td>
+<td>27</td>
+<td>EQWY</td>
+<td>РЕПО с ЦК 7 дней (CNY) - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>298</td>
+<td>142</td>
+<td>1</td>
+<td>27</td>
+<td>EQMP</td>
+<td>РЕПО с ЦК 1 мес.(RUB) - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>299</td>
+<td>143</td>
+<td>1</td>
+<td>27</td>
+<td>EQMD</td>
+<td>РЕПО с ЦК 1 мес. (USD) - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>300</td>
+<td>144</td>
+<td>1</td>
+<td>27</td>
+<td>EQME</td>
+<td>РЕПО с ЦК 1 мес. (EUR) - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1119</td>
+<td>1118</td>
+<td>1</td>
+<td>27</td>
+<td>EQMY</td>
+<td>РЕПО с ЦК 1 мес. (CNY) - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>301</td>
+<td>145</td>
+<td>1</td>
+<td>27</td>
+<td>EQTP</td>
+<td>РЕПО с ЦК 3 мес. (RUB) - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>302</td>
+<td>146</td>
+<td>1</td>
+<td>27</td>
+<td>ETQD</td>
+<td>РЕПО с ЦК 3 мес. (USD) - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>303</td>
+<td>147</td>
+<td>1</td>
+<td>27</td>
+<td>EQTE</td>
+<td>РЕПО с ЦК 3 мес. (EUR) - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1121</td>
+<td>1120</td>
+<td>1</td>
+<td>27</td>
+<td>EQTY</td>
+<td>РЕПО с ЦК 3 мес. (CNY) - безадрес</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>304</td>
+<td>148</td>
+<td>1</td>
+<td>27</td>
+<td>LIQR</td>
+<td>РЕПО с ЦК: Урегулирование - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>125</td>
+<td>65</td>
+<td>1</td>
+<td>27</td>
+<td>PSRP</td>
+<td>РЕПО с ЦК - адрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>242</td>
+<td>91</td>
+<td>1</td>
+<td>27</td>
+<td>PSRD</td>
+<td>РЕПО с ЦК (USD) - адрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>243</td>
+<td>96</td>
+<td>1</td>
+<td>27</td>
+<td>PSRE</td>
+<td>РЕПО с ЦК (EUR) - адрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>310</td>
+<td>153</td>
+<td>1</td>
+<td>27</td>
+<td>PSRY</td>
+<td>РЕПО с ЦК (CNY) - адрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1423</td>
+<td>1422</td>
+<td>1</td>
+<td>27</td>
+<td>PSRK</td>
+<td>РЕПО с ЦК (KZT) - адрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1425</td>
+<td>1424</td>
+<td>1</td>
+<td>27</td>
+<td>PSRB</td>
+<td>РЕПО с ЦК (BYN) - адрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>325</td>
+<td>169</td>
+<td>1</td>
+<td>27</td>
+<td>FKRP</td>
+<td>Аукцион с ЦК 1 день - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>327</td>
+<td>171</td>
+<td>1</td>
+<td>27</td>
+<td>FKOW</td>
+<td>Аукцион с ЦК 1 неделя - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>329</td>
+<td>173</td>
+<td>1</td>
+<td>27</td>
+<td>FKSW</td>
+<td>Аукцион с ЦК 2 недели - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>499</td>
+<td>281</td>
+<td>1</td>
+<td>27</td>
+<td>FKFW</td>
+<td>Аукцион с ЦК 5 недель - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>331</td>
+<td>175</td>
+<td>1</td>
+<td>27</td>
+<td>FKOM</td>
+<td>Аукцион с ЦК 1 месяц - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>333</td>
+<td>177</td>
+<td>1</td>
+<td>27</td>
+<td>FKSM</td>
+<td>Аукцион с ЦК 2 месяца - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>335</td>
+<td>179</td>
+<td>1</td>
+<td>27</td>
+<td>FKTM</td>
+<td>Аукцион с ЦК 3 месяца - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>337</td>
+<td>181</td>
+<td>1</td>
+<td>27</td>
+<td>FKUM</td>
+<td>Аукцион с ЦК 6 месяцев - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>339</td>
+<td>183</td>
+<td>1</td>
+<td>27</td>
+<td>FKOY</td>
+<td>Аукцион с ЦК 1 год - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>501</td>
+<td>288</td>
+<td>1</td>
+<td>27</td>
+<td>FRRP</td>
+<td>Аукцион РЕПО с ЦК 1 день - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>502</td>
+<td>289</td>
+<td>1</td>
+<td>27</td>
+<td>FROW</td>
+<td>Аукцион РЕПО с ЦК 1 неделя - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>513</td>
+<td>296</td>
+<td>1</td>
+<td>27</td>
+<td>FRSW</td>
+<td>Аукцион РЕПО с ЦК 2 недели - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>514</td>
+<td>297</td>
+<td>1</td>
+<td>27</td>
+<td>FRFW</td>
+<td>Аукцион РЕПО с ЦК 5 недель - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>503</td>
+<td>290</td>
+<td>1</td>
+<td>27</td>
+<td>FROM</td>
+<td>Аукцион РЕПО с ЦК 1 месяц - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>504</td>
+<td>291</td>
+<td>1</td>
+<td>27</td>
+<td>FRTM</td>
+<td>Аукцион РЕПО с ЦК 3 месяца - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1248</td>
+<td>1247</td>
+<td>1</td>
+<td>27</td>
+<td>FSRP</td>
+<td>Аукцион обр.РЕПО с ЦК 1 день - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1250</td>
+<td>1249</td>
+<td>1</td>
+<td>27</td>
+<td>FSOW</td>
+<td>Аукцион обр.РЕПО с ЦК 1 неделя - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1252</td>
+<td>1251</td>
+<td>1</td>
+<td>27</td>
+<td>FSSW</td>
+<td>Аукцион обр.РЕПО с ЦК 2 недели - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1254</td>
+<td>1253</td>
+<td>1</td>
+<td>27</td>
+<td>FSOM</td>
+<td>Аукцион обр.РЕПО с ЦК 1 месяц - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1256</td>
+<td>1255</td>
+<td>1</td>
+<td>27</td>
+<td>FSFW</td>
+<td>Аукцион обр.РЕПО с ЦК 5 недель - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>167</td>
+<td>63</td>
+<td>1</td>
+<td>28</td>
+<td>TQQI</td>
+<td>Т+: Для квал. инвесторов - безадрес.</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>255</td>
+<td>87</td>
+<td>1</td>
+<td>28</td>
+<td>TQQD</td>
+<td>Т+: Для квал. инвесторов (USD) - безадрес.</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>155</td>
+<td>60</td>
+<td>1</td>
+<td>28</td>
+<td>EQQI</td>
+<td>Основной режим: Для квал. инвесторов - безадрес.</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>157</td>
+<td>62</td>
+<td>1</td>
+<td>28</td>
+<td>RPQI</td>
+<td>РЕПО: Для квал. инвесторов - адрес.</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>166</td>
+<td>62</td>
+<td>1</td>
+<td>28</td>
+<td>RPUQ</td>
+<td>РЕПО: Для квал. инвесторов (USD) - адрес.</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>156</td>
+<td>61</td>
+<td>1</td>
+<td>28</td>
+<td>PSQI</td>
+<td>РПС: Для квал. инвесторов - адрес.</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>168</td>
+<td>64</td>
+<td>1</td>
+<td>28</td>
+<td>PTQI</td>
+<td>РПС с ЦК: Для квал. инвесторов - адрес.</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>183</td>
+<td>71</td>
+<td>1</td>
+<td>29</td>
+<td>SOTC</td>
+<td>Репортинг внебиржевых сделок (6264-У)</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>244</td>
+<td>72</td>
+<td>1</td>
+<td>33</td>
+<td>MXBD</td>
+<td>MOEX Board</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>258</td>
+<td>97</td>
+<td>1</td>
+<td>35</td>
+<td>TDEP</td>
+<td>Депозиты с ЦК - безадрес.</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>341</td>
+<td>185</td>
+<td>1</td>
+<td>35</td>
+<td>ADEP</td>
+<td>Депозиты с ЦК - Аукцион</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>259</td>
+<td>98</td>
+<td>1</td>
+<td>35</td>
+<td>NDEP</td>
+<td>Депозиты с ЦК - адрес.</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>267</td>
+<td>110</td>
+<td>1</td>
+<td>35</td>
+<td>TDPU</td>
+<td>Депозиты с ЦК (USD) - безадрес.</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>293</td>
+<td>137</td>
+<td>1</td>
+<td>35</td>
+<td>TDPE</td>
+<td>Депозиты с ЦК (EUR) - безадрес.</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1143</td>
+<td>1142</td>
+<td>1</td>
+<td>35</td>
+<td>TDPY</td>
+<td>Депозиты с ЦК (CNY) - безадрес. </td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>266</td>
+<td>109</td>
+<td>1</td>
+<td>35</td>
+<td>NDPU</td>
+<td>Депозиты с ЦК (USD) - адрес.</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>292</td>
+<td>136</td>
+<td>1</td>
+<td>35</td>
+<td>NDPE</td>
+<td>Депозиты с ЦК (EUR) - адрес.</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1145</td>
+<td>1144</td>
+<td>1</td>
+<td>35</td>
+<td>NDPY</td>
+<td>Депозиты с ЦК (CNY) - адрес.</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>279</td>
+<td>120</td>
+<td>1</td>
+<td>36</td>
+<td>LIQB</td>
+<td>Продажа обеспечения бирж.рынок - безадрес.</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1083</td>
+<td>1082</td>
+<td>1</td>
+<td>36</td>
+<td>CIQB</td>
+<td>Урегулирование с ЦК Нерезиденты - безадрес.</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>253</td>
+<td>86</td>
+<td>1</td>
+<td>46</td>
+<td>GCRP</td>
+<td>РЕПО с ЦК с КСУ 1 день - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>250</td>
+<td>83</td>
+<td>1</td>
+<td>46</td>
+<td>GCOW</td>
+<td>РЕПО с ЦК с КСУ 7 дн. - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>247</td>
+<td>80</td>
+<td>1</td>
+<td>46</td>
+<td>GCSW</td>
+<td>РЕПО с ЦК с КСУ 14 дн. - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>251</td>
+<td>84</td>
+<td>1</td>
+<td>46</td>
+<td>GCOM</td>
+<td>РЕПО с ЦК с КСУ 1 месяц - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>248</td>
+<td>81</td>
+<td>1</td>
+<td>46</td>
+<td>GCSM</td>
+<td>РЕПО с ЦК с КСУ 2 месяца - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>252</td>
+<td>85</td>
+<td>1</td>
+<td>46</td>
+<td>GCTM</td>
+<td>РЕПО с ЦК с КСУ 3 месяца - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>264</td>
+<td>103</td>
+<td>1</td>
+<td>46</td>
+<td>GCUM</td>
+<td>РЕПО с ЦК с КСУ 6 мес. - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>263</td>
+<td>102</td>
+<td>1</td>
+<td>46</td>
+<td>GCOY</td>
+<td>РЕПО с ЦК с КСУ 1 год - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>249</td>
+<td>82</td>
+<td>1</td>
+<td>46</td>
+<td>PSGC</td>
+<td>РЕПО с ЦК с КСУ - адрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>268</td>
+<td>111</td>
+<td>1</td>
+<td>46</td>
+<td>GURP</td>
+<td>РЕПО с ЦК с КСУ 1 день (USD) - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>269</td>
+<td>112</td>
+<td>1</td>
+<td>46</td>
+<td>GUOW</td>
+<td>РЕПО с ЦК с КСУ 7 дн. (USD) - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>270</td>
+<td>113</td>
+<td>1</td>
+<td>46</td>
+<td>GUSW</td>
+<td>РЕПО с ЦК с КСУ 14 дн. (USD) - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>271</td>
+<td>114</td>
+<td>1</td>
+<td>46</td>
+<td>GUOM</td>
+<td>РЕПО с ЦК с КСУ 1 месяц (USD) - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>272</td>
+<td>115</td>
+<td>1</td>
+<td>46</td>
+<td>GUSM</td>
+<td>РЕПО с ЦК с КСУ 2 месяца (USD) - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>273</td>
+<td>116</td>
+<td>1</td>
+<td>46</td>
+<td>GUTM</td>
+<td>РЕПО с ЦК с КСУ 3 месяца (USD) - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>274</td>
+<td>117</td>
+<td>1</td>
+<td>46</td>
+<td>GUUM</td>
+<td>РЕПО с ЦК с КСУ 6 месяцев (USD) - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>275</td>
+<td>118</td>
+<td>1</td>
+<td>46</td>
+<td>GUOY</td>
+<td>РЕПО с ЦК с КСУ 1 год (USD) - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>276</td>
+<td>119</td>
+<td>1</td>
+<td>46</td>
+<td>PUGC</td>
+<td>РЕПО с ЦК с КСУ (USD) - адрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>283</td>
+<td>127</td>
+<td>1</td>
+<td>46</td>
+<td>GERP</td>
+<td>РЕПО с ЦК с КСУ 1 день (EUR) - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>284</td>
+<td>128</td>
+<td>1</td>
+<td>46</td>
+<td>GEOW</td>
+<td>РЕПО с ЦК с КСУ 7 дн. (EUR) - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>285</td>
+<td>129</td>
+<td>1</td>
+<td>46</td>
+<td>GESW</td>
+<td>РЕПО с ЦК с КСУ 14 дн. (EUR) - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>286</td>
+<td>130</td>
+<td>1</td>
+<td>46</td>
+<td>GEOM</td>
+<td>РЕПО с ЦК с КСУ 1 месяц (EUR) - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>287</td>
+<td>131</td>
+<td>1</td>
+<td>46</td>
+<td>GESM</td>
+<td>РЕПО с ЦК с КСУ 2 месяца (EUR) - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>288</td>
+<td>132</td>
+<td>1</td>
+<td>46</td>
+<td>GETM</td>
+<td>РЕПО с ЦК с КСУ 3 месяца (EUR) - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>289</td>
+<td>133</td>
+<td>1</td>
+<td>46</td>
+<td>GEUM</td>
+<td>РЕПО с ЦК с КСУ 6 месяцев (EUR) - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>290</td>
+<td>134</td>
+<td>1</td>
+<td>46</td>
+<td>GEOY</td>
+<td>РЕПО с ЦК с КСУ 1 год (EUR) - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>291</td>
+<td>135</td>
+<td>1</td>
+<td>46</td>
+<td>PEGC</td>
+<td>РЕПО с ЦК с КСУ (EUR) - адрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1123</td>
+<td>1122</td>
+<td>1</td>
+<td>46</td>
+<td>GYRP</td>
+<td>РЕПО с ЦК с КСУ 1 день (CNY) - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1125</td>
+<td>1124</td>
+<td>1</td>
+<td>46</td>
+<td>GYOW</td>
+<td>РЕПО с ЦК с КСУ 7 дней (CNY) - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1127</td>
+<td>1126</td>
+<td>1</td>
+<td>46</td>
+<td>GYSW</td>
+<td>РЕПО с ЦК с КСУ 14 дней (CNY) - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1129</td>
+<td>1128</td>
+<td>1</td>
+<td>46</td>
+<td>GYOM</td>
+<td>РЕПО с ЦК с КСУ 1 месяц (CNY) - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1131</td>
+<td>1130</td>
+<td>1</td>
+<td>46</td>
+<td>GYSM</td>
+<td>РЕПО с ЦК с КСУ 2 месяца (CNY) - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1133</td>
+<td>1132</td>
+<td>1</td>
+<td>46</td>
+<td>GYTM</td>
+<td>РЕПО с ЦК с КСУ 3 месяца (CNY) - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1135</td>
+<td>1134</td>
+<td>1</td>
+<td>46</td>
+<td>GYUM</td>
+<td>РЕПО с ЦК с КСУ 6 месяцев (CNY) - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1137</td>
+<td>1136</td>
+<td>1</td>
+<td>46</td>
+<td>GYNM</td>
+<td>РЕПО с ЦК с КСУ 9 месяцев (CNY) - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1139</td>
+<td>1138</td>
+<td>1</td>
+<td>46</td>
+<td>GYOY</td>
+<td>РЕПО с ЦК с КСУ 1 год (CNY) - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1141</td>
+<td>1140</td>
+<td>1</td>
+<td>46</td>
+<td>PYGC</td>
+<td>РЕПО с ЦК с КСУ (CNY) - адрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1415</td>
+<td>1414</td>
+<td>1</td>
+<td>46</td>
+<td>GKRP</td>
+<td>РЕПО с ЦК с КСУ 1 день (KZT) - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1417</td>
+<td>1416</td>
+<td>1</td>
+<td>46</td>
+<td>GBRP</td>
+<td>РЕПО с ЦК с КСУ 1 день (BYN) - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1419</td>
+<td>1418</td>
+<td>1</td>
+<td>46</td>
+<td>PKGC</td>
+<td>РЕПО с ЦК с КСУ (KZT) - адрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1421</td>
+<td>1420</td>
+<td>1</td>
+<td>46</td>
+<td>PBGC</td>
+<td>РЕПО с ЦК с КСУ (BYN) - адрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1157</td>
+<td>1156</td>
+<td>1</td>
+<td>46</td>
+<td>FCOW</td>
+<td>РЕПО с ЦК с КСУ пл. 7 дней - безадрес. (RUSFAR)</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1159</td>
+<td>1158</td>
+<td>1</td>
+<td>46</td>
+<td>FCSW</td>
+<td>РЕПО с ЦК с КСУ пл. 14 дней - безадрес. (RUSFAR)</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1161</td>
+<td>1160</td>
+<td>1</td>
+<td>46</td>
+<td>FCOM</td>
+<td>РЕПО с ЦК с КСУ пл. 1 месяц - безадрес. (RUSFAR)</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1163</td>
+<td>1162</td>
+<td>1</td>
+<td>46</td>
+<td>FCSM</td>
+<td>РЕПО с ЦК с КСУ пл. 2 месяца - безадрес. (RUSFAR)</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1165</td>
+<td>1164</td>
+<td>1</td>
+<td>46</td>
+<td>FCTM</td>
+<td>РЕПО с ЦК с КСУ пл. 3 месяца - безадрес. (RUSFAR)</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1167</td>
+<td>1166</td>
+<td>1</td>
+<td>46</td>
+<td>FCUM</td>
+<td>РЕПО с ЦК с КСУ пл. 6 месяца - безадрес. (RUSFAR)</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1169</td>
+<td>1168</td>
+<td>1</td>
+<td>46</td>
+<td>FCNM</td>
+<td>РЕПО с ЦК с КСУ пл. 9 месяца - безадрес. (RUSFAR)</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1171</td>
+<td>1170</td>
+<td>1</td>
+<td>46</td>
+<td>FCOY</td>
+<td>РЕПО с ЦК с КСУ пл. 1 год - безадрес. (RUSFAR)</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1189</td>
+<td>1188</td>
+<td>1</td>
+<td>46</td>
+<td>FYOW</td>
+<td>РЕПО с ЦК с КСУ пл. 7 дней (CNY) - безадрес. (RUSFARCNY)</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1191</td>
+<td>1190</td>
+<td>1</td>
+<td>46</td>
+<td>FYSW</td>
+<td>РЕПО с ЦК с КСУ пл. 14 дней (CNY) - безадрес. (RUSFARCNY)</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1193</td>
+<td>1192</td>
+<td>1</td>
+<td>46</td>
+<td>FYOM</td>
+<td>РЕПО с ЦК с КСУ пл. 1 месяц (CNY) - безадрес. (RUSFARCNY)</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1195</td>
+<td>1194</td>
+<td>1</td>
+<td>46</td>
+<td>FYSM</td>
+<td>РЕПО с ЦК с КСУ пл. 2 месяца (CNY) - безадрес. (RUSFARCNY)</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1197</td>
+<td>1196</td>
+<td>1</td>
+<td>46</td>
+<td>FYTM</td>
+<td>РЕПО с ЦК с КСУ пл. 3 месяца (CNY) - безадрес. (RUSFARCNY)</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1199</td>
+<td>1198</td>
+<td>1</td>
+<td>46</td>
+<td>FYUM</td>
+<td>РЕПО с ЦК с КСУ пл. 6 месяца (CNY) - безадрес. (RUSFARCNY)</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1201</td>
+<td>1200</td>
+<td>1</td>
+<td>46</td>
+<td>FYNM</td>
+<td>РЕПО с ЦК с КСУ пл. 9 месяца (CNY) - безадрес. (RUSFARCNY)</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1203</td>
+<td>1202</td>
+<td>1</td>
+<td>46</td>
+<td>FYOY</td>
+<td>РЕПО с ЦК с КСУ пл. 1 год (CNY) - безадрес. (RUSFARCNY)</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1311</td>
+<td>1312</td>
+<td>1</td>
+<td>46</td>
+<td>FAOM</td>
+<td>РЕПО с ЦК с КСУ пл. КлСт 1 мес. - безадрес. (RREFKEYR)</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1314</td>
+<td>1313</td>
+<td>1</td>
+<td>46</td>
+<td>FATM</td>
+<td>РЕПО с ЦК с КСУ пл. КлСт 3 мес. - безадрес. (RREFKEYR)</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>343</td>
+<td>187</td>
+<td>1</td>
+<td>46</td>
+<td>GCNM</td>
+<td>РЕПО с ЦК с КСУ 9 месяцев - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>345</td>
+<td>189</td>
+<td>1</td>
+<td>46</td>
+<td>GUNM</td>
+<td>РЕПО с ЦК с КСУ 9 мес. (USD) - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>347</td>
+<td>191</td>
+<td>1</td>
+<td>46</td>
+<td>GENM</td>
+<td>РЕПО с ЦК с КСУ 9 мес. (EUR) - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>415</td>
+<td>265</td>
+<td>1</td>
+<td>47</td>
+<td>FQBR</td>
+<td>Т+ Ин.Акции и ДР - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>417</td>
+<td>265</td>
+<td>1</td>
+<td>47</td>
+<td>FQDE</td>
+<td>Т+ Ин.Акции ПИР - безадрес.</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>224</td>
+<td>292</td>
+<td>1</td>
+<td>47</td>
+<td>TQBD</td>
+<td>Т+: Ин.Акции и ДР (USD) - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>508</td>
+<td>292</td>
+<td>1</td>
+<td>47</td>
+<td>TQDD</td>
+<td>Т+: Ин.Акции ПИР (USD) - безадрес.</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1207</td>
+<td>1206</td>
+<td>1</td>
+<td>47</td>
+<td>FQBY</td>
+<td>Т+: Ин.Акции и ДР (CNY) - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1208</td>
+<td>1206</td>
+<td>1</td>
+<td>47</td>
+<td>FQDY</td>
+<td>Т+: Ин.Акции ПИР (CNY) - безадрес.</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1230</td>
+<td>1229</td>
+<td>1</td>
+<td>47</td>
+<td>FQBH</td>
+<td>Т+: Ин.Акции и ДР (HKD) - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1231</td>
+<td>1229</td>
+<td>1</td>
+<td>47</td>
+<td>FQDH</td>
+<td>Т+: Ин.Акции ПИР (HKD) - безадрес.</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>419</td>
+<td>267</td>
+<td>1</td>
+<td>49</td>
+<td>FTEQ</td>
+<td>РПС с ЦК: Ин.Акции и ДР - адрес.</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>421</td>
+<td>267</td>
+<td>1</td>
+<td>49</td>
+<td>FTDE</td>
+<td>РПС с ЦК: Ин.Акции ПИР - адрес.</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>423</td>
+<td>269</td>
+<td>1</td>
+<td>49</td>
+<td>FSEQ</td>
+<td>РПС: Ин.Акции - адрес.</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>425</td>
+<td>269</td>
+<td>1</td>
+<td>49</td>
+<td>FSDE</td>
+<td>Ин.Акции ПИР - РПС - адрес.</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>510</td>
+<td>294</td>
+<td>1</td>
+<td>49</td>
+<td>PSSD</td>
+<td>РПС: Ин.Акции (USD) - адрес.</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>509</td>
+<td>294</td>
+<td>1</td>
+<td>49</td>
+<td>PSDD</td>
+<td>РПС: Ин.Акции ПИР (USD) - адрес.</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1213</td>
+<td>1212</td>
+<td>1</td>
+<td>49</td>
+<td>FSSY</td>
+<td>РПС: Ин.Акции (CNY) - адрес.</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1214</td>
+<td>1212</td>
+<td>1</td>
+<td>49</td>
+<td>FSDY</td>
+<td>РПС: Ин.Акции ПИР (CNY) - адрес.</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1236</td>
+<td>1235</td>
+<td>1</td>
+<td>49</td>
+<td>FSSH</td>
+<td>РПС: Ин.Акции (HKD) - адрес.</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1237</td>
+<td>1235</td>
+<td>1</td>
+<td>49</td>
+<td>FSDH</td>
+<td>РПС: Ин.Акции ПИР (HKD) - адрес.</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1210</td>
+<td>1209</td>
+<td>1</td>
+<td>49</td>
+<td>FTSY</td>
+<td>РПС с ЦК: Ин.Акции и ДР (CNY) - адрес.</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1211</td>
+<td>1209</td>
+<td>1</td>
+<td>49</td>
+<td>FTDY</td>
+<td>РПС с ЦК: Ин.Акции ПИР (CNY) - адрес.</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1233</td>
+<td>1232</td>
+<td>1</td>
+<td>49</td>
+<td>FTSH</td>
+<td>РПС с ЦК: Ин.Акции и ДР (HKD) - адрес.</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1234</td>
+<td>1232</td>
+<td>1</td>
+<td>49</td>
+<td>FTDH</td>
+<td>РПС с ЦК: Ин.Акции ПИР (HKD) - адрес.</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>230</td>
+<td>293</td>
+<td>1</td>
+<td>49</td>
+<td>PTSD</td>
+<td>РПС с ЦК: Ин.Акции и ДР (USD) - адрес.</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>497</td>
+<td>293</td>
+<td>1</td>
+<td>49</td>
+<td>PTDD</td>
+<td>РПС с ЦК: Ин.Акции ПИР (USD) - адрес.</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>491</td>
+<td>275</td>
+<td>1</td>
+<td>54</td>
+<td>CRER</td>
+<td>Кредиты RUB - адрес.</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>493</td>
+<td>277</td>
+<td>1</td>
+<td>54</td>
+<td>CREU</td>
+<td>Кредиты USD - адрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>495</td>
+<td>279</td>
+<td>1</td>
+<td>54</td>
+<td>CREE</td>
+<td>Кредиты EUR - адрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1147</td>
+<td>1146</td>
+<td>1</td>
+<td>54</td>
+<td>CREY</td>
+<td>Кредиты CNY - адрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1057</td>
+<td>1056</td>
+<td>1</td>
+<td>1015</td>
+<td>CTEQ</td>
+<td>РПС с ЦК Нерезиденты: Акции и ДР - адрес.</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1059</td>
+<td>1058</td>
+<td>1</td>
+<td>1015</td>
+<td>CTSD</td>
+<td>РПС с ЦК Нерезиденты: Акции и ДР (USD) - адрес.</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1061</td>
+<td>1060</td>
+<td>1</td>
+<td>1015</td>
+<td>CTSE</td>
+<td>РПС с ЦК Нерезиденты: Акции и ДР (EUR) - адрес.</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1063</td>
+<td>1062</td>
+<td>1</td>
+<td>1015</td>
+<td>CTOB</td>
+<td>РПС с ЦК Нерезиденты: Облигации - адрес.</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1065</td>
+<td>1064</td>
+<td>1</td>
+<td>1015</td>
+<td>CTOY</td>
+<td>РПС с ЦК Нерезиденты: Облигации (CNY) - адрес.</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1067</td>
+<td>1066</td>
+<td>1</td>
+<td>1015</td>
+<td>CTOD</td>
+<td>РПС с ЦК Нерезиденты: Облигации (USD) - адрес.</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1069</td>
+<td>1068</td>
+<td>1</td>
+<td>1015</td>
+<td>CTOE</td>
+<td>РПС с ЦК Нерезиденты: Облигации (EUR) - адрес.</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1072</td>
+<td>1071</td>
+<td>1</td>
+<td>1017</td>
+<td>CPMO</td>
+<td>РЕПО-M Нерезиденты - адрес.</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1074</td>
+<td>1073</td>
+<td>1</td>
+<td>1017</td>
+<td>CPEU</td>
+<td>РЕПО-M Нерезиденты (USD) - адрес.</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1076</td>
+<td>1075</td>
+<td>1</td>
+<td>1017</td>
+<td>CPEO</td>
+<td>РЕПО-M Нерезиденты (EUR) - адрес.</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1078</td>
+<td>1077</td>
+<td>1</td>
+<td>1017</td>
+<td>CPEY</td>
+<td>РЕПО-M Нерезиденты (CNY) - адрес.</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1081</td>
+<td>1080</td>
+<td>1</td>
+<td>1019</td>
+<td>CIQR</td>
+<td>Урегулирование РЕПО с ЦК Нерезиденты - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>19</td>
+<td>10</td>
+<td>2</td>
+<td>6</td>
+<td>MAIN</td>
+<td>ГЦБ</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>25</td>
+<td>3</td>
+<td>2</td>
+<td>7</td>
+<td>RPDD</td>
+<td>Сделки междилерского РЕПО</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>20</td>
+<td>11</td>
+<td>2</td>
+<td>8</td>
+<td>NEGD</td>
+<td>ГЦБ: Внесистемные сделки</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>51</td>
+<td>12</td>
+<td>2</td>
+<td>9</td>
+<td>GNDX</td>
+<td>Индексы ГЦБ</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>21</td>
+<td>13</td>
+<td>3</td>
+<td>10</td>
+<td>CETS</td>
+<td>Системные сделки - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>351</td>
+<td>13</td>
+<td>3</td>
+<td>10</td>
+<td>SDBP</td>
+<td>Крупные сделки - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>52</td>
+<td>13</td>
+<td>3</td>
+<td>10</td>
+<td>CURR</td>
+<td>Дневная сессия</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>261</td>
+<td>100</td>
+<td>3</td>
+<td>10</td>
+<td>FIXS</td>
+<td>Фиксинг системный - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>116</td>
+<td>46</td>
+<td>3</td>
+<td>10</td>
+<td>CNGD</td>
+<td>Внесистемные сделки- адрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>308</td>
+<td>151</td>
+<td>3</td>
+<td>10</td>
+<td>LICU</td>
+<td>Внесистемные сделки урегулирования - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>262</td>
+<td>101</td>
+<td>3</td>
+<td>10</td>
+<td>FIXN</td>
+<td>Фиксинг внесистемный- адрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>306</td>
+<td>149</td>
+<td>3</td>
+<td>10</td>
+<td>WAPS</td>
+<td>Системные средневзвешенные - безадрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>307</td>
+<td>150</td>
+<td>3</td>
+<td>10</td>
+<td>WAPN</td>
+<td>Внесистемные средневзвешенные - адрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>182</td>
+<td>70</td>
+<td>3</td>
+<td>10</td>
+<td>AUCB</td>
+<td>Аукцион ЦБР - адрес.</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>296</td>
+<td>140</td>
+<td>3</td>
+<td>10</td>
+<td>SPEC</td>
+<td>Поставка - безадресные</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>256</td>
+<td>88</td>
+<td>3</td>
+<td>34</td>
+<td>FUTS</td>
+<td>Фьючерсы системные - безадрес.</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>257</td>
+<td>89</td>
+<td>3</td>
+<td>34</td>
+<td>FUTN</td>
+<td>Фьючерсы внесистемные- адрес.</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>321</td>
+<td>165</td>
+<td>3</td>
+<td>41</td>
+<td>FIXI</td>
+<td>Валютный фиксинг</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>411</td>
+<td>261</td>
+<td>3</td>
+<td>45</td>
+<td>OTCT</td>
+<td>Рынок OTC</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>413</td>
+<td>263</td>
+<td>3</td>
+<td>45</td>
+<td>OTCF</td>
+<td>Рынок OTC крупные сделки</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1343</td>
+<td>1342</td>
+<td>3</td>
+<td>1341</td>
+<td>COTF</td>
+<td>Внебиржевые индикаторы - фиксинги</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1345</td>
+<td>1344</td>
+<td>3</td>
+<td>1341</td>
+<td>COTR</td>
+<td>Внебиржевые индикаторы - котировки</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1350</td>
+<td>1349</td>
+<td>3</td>
+<td>1341</td>
+<td>COTB</td>
+<td>Внебиржевые индикаторы - стаканы</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>22</td>
+<td>15</td>
+<td>4</td>
+<td>12</td>
+<td>FOB</td>
+<td>Фьючерсы и Опционы</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>101</td>
+<td>45</td>
+<td>4</td>
+<td>22</td>
+<td>RFUD</td>
+<td>Фьючерсы</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>103</td>
+<td>35</td>
+<td>4</td>
+<td>24</td>
+<td>ROPD</td>
+<td>Опционы</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>294</td>
+<td>138</td>
+<td>4</td>
+<td>37</td>
+<td>FIQS</td>
+<td>Фьючерсы IQS</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>295</td>
+<td>139</td>
+<td>4</td>
+<td>38</td>
+<td>OIQS</td>
+<td>Опционы IQS</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>80</td>
+<td>20</td>
+<td>5</td>
+<td>18</td>
+<td>FOCM</td>
+<td>Фьючерсы на товарные активы</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>94</td>
+<td>24</td>
+<td>6</td>
+<td>20</td>
+<td>GSEL</td>
+<td>Интервенции по продаже зерна</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>297</td>
+<td>141</td>
+<td>7</td>
+<td>39</td>
+<td>OBBO</td>
+<td>ОТС-система: облигации</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>427</td>
+<td>271</td>
+<td>9</td>
+<td>51</td>
+<td>SUGR</td>
+<td>Агро: Сахар</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1444</td>
+<td>1443</td>
+<td>9</td>
+<td>51</td>
+<td>ZERN</td>
+<td>Спот рынок пшеницы</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1036</td>
+<td>1032</td>
+<td>9</td>
+<td>1031</td>
+<td>AIGR</td>
+<td>Агро: Аукционы НТБ</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1090</td>
+<td>1085</td>
+<td>9</td>
+<td>1084</td>
+<td>ABGR</td>
+<td>Агро: Закупочные аукционы НТБ</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1368</td>
+<td>1367</td>
+<td>9</td>
+<td>1366</td>
+<td>ASGR</td>
+<td>Товарные интервенции НТБ</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1022</td>
+<td>1021</td>
+<td>1012</td>
+<td>1013</td>
+<td>OCTR</td>
+<td>ОТС: Облигации Т+ - безадресные</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1016</td>
+<td>1015</td>
+<td>1012</td>
+<td>1013</td>
+<td>OCTU</td>
+<td>ОТС: Облигации Т+ (USD) - безадресные</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1018</td>
+<td>1017</td>
+<td>1012</td>
+<td>1014</td>
+<td>OCBR</td>
+<td>OTC: Облигации с ЦК - двусторонние</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1020</td>
+<td>1019</td>
+<td>1012</td>
+<td>1014</td>
+<td>OCBU</td>
+<td>OTC: Облигации с ЦК (USD) - двусторонние</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1205</td>
+<td>1204</td>
+<td>1012</td>
+<td>1014</td>
+<td>OCBY</td>
+<td>OTC: Облигации с ЦК (CNY) - двусторонние</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1264</td>
+<td>1263</td>
+<td>1012</td>
+<td>1014</td>
+<td>OCAR</td>
+<td>OTC: Облигации с ЦК адрес. - двусторонние</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1266</td>
+<td>1265</td>
+<td>1012</td>
+<td>1014</td>
+<td>OCAY</td>
+<td>OTC: Облигации с ЦК адрес. (CNY) - двусторонние</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1268</td>
+<td>1267</td>
+<td>1012</td>
+<td>1014</td>
+<td>OCAU</td>
+<td>OTC: Облигации с ЦК адрес. (USD) - двусторонние</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1259</td>
+<td>1258</td>
+<td>1012</td>
+<td>1257</td>
+<td>MTQR</td>
+<td>ОТС: Акции Т+ - безадресные</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1261</td>
+<td>1260</td>
+<td>1012</td>
+<td>1262</td>
+<td>MPTR</td>
+<td>ОТС: Акции РПС с ЦК - адресные</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1304</td>
+<td>1303</td>
+<td>1012</td>
+<td>1262</td>
+<td>MPAU</td>
+<td>OTC: Акции размещение - адресные</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1306</td>
+<td>1305</td>
+<td>1012</td>
+<td>1262</td>
+<td>MPBB</td>
+<td>OTC: Акции выкуп - адресные</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1281</td>
+<td>1280</td>
+<td>1282</td>
+<td>1279</td>
+<td>QBND</td>
+<td>Квоты</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1330</td>
+<td>1329</td>
+<td>1326</td>
+<td>1327</td>
+<td>DPFK</td>
+<td>Депозиты ФК, закрытая форма</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1331</td>
+<td>1329</td>
+<td>1326</td>
+<td>1327</td>
+<td>DPFO</td>
+<td>Депозиты ФК, открытая форма</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1333</td>
+<td>1332</td>
+<td>1326</td>
+<td>1328</td>
+<td>RPFC</td>
+<td>РЕПО с ФК: закрытая форма</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1334</td>
+<td>1332</td>
+<td>1326</td>
+<td>1328</td>
+<td>RPFO</td>
+<td>РЕПО с ФК: открытая форма</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1335</td>
+<td>1332</td>
+<td>1326</td>
+<td>1328</td>
+<td>BREK</td>
+<td>Займы бумаг ФК - ЕКС</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1336</td>
+<td>1332</td>
+<td>1326</td>
+<td>1328</td>
+<td>BRFB</td>
+<td>Займы бумаг ФК - ФБ</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+</tbody></table>
+<br><br>
+
+<h1>boardgroups</h1>
+<table>
+<tbody><tr>
+<th>id (int32)</th>
+<th>trade_engine_id (int32)</th>
+<th>trade_engine_name (string:45)</th>
+<th>trade_engine_title (string:765)</th>
+<th>market_id (int32)</th>
+<th>market_name (string:45)</th>
+<th>name (string:192)</th>
+<th>title (string:765)</th>
+<th>is_default (int32)</th>
+<th>board_group_id (int32)</th>
+<th>is_traded (int32)</th>
+<th>is_order_driven (int32)</th>
+<th>category (string:45)</th>
+</tr>
+<tr>
+<td>9</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>5</td>
+<td>index</td>
+<td>stock_index</td>
+<td>Индексы</td>
+<td>1</td>
+<td>9</td>
+<td>1</td>
+<td>null</td>
+<td>main</td>
+</tr>
+<tr>
+<td>104</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>5</td>
+<td>index</td>
+<td>stock_index_inav</td>
+<td>INAV</td>
+<td>0</td>
+<td>104</td>
+<td>1</td>
+<td>null</td>
+<td>main</td>
+</tr>
+<tr>
+<td>155</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>5</td>
+<td>index</td>
+<td>stock_index_mmix</td>
+<td>Money Market IndeX</td>
+<td>0</td>
+<td>155</td>
+<td>1</td>
+<td>null</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1028</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>5</td>
+<td>index</td>
+<td>stock_index_namex</td>
+<td>Индексы НТБ</td>
+<td>0</td>
+<td>1028</td>
+<td>1</td>
+<td>null</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1153</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>5</td>
+<td>index</td>
+<td>stock_index_pf</td>
+<td>Ценовой фиксинг</td>
+<td>0</td>
+<td>1153</td>
+<td>1</td>
+<td>null</td>
+<td>main</td>
+</tr>
+<tr>
+<td>287</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>5</td>
+<td>index</td>
+<td>stock_index_sdfi</td>
+<td>Индексы СПФИ</td>
+<td>0</td>
+<td>287</td>
+<td>1</td>
+<td>null</td>
+<td>main</td>
+</tr>
+<tr>
+<td>57</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>1</td>
+<td>shares</td>
+<td>stock_shares_tplus</td>
+<td>Т+: Основной режим - безадрес.</td>
+<td>1</td>
+<td>57</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>156</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>1</td>
+<td>shares</td>
+<td>stock_shares_tplus_usd</td>
+<td>Т+: Основной режим (USD) - безадрес.</td>
+<td>0</td>
+<td>156</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>159</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>1</td>
+<td>shares</td>
+<td>stock_shares_etf_eur</td>
+<td>Т0 ETF (расч. в EUR) - безадрес.</td>
+<td>0</td>
+<td>159</td>
+<td>0</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>157</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>1</td>
+<td>shares</td>
+<td>stock_shares_tplus_eur</td>
+<td>Т+: Основной режим (EUR) - безадрес.</td>
+<td>0</td>
+<td>157</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1215</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>1</td>
+<td>shares</td>
+<td>stock_shares_tplus_cny</td>
+<td>Т+: Основной режим (CNY) - безадрес.</td>
+<td>0</td>
+<td>1215</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1238</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>1</td>
+<td>shares</td>
+<td>stock_shares_tplus_hkd</td>
+<td>Т+: ПАИ (HKD) - безадрес.</td>
+<td>0</td>
+<td>1238</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>6</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>1</td>
+<td>shares</td>
+<td>stock_shares</td>
+<td>Т0: Основной режим - безадрес.</td>
+<td>0</td>
+<td>6</td>
+<td>0</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>21</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>1</td>
+<td>shares</td>
+<td>stock_shares_sm</td>
+<td>Неполные лоты - безадрес.</td>
+<td>0</td>
+<td>21</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>42</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>1</td>
+<td>shares</td>
+<td>stock_shares_darkpool</td>
+<td>Крупные пакеты - безадрес.</td>
+<td>0</td>
+<td>42</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>30</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>1</td>
+<td>shares</td>
+<td>stock_shares_cc</td>
+<td>ЦК - Режим основных торгов - безадрес.</td>
+<td>0</td>
+<td>30</td>
+<td>0</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>125</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>1</td>
+<td>shares</td>
+<td>stock_shares_settle</td>
+<td>Поставка по СК</td>
+<td>0</td>
+<td>125</td>
+<td>1</td>
+<td>null</td>
+<td>main</td>
+</tr>
+<tr>
+<td>99</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>1</td>
+<td>shares</td>
+<td>stock_etf_usd</td>
+<td>Т0 ETF (USD) - безадрес.</td>
+<td>0</td>
+<td>99</td>
+<td>0</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>58</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>2</td>
+<td>bonds</td>
+<td>stock_bonds_tplus</td>
+<td>Т+: Основной режим - безадрес.</td>
+<td>1</td>
+<td>58</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>193</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>2</td>
+<td>bonds</td>
+<td>stock_bonds_tplus_usd</td>
+<td>Т+: Основной режим (USD) - безадрес.</td>
+<td>0</td>
+<td>193</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>207</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>2</td>
+<td>bonds</td>
+<td>stock_bonds_tplus_eur</td>
+<td>Т+: Облигации (EUR) - безадрес.</td>
+<td>0</td>
+<td>207</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>245</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>2</td>
+<td>bonds</td>
+<td>stock_bonds_tplus_cny</td>
+<td>Т+: Облигации (CNY) - безадрес.</td>
+<td>0</td>
+<td>245</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>68</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>2</td>
+<td>bonds</td>
+<td>stock_etc_tplus</td>
+<td>Т+: Основной режим (ЕТС) - безадрес.</td>
+<td>0</td>
+<td>68</td>
+<td>0</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>7</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>2</td>
+<td>bonds</td>
+<td>stock_bonds</td>
+<td>Т0: Основной режим - безадрес.</td>
+<td>0</td>
+<td>7</td>
+<td>0</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>69</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>2</td>
+<td>bonds</td>
+<td>stock_etc</td>
+<td>Т0: Основной режим (ЕТС) - безадрес.</td>
+<td>0</td>
+<td>69</td>
+<td>0</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>67</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>2</td>
+<td>bonds</td>
+<td>stock_bonds_euro</td>
+<td>Т0: Основной режим (Еврооблигации) - безадрес.</td>
+<td>0</td>
+<td>67</td>
+<td>0</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>122</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>2</td>
+<td>bonds</td>
+<td>stock_bonds_buyback</td>
+<td>Выкуп - безадрес.</td>
+<td>0</td>
+<td>122</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>123</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>2</td>
+<td>bonds</td>
+<td>stock_bonds_distribution</td>
+<td>Размещение - безадрес.</td>
+<td>0</td>
+<td>123</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>257</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>2</td>
+<td>bonds</td>
+<td>stock_bonds_auct_pact</td>
+<td>Аукцион: адресные заявки</td>
+<td>0</td>
+<td>257</td>
+<td>1</td>
+<td>null</td>
+<td>main</td>
+</tr>
+<tr>
+<td>77</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>2</td>
+<td>bonds</td>
+<td>stock_bonds_darkpools</td>
+<td>Крупные пакеты - безадрес.</td>
+<td>0</td>
+<td>77</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>105</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>2</td>
+<td>bonds</td>
+<td>stock_bonds_settle</td>
+<td>Поставка по СК</td>
+<td>0</td>
+<td>105</td>
+<td>1</td>
+<td>null</td>
+<td>main</td>
+</tr>
+<tr>
+<td>167</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>2</td>
+<td>bonds</td>
+<td>stock_bonds_darkpools_usd</td>
+<td>Крупные пакеты – Облигации (USD) - безадрес.</td>
+<td>0</td>
+<td>167</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>59</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>4</td>
+<td>ndm</td>
+<td>stock_ndm_tplus</td>
+<td>Т+: РПС с ЦК - адрес.</td>
+<td>0</td>
+<td>59</td>
+<td>1</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>73</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>4</td>
+<td>ndm</td>
+<td>stock_ndm_tplus_usd</td>
+<td>Т+: РПС с ЦК (USD) - адрес.</td>
+<td>0</td>
+<td>73</td>
+<td>1</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>163</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>4</td>
+<td>ndm</td>
+<td>stock_ndm_tplus_eur</td>
+<td>Т+: РПС с ЦК (EUR) - адрес.</td>
+<td>0</td>
+<td>163</td>
+<td>1</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>8</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>4</td>
+<td>ndm</td>
+<td>stock_ndm</td>
+<td>РПС - адрес.</td>
+<td>1</td>
+<td>8</td>
+<td>1</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>74</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>4</td>
+<td>ndm</td>
+<td>stock_ndm_usd</td>
+<td>РПС (USD) - адрес.</td>
+<td>0</td>
+<td>74</td>
+<td>1</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>160</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>4</td>
+<td>ndm</td>
+<td>stock_ndm_eur</td>
+<td>РПС (EUR) - адрес.</td>
+<td>0</td>
+<td>160</td>
+<td>1</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>284</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>4</td>
+<td>ndm</td>
+<td>stock_ndm_bonds</td>
+<td>РПС: Облигации - адрес.</td>
+<td>0</td>
+<td>284</td>
+<td>1</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>285</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>4</td>
+<td>ndm</td>
+<td>stock_ndm_bonds_usd</td>
+<td>РПС: Облигации (USD) - адрес.</td>
+<td>0</td>
+<td>285</td>
+<td>1</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>286</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>4</td>
+<td>ndm</td>
+<td>stock_ndm_bonds_eur</td>
+<td>РПС: Облигации (EUR) - адрес.</td>
+<td>0</td>
+<td>286</td>
+<td>1</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>106</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>4</td>
+<td>ndm</td>
+<td>stock_ndm_currency</td>
+<td>РПС: В валюте - адрес.</td>
+<td>0</td>
+<td>106</td>
+<td>1</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>107</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>4</td>
+<td>ndm</td>
+<td>stock_ndm_issuance</td>
+<td>Размещение - адрес.</td>
+<td>0</td>
+<td>107</td>
+<td>1</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1430</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>4</td>
+<td>ndm</td>
+<td>stock_ndm_issuance_cny</td>
+<td>Размещение (CNY) - адрес.</td>
+<td>0</td>
+<td>1430</td>
+<td>1</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>108</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>4</td>
+<td>ndm</td>
+<td>stock_ndm_buyback</td>
+<td>Выкуп - адрес.</td>
+<td>0</td>
+<td>108</td>
+<td>1</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>121</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>4</td>
+<td>ndm</td>
+<td>stock_ndm_buyback_eur</td>
+<td>Выкуп (EUR) - адрес.</td>
+<td>0</td>
+<td>121</td>
+<td>0</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>126</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>4</td>
+<td>ndm</td>
+<td>stock_ndm_anonymous</td>
+<td>Анонимный РПС - адрес.</td>
+<td>0</td>
+<td>126</td>
+<td>1</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>203</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>4</td>
+<td>ndm</td>
+<td>stock_ndm_anonymous_usd</td>
+<td>Анонимный РПС (USD) - адрес.</td>
+<td>0</td>
+<td>203</td>
+<td>1</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>205</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>4</td>
+<td>ndm</td>
+<td>stock_ndm_anonymous_eur</td>
+<td>Анонимный РПС (EUR) - адрес.</td>
+<td>0</td>
+<td>205</td>
+<td>1</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>124</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>4</td>
+<td>ndm</td>
+<td>stock_ndm_buyback_usd</td>
+<td>Выкуп (USD) - адрес.</td>
+<td>0</td>
+<td>124</td>
+<td>1</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1289</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>4</td>
+<td>ndm</td>
+<td>stock_ndm_buyback_cny</td>
+<td>Выкуп (CNY) - адрес.</td>
+<td>0</td>
+<td>1289</td>
+<td>1</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>282</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>4</td>
+<td>ndm</td>
+<td>stock_ndm_ccp_bonds</td>
+<td>РПС с ЦК: Облигации - адрес.</td>
+<td>0</td>
+<td>282</td>
+<td>1</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>283</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>4</td>
+<td>ndm</td>
+<td>stock_ndm_ccp_bonds_usd</td>
+<td>РПС с ЦК: Облигации (USD) - адрес.</td>
+<td>0</td>
+<td>283</td>
+<td>1</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>209</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>4</td>
+<td>ndm</td>
+<td>stock_ndm_ccp_bonds_eur</td>
+<td>РПС с ЦК: Облигации (EUR) - адрес.</td>
+<td>0</td>
+<td>209</td>
+<td>1</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>247</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>4</td>
+<td>ndm</td>
+<td>stock_ndm_bonds_cny</td>
+<td>РПС: Облигации (CNY) - адрес.</td>
+<td>0</td>
+<td>247</td>
+<td>1</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>32</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>4</td>
+<td>ndm</td>
+<td>stock_ndm_cc</td>
+<td>ЦК - РПС - адрес.</td>
+<td>0</td>
+<td>32</td>
+<td>0</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>249</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>4</td>
+<td>ndm</td>
+<td>stock_ndm_ccp_bonds_cny</td>
+<td>РПС с ЦК: Облигации (CNY) - адрес.</td>
+<td>0</td>
+<td>249</td>
+<td>1</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1218</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>4</td>
+<td>ndm</td>
+<td>stock_ndm_cny</td>
+<td>РПС (CNY) - адрес.</td>
+<td>0</td>
+<td>1218</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1221</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>4</td>
+<td>ndm</td>
+<td>stock_ndm_tplus_cny</td>
+<td>Т+: РПС с ЦК (CNY) - адрес.</td>
+<td>0</td>
+<td>1221</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1241</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>4</td>
+<td>ndm</td>
+<td>stock_ndm_hkd</td>
+<td>РПС: ПАИ (HKD) - адресн.</td>
+<td>0</td>
+<td>1241</td>
+<td>1</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1244</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>4</td>
+<td>ndm</td>
+<td>stock_ndm_tplus_hkd</td>
+<td>РПС с ЦК: Паи (HKD) - адресн.</td>
+<td>0</td>
+<td>1244</td>
+<td>1</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>71</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>29</td>
+<td>otc</td>
+<td>stock_otc</td>
+<td>Репортинг внебиржевых сделок (6264-У)</td>
+<td>1</td>
+<td>71</td>
+<td>1</td>
+<td>0</td>
+<td>otc</td>
+</tr>
+<tr>
+<td>50</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>27</td>
+<td>ccp</td>
+<td>stock_ccp</td>
+<td>РЕПО с ЦК 1 день (RUB) - безадрес.</td>
+<td>1</td>
+<td>50</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>92</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>27</td>
+<td>ccp</td>
+<td>stock_ccp_d_usd</td>
+<td>РЕПО с ЦК 1 день (USD) - безадрес.</td>
+<td>0</td>
+<td>92</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>93</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>27</td>
+<td>ccp</td>
+<td>stock_ccp_d_eur</td>
+<td>РЕПО с ЦК 1 день (EUR) - безадрес.</td>
+<td>0</td>
+<td>93</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>152</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>27</td>
+<td>ccp</td>
+<td>stock_ccp_d_cny</td>
+<td>РЕПО с ЦК 1 день (CNY) - безадрес.</td>
+<td>0</td>
+<td>152</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>76</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>27</td>
+<td>ccp</td>
+<td>stock_ccp_w</td>
+<td>РЕПО с ЦК 7 дней (RUB) - безадрес.</td>
+<td>0</td>
+<td>76</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>78</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>27</td>
+<td>ccp</td>
+<td>stock_ccp_w_usd</td>
+<td>РЕПО с ЦК 7 дней (USD) - безадрес.</td>
+<td>0</td>
+<td>78</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>79</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>27</td>
+<td>ccp</td>
+<td>stock_ccp_w_eur</td>
+<td>РЕПО с ЦК 7 дней (EUR) - безадрес.</td>
+<td>0</td>
+<td>79</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1116</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>27</td>
+<td>ccp</td>
+<td>stock_ccp_w_cny</td>
+<td>РЕПО с ЦК 7 дней (CNY) - безадрес.</td>
+<td>0</td>
+<td>1116</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>142</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>27</td>
+<td>ccp</td>
+<td>stock_ccp_m</td>
+<td>РЕПО с ЦК 1 мес.(RUB) - безадрес.</td>
+<td>0</td>
+<td>142</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>143</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>27</td>
+<td>ccp</td>
+<td>stock_ccp_m_usd</td>
+<td>РЕПО с ЦК 1 мес. (USD) - безадрес.</td>
+<td>0</td>
+<td>143</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>144</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>27</td>
+<td>ccp</td>
+<td>stock_ccp_m_eur</td>
+<td>РЕПО с ЦК 1 мес. (EUR) - безадрес.</td>
+<td>0</td>
+<td>144</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1118</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>27</td>
+<td>ccp</td>
+<td>stock_ccp_1m_cny</td>
+<td>РЕПО с ЦК 1 мес. (CNY) - безадрес.</td>
+<td>0</td>
+<td>1118</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>145</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>27</td>
+<td>ccp</td>
+<td>stock_ccp_3m</td>
+<td>РЕПО с ЦК 3 мес. (RUB) - безадрес.</td>
+<td>0</td>
+<td>145</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>146</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>27</td>
+<td>ccp</td>
+<td>stock_ccp_3m_usd</td>
+<td>РЕПО с ЦК 3 мес. (USD) - безадрес.</td>
+<td>0</td>
+<td>146</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>147</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>27</td>
+<td>ccp</td>
+<td>stock_ccp_3m_eur</td>
+<td>РЕПО с ЦК 3 мес. (EUR) - безадрес.</td>
+<td>0</td>
+<td>147</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1120</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>27</td>
+<td>ccp</td>
+<td>stock_ccp_3m_cny</td>
+<td>РЕПО с ЦК 3 мес. (CNY) - безадрес</td>
+<td>0</td>
+<td>1120</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>148</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>27</td>
+<td>ccp</td>
+<td>stock_ccp_liq</td>
+<td>РЕПО с ЦК: Урегулирование - безадрес.</td>
+<td>0</td>
+<td>148</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>65</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>27</td>
+<td>ccp</td>
+<td>stock_ccp_ndm</td>
+<td>РЕПО с ЦК (RUB) - адрес.</td>
+<td>0</td>
+<td>65</td>
+<td>1</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>91</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>27</td>
+<td>ccp</td>
+<td>stock_ccp_ndm_usd</td>
+<td>РЕПО с ЦК (USD) - адрес.</td>
+<td>0</td>
+<td>91</td>
+<td>1</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>96</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>27</td>
+<td>ccp</td>
+<td>stock_ccp_ndm_eur</td>
+<td>РЕПО с ЦК (EUR) - адрес.</td>
+<td>0</td>
+<td>96</td>
+<td>1</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>153</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>27</td>
+<td>ccp</td>
+<td>stock_ccp_ndm_cny</td>
+<td>РЕПО с ЦК (CNY) - адрес.</td>
+<td>0</td>
+<td>153</td>
+<td>1</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1422</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>27</td>
+<td>ccp</td>
+<td>stock_ccp_ndm_kzt</td>
+<td>РЕПО с ЦК (KZT) - адрес.</td>
+<td>0</td>
+<td>1422</td>
+<td>1</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1424</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>27</td>
+<td>ccp</td>
+<td>stock_ccp_ndm_byn</td>
+<td>РЕПО с ЦК (BYN) - адрес.</td>
+<td>0</td>
+<td>1424</td>
+<td>1</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>169</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>27</td>
+<td>ccp</td>
+<td>stock_ccp_fk_d</td>
+<td>Аукцион с ЦК 1 день - безадрес.</td>
+<td>0</td>
+<td>169</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>171</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>27</td>
+<td>ccp</td>
+<td>stock_ccp_fk_2</td>
+<td>Аукцион с ЦК 1 неделя - безадрес.</td>
+<td>0</td>
+<td>171</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>173</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>27</td>
+<td>ccp</td>
+<td>stock_ccp_fk_2w</td>
+<td>Аукцион с ЦК 2 недели - безадрес.</td>
+<td>0</td>
+<td>173</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>281</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>27</td>
+<td>ccp</td>
+<td>stock_ccp_fk_5w</td>
+<td>Аукцион с ЦК 5 недель - безадрес.</td>
+<td>0</td>
+<td>281</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>175</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>27</td>
+<td>ccp</td>
+<td>stock_ccp_fk_m</td>
+<td>Аукцион с ЦК 1 месяц - безадрес.</td>
+<td>0</td>
+<td>175</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>177</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>27</td>
+<td>ccp</td>
+<td>stock_ccp_fk_2m</td>
+<td>Аукцион с ЦК 2 месяца - безадрес.</td>
+<td>0</td>
+<td>177</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>179</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>27</td>
+<td>ccp</td>
+<td>stock_ccp_fk_3m</td>
+<td>Аукцион с ЦК 3 месяца - безадрес.</td>
+<td>0</td>
+<td>179</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>181</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>27</td>
+<td>ccp</td>
+<td>stock_ccp_fk_6</td>
+<td>Аукцион с ЦК 6 месяцев - безадрес.</td>
+<td>0</td>
+<td>181</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>183</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>27</td>
+<td>ccp</td>
+<td>stock_ccp_fk_1y</td>
+<td>Аукцион с ЦК 1 год - безадрес.</td>
+<td>0</td>
+<td>183</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>288</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>27</td>
+<td>ccp</td>
+<td>stock_ccp_fr_repo_1d</td>
+<td>Аукцион РЕПО с ЦК 1 день - безадрес.</td>
+<td>0</td>
+<td>288</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>289</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>27</td>
+<td>ccp</td>
+<td>stock_ccp_fr_repo_1w</td>
+<td>Аукцион РЕПО с ЦК 1 неделя - безадрес.</td>
+<td>0</td>
+<td>289</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>296</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>27</td>
+<td>ccp</td>
+<td>stock_ccp_fr_repo_2w</td>
+<td>Аукцион РЕПО с ЦК 2 недели - безадрес.</td>
+<td>0</td>
+<td>296</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>297</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>27</td>
+<td>ccp</td>
+<td>stock_ccp_fr_repo_5w</td>
+<td>Аукцион РЕПО с ЦК 5 недель - безадрес.</td>
+<td>0</td>
+<td>297</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>290</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>27</td>
+<td>ccp</td>
+<td>stock_ccp_fr_repo_1m</td>
+<td>Аукцион РЕПО с ЦК 1 месяц - безадрес.</td>
+<td>0</td>
+<td>290</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>291</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>27</td>
+<td>ccp</td>
+<td>stock_ccp_fr_repo_3m</td>
+<td>Аукцион РЕПО с ЦК 3 месяца - безадрес.</td>
+<td>0</td>
+<td>291</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1247</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>27</td>
+<td>ccp</td>
+<td>stock_ccp_r_1d</td>
+<td>Аукцион обр.РЕПО с ЦК 1 день - безадрес.</td>
+<td>0</td>
+<td>1247</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1249</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>27</td>
+<td>ccp</td>
+<td>stock_ccp_r_1w</td>
+<td>Аукцион обр.РЕПО с ЦК 1 неделя - безадрес.</td>
+<td>0</td>
+<td>1249</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1251</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>27</td>
+<td>ccp</td>
+<td>stock_ccp_r_2w</td>
+<td>Аукцион обр.РЕПО с ЦК 2 недели - безадрес.</td>
+<td>0</td>
+<td>1251</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1253</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>27</td>
+<td>ccp</td>
+<td>stock_ccp_r_1m</td>
+<td>Аукцион обр.РЕПО с ЦК 1 месяц - безадрес.</td>
+<td>0</td>
+<td>1253</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1255</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>27</td>
+<td>ccp</td>
+<td>stock_ccp_r_5w</td>
+<td>Аукцион обр.РЕПО с ЦК 5 недель - безадрес.</td>
+<td>0</td>
+<td>1255</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>97</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>35</td>
+<td>deposit</td>
+<td>stock_deposit_order</td>
+<td>Депозиты с ЦК - безадрес.</td>
+<td>1</td>
+<td>97</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>185</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>35</td>
+<td>deposit</td>
+<td>stock_deposit_close_auct</td>
+<td>Депозиты с ЦК - Аукцион</td>
+<td>0</td>
+<td>185</td>
+<td>1</td>
+<td>null</td>
+<td>main</td>
+</tr>
+<tr>
+<td>98</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>35</td>
+<td>deposit</td>
+<td>stock_deposit_off_order</td>
+<td>Депозиты с ЦК - адрес.</td>
+<td>0</td>
+<td>98</td>
+<td>1</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>110</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>35</td>
+<td>deposit</td>
+<td>stock_deposit_order_usd</td>
+<td>Депозиты с ЦК (USD) - безадрес.</td>
+<td>0</td>
+<td>110</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>137</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>35</td>
+<td>deposit</td>
+<td>stock_deposit_order_eur</td>
+<td>Депозиты с ЦК (EUR) - безадрес.</td>
+<td>0</td>
+<td>137</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1142</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>35</td>
+<td>deposit</td>
+<td>stock_deposit_order_cny</td>
+<td>Депозиты с ЦК (CNY) - безадрес. </td>
+<td>0</td>
+<td>1142</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>109</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>35</td>
+<td>deposit</td>
+<td>stock_deposit_off_order_usd</td>
+<td>Депозиты с ЦК (USD) - адрес.</td>
+<td>0</td>
+<td>109</td>
+<td>1</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>136</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>35</td>
+<td>deposit</td>
+<td>stock_deposit_off_order_eur</td>
+<td>Депозиты с ЦК (EUR) - адрес.</td>
+<td>0</td>
+<td>136</td>
+<td>0</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1144</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>35</td>
+<td>deposit</td>
+<td>stock_deposit_off_order_cny</td>
+<td>Депозиты с ЦК (CNY) - адрес.</td>
+<td>0</td>
+<td>1144</td>
+<td>1</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>3</td>
+<td>repo</td>
+<td>stock_shares_repo</td>
+<td>РЕПО с акциями - адрес.</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>3</td>
+<td>repo</td>
+<td>stock_bond_repo</td>
+<td>РЕПО с облигациями - адрес.</td>
+<td>0</td>
+<td>2</td>
+<td>1</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>95</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>3</td>
+<td>repo</td>
+<td>stock_repo_interdealer_rub</td>
+<td>Междилерское РЕПО (RUB) - адрес.</td>
+<td>0</td>
+<td>95</td>
+<td>0</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>94</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>3</td>
+<td>repo</td>
+<td>stock_repo_interdealer_usd</td>
+<td>Междилерское РЕПО (USD) - адрес.</td>
+<td>0</td>
+<td>94</td>
+<td>1</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>90</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>3</td>
+<td>repo</td>
+<td>stock_repo_interdealer_eur</td>
+<td>Междилерское РЕПО (EUR) - адрес.</td>
+<td>0</td>
+<td>90</td>
+<td>1</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>201</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>3</td>
+<td>repo</td>
+<td>stock_repo_interdealer_m</td>
+<td>РЕПО-М - адрес.</td>
+<td>1</td>
+<td>201</td>
+<td>1</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1426</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>3</td>
+<td>repo</td>
+<td>stock_repo_interdealer_kzt</td>
+<td>РЕПО-М в ин. валюте: (KZT) - адрес.</td>
+<td>0</td>
+<td>1426</td>
+<td>1</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1428</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>3</td>
+<td>repo</td>
+<td>stock_repo_interdealer_byn</td>
+<td>РЕПО-М в ин. валюте: (BYN) - адрес.</td>
+<td>0</td>
+<td>1428</td>
+<td>1</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>31</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>3</td>
+<td>repo</td>
+<td>stock_repo_cc</td>
+<td>ЦК - РЕПО - адрес.</td>
+<td>0</td>
+<td>31</td>
+<td>0</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1364</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>3</td>
+<td>repo</td>
+<td>stock_repo_auction</td>
+<td>Аукцион РЕПО - адрес.</td>
+<td>0</td>
+<td>1364</td>
+<td>1</td>
+<td>0</td>
+<td>repo</td>
+</tr>
+<tr>
+<td>1362</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>3</td>
+<td>repo</td>
+<td>stock_repo_mdf_limits</td>
+<td>Лимит РЕПО с ДФМ - адрес.</td>
+<td>0</td>
+<td>1362</td>
+<td>1</td>
+<td>0</td>
+<td>repo</td>
+</tr>
+<tr>
+<td>63</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>28</td>
+<td>qnv</td>
+<td>stock_qnv_tplus</td>
+<td>Т+: Для квал. инвесторов - безадрес.</td>
+<td>1</td>
+<td>63</td>
+<td>0</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>87</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>28</td>
+<td>qnv</td>
+<td>stock_qnv_tplus_usd</td>
+<td>Т+: Для квал. инвесторов (USD) - безадрес.</td>
+<td>0</td>
+<td>87</td>
+<td>0</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>60</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>28</td>
+<td>qnv</td>
+<td>stock_qnv_main</td>
+<td>Т0: Квал. инвесторы - безадрес.</td>
+<td>0</td>
+<td>60</td>
+<td>0</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>62</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>28</td>
+<td>qnv</td>
+<td>stock_qnv_repo</td>
+<td>РЕПО: Для квал. инвесторов - адрес.</td>
+<td>0</td>
+<td>62</td>
+<td>0</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>61</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>28</td>
+<td>qnv</td>
+<td>stock_qnv_ndm</td>
+<td>РПС: Для квал. инвесторов - адрес.</td>
+<td>0</td>
+<td>61</td>
+<td>0</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>64</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>28</td>
+<td>qnv</td>
+<td>stock_qnv_ndm_tplus</td>
+<td>РПС с ЦК: Для квал. инвесторов - адрес.</td>
+<td>0</td>
+<td>64</td>
+<td>0</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>120</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>36</td>
+<td>mamc</td>
+<td>stock_mamc_liq</td>
+<td>Безадресные сделки с ЦК</td>
+<td>1</td>
+<td>120</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1082</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>36</td>
+<td>mamc</td>
+<td>stock_nonresmamc_liq</td>
+<td>Урегулирование с ЦК Нерезиденты - безадрес.</td>
+<td>0</td>
+<td>1082</td>
+<td>1</td>
+<td>1</td>
+<td>nonres</td>
+</tr>
+<tr>
+<td>265</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>47</td>
+<td>foreignshares</td>
+<td>stock_foreign_shares</td>
+<td>Т+ Ин.Акции и ДР - безадрес.</td>
+<td>1</td>
+<td>265</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>292</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>47</td>
+<td>foreignshares</td>
+<td>stock_foreignshares_tplus_usd</td>
+<td>Т+: Ин.Акции и ДР (USD) - безадрес.</td>
+<td>0</td>
+<td>292</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1206</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>47</td>
+<td>foreignshares</td>
+<td>stock_foreignshares_tplus_cny</td>
+<td>Т+: Ин.Акции и ДР (CNY) - безадрес.</td>
+<td>0</td>
+<td>1206</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1229</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>47</td>
+<td>foreignshares</td>
+<td>stock_foreignshares_tplus_hkd</td>
+<td>Т+: Ин.Акции и ДР (HKD) - безадрес.</td>
+<td>0</td>
+<td>1229</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>267</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>49</td>
+<td>foreignndm</td>
+<td>stock_foreign_ccp</td>
+<td>РПС с ЦК: Ин.Акции и ДР - адрес.</td>
+<td>0</td>
+<td>267</td>
+<td>1</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>269</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>49</td>
+<td>foreignndm</td>
+<td>stock_foreign_ndm</td>
+<td>РПС: Ин.Акции - адрес.</td>
+<td>1</td>
+<td>269</td>
+<td>1</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>294</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>49</td>
+<td>foreignndm</td>
+<td>stock_foreignndm_usd</td>
+<td>РПС: Ин.Акции (USD) - адрес.</td>
+<td>0</td>
+<td>294</td>
+<td>1</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1212</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>49</td>
+<td>foreignndm</td>
+<td>stock_foreign_ndm_cny</td>
+<td>РПС: Ин.Акции (CNY) - адрес.</td>
+<td>0</td>
+<td>1212</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1235</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>49</td>
+<td>foreignndm</td>
+<td>stock_foreign_ndm_hkd</td>
+<td>РПС: Ин.Акции (HKD) - адрес.</td>
+<td>0</td>
+<td>1235</td>
+<td>1</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1209</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>49</td>
+<td>foreignndm</td>
+<td>stock_foreign_ccp_cny</td>
+<td>РПС с ЦК: Ин.Акции и ДР (USD) - адрес.</td>
+<td>0</td>
+<td>1209</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1232</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>49</td>
+<td>foreignndm</td>
+<td>stock_foreign_ccp_hkd</td>
+<td>РПС с ЦК: Ин.Акции и ДР (HKD) - адрес.</td>
+<td>0</td>
+<td>1232</td>
+<td>1</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>293</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>49</td>
+<td>foreignndm</td>
+<td>stock_foreignndm_ccp_usd</td>
+<td>Т+: РПС с ЦК: Ин.Акции и ДР (USD) - адрес.</td>
+<td>0</td>
+<td>293</td>
+<td>1</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>72</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>33</td>
+<td>moexboard</td>
+<td>stock_moexboard</td>
+<td>MOEX Board</td>
+<td>1</td>
+<td>72</td>
+<td>0</td>
+<td>null</td>
+<td>main</td>
+</tr>
+<tr>
+<td>86</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>46</td>
+<td>gcc</td>
+<td>stock_gcc_d</td>
+<td>РЕПО с ЦК с КСУ 1 день - безадрес.</td>
+<td>1</td>
+<td>86</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>83</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>46</td>
+<td>gcc</td>
+<td>stock_gcc_w</td>
+<td>РЕПО с ЦК с КСУ 7 дн. - безадрес.</td>
+<td>0</td>
+<td>83</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>80</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>46</td>
+<td>gcc</td>
+<td>stock_gcc_2w</td>
+<td>РЕПО с ЦК с КСУ 14 дн. - безадрес.</td>
+<td>0</td>
+<td>80</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>84</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>46</td>
+<td>gcc</td>
+<td>stock_gcc_m</td>
+<td>РЕПО с ЦК с КСУ 1 месяц - безадрес.</td>
+<td>0</td>
+<td>84</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>81</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>46</td>
+<td>gcc</td>
+<td>stock_gcc_2m</td>
+<td>РЕПО с ЦК с КСУ 2 месяца - безадрес.</td>
+<td>0</td>
+<td>81</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>85</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>46</td>
+<td>gcc</td>
+<td>stock_gcc_3m</td>
+<td>РЕПО с ЦК с КСУ 3 месяца - безадрес.</td>
+<td>0</td>
+<td>85</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>103</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>46</td>
+<td>gcc</td>
+<td>stock_gcc_6m</td>
+<td>РЕПО с ЦК с КСУ 6 мес. - безадрес.</td>
+<td>0</td>
+<td>103</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>102</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>46</td>
+<td>gcc</td>
+<td>stock_gcc_1y</td>
+<td>РЕПО с ЦК с КСУ 1 год - безадрес.</td>
+<td>0</td>
+<td>102</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>82</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>46</td>
+<td>gcc</td>
+<td>stock_gcc_ndm</td>
+<td>РЕПО с ЦК с КСУ - адрес.</td>
+<td>0</td>
+<td>82</td>
+<td>1</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>111</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>46</td>
+<td>gcc</td>
+<td>stock_gcc_d_usd</td>
+<td>РЕПО с ЦК с КСУ 1 день (USD) - безадрес.</td>
+<td>0</td>
+<td>111</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>112</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>46</td>
+<td>gcc</td>
+<td>stock_gcc_w_usd</td>
+<td>РЕПО с ЦК с КСУ 7 дн. (USD) - безадрес.</td>
+<td>0</td>
+<td>112</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>113</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>46</td>
+<td>gcc</td>
+<td>stock_gcc_2w_usd</td>
+<td>РЕПО с ЦК с КСУ 14 дн. (USD) - безадрес.</td>
+<td>0</td>
+<td>113</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>114</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>46</td>
+<td>gcc</td>
+<td>stock_gcc_m_usd</td>
+<td>РЕПО с ЦК с КСУ 1 месяц (USD) - безадрес.</td>
+<td>0</td>
+<td>114</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>115</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>46</td>
+<td>gcc</td>
+<td>stock_gcc_2m_usd</td>
+<td>РЕПО с ЦК с КСУ 2 месяца (USD) - безадрес.</td>
+<td>0</td>
+<td>115</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>116</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>46</td>
+<td>gcc</td>
+<td>stock_gcc_3m_usd</td>
+<td>РЕПО с ЦК с КСУ 3 месяца (USD) - безадрес.</td>
+<td>0</td>
+<td>116</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>117</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>46</td>
+<td>gcc</td>
+<td>stock_gcc_6m_usd</td>
+<td>РЕПО с ЦК с КСУ 6 месяцев (USD) - безадрес.</td>
+<td>0</td>
+<td>117</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>118</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>46</td>
+<td>gcc</td>
+<td>stock_gcc_1y_usd</td>
+<td>РЕПО с ЦК с КСУ 1 год (USD) - безадрес.</td>
+<td>0</td>
+<td>118</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>119</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>46</td>
+<td>gcc</td>
+<td>stock_gcc_ndm_usd</td>
+<td>РЕПО с ЦК с КСУ (USD) - адрес.</td>
+<td>0</td>
+<td>119</td>
+<td>1</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>127</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>46</td>
+<td>gcc</td>
+<td>stock_gcc_d_eur</td>
+<td>РЕПО с ЦК с КСУ 1 день (EUR) - безадрес.</td>
+<td>0</td>
+<td>127</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>128</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>46</td>
+<td>gcc</td>
+<td>stock_gcc_w_eur</td>
+<td>РЕПО с ЦК с КСУ 7 дн. (EUR) - безадрес.</td>
+<td>0</td>
+<td>128</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>129</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>46</td>
+<td>gcc</td>
+<td>stock_gcc_2w_eur</td>
+<td>РЕПО с ЦК с КСУ 14 дн. (EUR) - безадрес.</td>
+<td>0</td>
+<td>129</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>130</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>46</td>
+<td>gcc</td>
+<td>stock_gcc_m_eur</td>
+<td>РЕПО с ЦК с КСУ 1 месяц (EUR) - безадрес.</td>
+<td>0</td>
+<td>130</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>131</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>46</td>
+<td>gcc</td>
+<td>stock_gcc_2m_eur</td>
+<td>РЕПО с ЦК с КСУ 2 месяца (EUR) - безадрес.</td>
+<td>0</td>
+<td>131</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>132</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>46</td>
+<td>gcc</td>
+<td>stock_gcc_3m_eur</td>
+<td>РЕПО с ЦК с КСУ 3 месяца (EUR) - безадрес.</td>
+<td>0</td>
+<td>132</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>133</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>46</td>
+<td>gcc</td>
+<td>stock_gcc_6m_eur</td>
+<td>РЕПО с ЦК с КСУ 6 месяцев (EUR) - безадрес.</td>
+<td>0</td>
+<td>133</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>134</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>46</td>
+<td>gcc</td>
+<td>stock_gcc_1y_eur</td>
+<td>РЕПО с ЦК с КСУ 1 год (EUR) - безадрес.</td>
+<td>0</td>
+<td>134</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>135</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>46</td>
+<td>gcc</td>
+<td>stock_gcc_ndm_eur</td>
+<td>РЕПО с ЦК с КСУ (EUR) - адрес.</td>
+<td>0</td>
+<td>135</td>
+<td>1</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1122</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>46</td>
+<td>gcc</td>
+<td>stock_gcc_d_cny</td>
+<td>РЕПО с ЦК с КСУ 1 день (CNY) - безадрес.</td>
+<td>0</td>
+<td>1122</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1124</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>46</td>
+<td>gcc</td>
+<td>stock_gcc_w_cny</td>
+<td>РЕПО с ЦК с КСУ 7 дней (CNY) - безадрес.</td>
+<td>0</td>
+<td>1124</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1126</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>46</td>
+<td>gcc</td>
+<td>stock_gcc_2w_cny</td>
+<td>РЕПО с ЦК с КСУ 14 дней (CNY) - безадрес.</td>
+<td>0</td>
+<td>1126</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1128</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>46</td>
+<td>gcc</td>
+<td>stock_gcc_1m_cny</td>
+<td>РЕПО с ЦК с КСУ 1 месяц (CNY) - безадрес.</td>
+<td>0</td>
+<td>1128</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1130</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>46</td>
+<td>gcc</td>
+<td>stock_gcc_2m_cny</td>
+<td>РЕПО с ЦК с КСУ 2 месяца (CNY) - безадрес.</td>
+<td>0</td>
+<td>1130</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1132</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>46</td>
+<td>gcc</td>
+<td>stock_gcc_3m_cny</td>
+<td>РЕПО с ЦК с КСУ 3 месяца (CNY) - безадрес.</td>
+<td>0</td>
+<td>1132</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1134</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>46</td>
+<td>gcc</td>
+<td>stock_gcc_6m_cny</td>
+<td>РЕПО с ЦК с КСУ 6 месяцев (CNY) - безадрес.</td>
+<td>0</td>
+<td>1134</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1136</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>46</td>
+<td>gcc</td>
+<td>stock_gcc_9m_cny</td>
+<td>РЕПО с ЦК с КСУ 9 месяцев (CNY) - безадрес.</td>
+<td>0</td>
+<td>1136</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1138</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>46</td>
+<td>gcc</td>
+<td>stock_gcc_1y_cny</td>
+<td>РЕПО с ЦК с КСУ 1 год (CNY) - безадрес.</td>
+<td>0</td>
+<td>1138</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1140</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>46</td>
+<td>gcc</td>
+<td>stock_gcc_ndm_cny</td>
+<td>РЕПО с ЦК с КСУ (CNY) - адрес.</td>
+<td>0</td>
+<td>1140</td>
+<td>1</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1414</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>46</td>
+<td>gcc</td>
+<td>stock_gcc_1d_kzt</td>
+<td>РЕПО с ЦК с КСУ 1 день (KZT) - безадрес.</td>
+<td>0</td>
+<td>1414</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1416</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>46</td>
+<td>gcc</td>
+<td>stock_gcc_1d_byn</td>
+<td>РЕПО с ЦК с КСУ 1 день (BYN) - безадрес.</td>
+<td>0</td>
+<td>1416</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1418</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>46</td>
+<td>gcc</td>
+<td>stock_gcc_ndm_kzt</td>
+<td>РЕПО с ЦК с КСУ (KZT) - адрес.</td>
+<td>0</td>
+<td>1418</td>
+<td>1</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1420</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>46</td>
+<td>gcc</td>
+<td>stock_gcc_ndm_byn</td>
+<td>РЕПО с ЦК с КСУ (BYN) - адрес.</td>
+<td>0</td>
+<td>1420</td>
+<td>1</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1156</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>46</td>
+<td>gcc</td>
+<td>stock_gcc_fl_1w_rub</td>
+<td>РЕПО с ЦК с КСУ пл. 7 дней - безадрес. (RUSFAR)</td>
+<td>0</td>
+<td>1156</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1158</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>46</td>
+<td>gcc</td>
+<td>stock_gcc_fl_2w_rub</td>
+<td>РЕПО с ЦК с КСУ пл. 14 дней - безадрес. (RUSFAR)</td>
+<td>0</td>
+<td>1158</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1160</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>46</td>
+<td>gcc</td>
+<td>stock_gcc_fl_1m_rub</td>
+<td>РЕПО с ЦК с КСУ пл. 1 месяц - безадрес. (RUSFAR)</td>
+<td>0</td>
+<td>1160</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1162</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>46</td>
+<td>gcc</td>
+<td>stock_gcc_fl_2m_rub</td>
+<td>РЕПО с ЦК с КСУ пл. 2 месяца - безадрес. (RUSFAR)</td>
+<td>0</td>
+<td>1162</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1164</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>46</td>
+<td>gcc</td>
+<td>stock_gcc_fl_3m_rub</td>
+<td>РЕПО с ЦК с КСУ пл. 3 месяца - безадрес. (RUSFAR)</td>
+<td>0</td>
+<td>1164</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1166</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>46</td>
+<td>gcc</td>
+<td>stock_gcc_fl_6m_rub</td>
+<td>РЕПО с ЦК с КСУ пл. 6 месяца - безадрес. (RUSFAR)</td>
+<td>0</td>
+<td>1166</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1168</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>46</td>
+<td>gcc</td>
+<td>stock_gcc_fl_9m_rub</td>
+<td>РЕПО с ЦК с КСУ пл. 9 месяца - безадрес. (RUSFAR)</td>
+<td>0</td>
+<td>1168</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1170</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>46</td>
+<td>gcc</td>
+<td>stock_gcc_fl_1y_rub</td>
+<td>РЕПО с ЦК с КСУ пл. 1 год - безадрес. (RUSFAR)</td>
+<td>0</td>
+<td>1170</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1188</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>46</td>
+<td>gcc</td>
+<td>stock_gcc_fl_1w_cny</td>
+<td>РЕПО с ЦК с КСУ пл. 7 дней (CNY) - безадрес. (RUSFARCNY)</td>
+<td>0</td>
+<td>1188</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1190</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>46</td>
+<td>gcc</td>
+<td>stock_gcc_fl_2w_cny</td>
+<td>РЕПО с ЦК с КСУ пл. 14 дней (CNY) - безадрес. (RUSFARCNY)</td>
+<td>0</td>
+<td>1190</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1192</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>46</td>
+<td>gcc</td>
+<td>stock_gcc_fl_1m_cny</td>
+<td>РЕПО с ЦК с КСУ пл. 1 месяц (CNY) - безадрес. (RUSFARCNY)</td>
+<td>0</td>
+<td>1192</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1194</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>46</td>
+<td>gcc</td>
+<td>stock_gcc_fl_2m_cny</td>
+<td>РЕПО с ЦК с КСУ пл. 2 месяца (CNY) - безадрес. (RUSFARCNY)</td>
+<td>0</td>
+<td>1194</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1196</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>46</td>
+<td>gcc</td>
+<td>stock_gcc_fl_3m_cny</td>
+<td>РЕПО с ЦК с КСУ пл. 3 месяца (CNY) - безадрес. (RUSFARCNY)</td>
+<td>0</td>
+<td>1196</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1198</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>46</td>
+<td>gcc</td>
+<td>stock_gcc_fl_6m_cny</td>
+<td>РЕПО с ЦК с КСУ пл. 6 месяца (CNY) - безадрес. (RUSFARCNY)</td>
+<td>0</td>
+<td>1198</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1200</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>46</td>
+<td>gcc</td>
+<td>stock_gcc_fl_9m_cny</td>
+<td>РЕПО с ЦК с КСУ пл. 9 месяца (CNY) - безадрес. (RUSFARCNY)</td>
+<td>0</td>
+<td>1200</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1202</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>46</td>
+<td>gcc</td>
+<td>stock_gcc_fl_1y_cny</td>
+<td>РЕПО с ЦК с КСУ пл. 1 год (CNY) - безадрес. (RUSFARCNY)</td>
+<td>0</td>
+<td>1202</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1312</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>46</td>
+<td>gcc</td>
+<td>stock_gcc_fl_rr_1m_rub</td>
+<td>РЕПО с ЦК с КСУ пл. КлСт 1 мес. - безадрес. (RREFKEYR)</td>
+<td>0</td>
+<td>1312</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1313</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>46</td>
+<td>gcc</td>
+<td>stock_gcc_fl_rr_3m_rub</td>
+<td>РЕПО с ЦК с КСУ пл. КлСт 3 мес. - безадрес. (RREFKEYR)</td>
+<td>0</td>
+<td>1313</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>187</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>46</td>
+<td>gcc</td>
+<td>stock_ccp_9m</td>
+<td>РЕПО с ЦК с КСУ 9 месяцев - безадрес.</td>
+<td>0</td>
+<td>187</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>189</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>46</td>
+<td>gcc</td>
+<td>stock_ccp_9m_usd</td>
+<td>РЕПО с ЦК с КСУ 9 мес. (USD) - безадрес.</td>
+<td>0</td>
+<td>189</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>191</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>46</td>
+<td>gcc</td>
+<td>stock_ccp_9m_eur</td>
+<td>РЕПО с ЦК с КСУ 9 мес. (EUR) - безадрес.</td>
+<td>0</td>
+<td>191</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>275</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>54</td>
+<td>credit</td>
+<td>stock_credit_rub</td>
+<td>Кредиты RUB - адрес.</td>
+<td>1</td>
+<td>275</td>
+<td>1</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>277</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>54</td>
+<td>credit</td>
+<td>stock_credit_usd</td>
+<td>Кредиты USD - адрес.</td>
+<td>0</td>
+<td>277</td>
+<td>1</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>279</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>54</td>
+<td>credit</td>
+<td>stock_credit_eur</td>
+<td>Кредиты EUR - адрес.</td>
+<td>0</td>
+<td>279</td>
+<td>1</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1146</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>54</td>
+<td>credit</td>
+<td>stock_credit_cny</td>
+<td>Кредиты CNY - адрес.</td>
+<td>0</td>
+<td>1146</td>
+<td>1</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1056</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>1015</td>
+<td>nonresndm</td>
+<td>stock_nonresndm_shares_tplus_rub</td>
+<td>РПС с ЦК Нерезиденты: Акции и ДР - адрес.</td>
+<td>1</td>
+<td>1056</td>
+<td>1</td>
+<td>0</td>
+<td>nonres</td>
+</tr>
+<tr>
+<td>1058</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>1015</td>
+<td>nonresndm</td>
+<td>stock_nonresndm_shares_tplus_usd</td>
+<td>РПС с ЦК Нерезиденты: Акции и ДР (USD) - адрес.</td>
+<td>0</td>
+<td>1058</td>
+<td>1</td>
+<td>0</td>
+<td>nonres</td>
+</tr>
+<tr>
+<td>1060</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>1015</td>
+<td>nonresndm</td>
+<td>stock_nonresndm_shares_tplus_eur</td>
+<td>РПС с ЦК Нерезиденты: Акции и ДР (EUR) - адрес.</td>
+<td>0</td>
+<td>1060</td>
+<td>1</td>
+<td>0</td>
+<td>nonres</td>
+</tr>
+<tr>
+<td>1062</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>1015</td>
+<td>nonresndm</td>
+<td>stock_nonresndm_bonds_tplus_rub</td>
+<td>РПС с ЦК Нерезиденты: Облигации - адрес.</td>
+<td>0</td>
+<td>1062</td>
+<td>1</td>
+<td>0</td>
+<td>nonres</td>
+</tr>
+<tr>
+<td>1064</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>1015</td>
+<td>nonresndm</td>
+<td>stock_nonresndm_bonds_tplus_cny</td>
+<td>РПС с ЦК Нерезиденты: Облигации (CNY) - адрес.</td>
+<td>0</td>
+<td>1064</td>
+<td>1</td>
+<td>0</td>
+<td>nonres</td>
+</tr>
+<tr>
+<td>1066</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>1015</td>
+<td>nonresndm</td>
+<td>stock_nonresndm_bonds_tplus_usd</td>
+<td>РПС с ЦК Нерезиденты: Облигации (USD) - адрес.</td>
+<td>0</td>
+<td>1066</td>
+<td>1</td>
+<td>0</td>
+<td>nonres</td>
+</tr>
+<tr>
+<td>1068</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>1015</td>
+<td>nonresndm</td>
+<td>stock_nonresndm_bonds_tplus_eur</td>
+<td>РПС с ЦК Нерезиденты: Облигации (EUR) - адрес.</td>
+<td>0</td>
+<td>1068</td>
+<td>1</td>
+<td>0</td>
+<td>nonres</td>
+</tr>
+<tr>
+<td>1071</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>1017</td>
+<td>nonresrepo</td>
+<td>stock_nonresrepo_interdealer_rub</td>
+<td>РЕПО-M Нерезиденты - адрес.</td>
+<td>1</td>
+<td>1071</td>
+<td>1</td>
+<td>0</td>
+<td>nonres</td>
+</tr>
+<tr>
+<td>1073</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>1017</td>
+<td>nonresrepo</td>
+<td>stock_nonresrepo_interdealer_usd</td>
+<td>РЕПО-M Нерезиденты (USD) - адрес.</td>
+<td>0</td>
+<td>1073</td>
+<td>1</td>
+<td>0</td>
+<td>nonres</td>
+</tr>
+<tr>
+<td>1075</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>1017</td>
+<td>nonresrepo</td>
+<td>stock_nonresrepo_interdealer_eur</td>
+<td>РЕПО-M Нерезиденты (EUR) - адрес.</td>
+<td>0</td>
+<td>1075</td>
+<td>1</td>
+<td>0</td>
+<td>nonres</td>
+</tr>
+<tr>
+<td>1077</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>1017</td>
+<td>nonresrepo</td>
+<td>stock_nonresrepo_interdealer_cny</td>
+<td>РЕПО-M Нерезиденты (CNY) - адрес.</td>
+<td>0</td>
+<td>1077</td>
+<td>1</td>
+<td>0</td>
+<td>nonres</td>
+</tr>
+<tr>
+<td>1080</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>1019</td>
+<td>nonresccp</td>
+<td>stock_nonresccp_liq</td>
+<td>Урегулирование РЕПО с ЦК Нерезиденты - безадрес.</td>
+<td>1</td>
+<td>1080</td>
+<td>1</td>
+<td>1</td>
+<td>nonres</td>
+</tr>
+<tr>
+<td>36</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>23</td>
+<td>standard</td>
+<td>stock_standard</td>
+<td>Standard - безадрес.</td>
+<td>1</td>
+<td>36</td>
+<td>0</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>40</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>23</td>
+<td>standard</td>
+<td>stock_standard_repo</td>
+<td>Standard: РЕПО - адрес.</td>
+<td>0</td>
+<td>40</td>
+<td>0</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>41</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>23</td>
+<td>standard</td>
+<td>standard_ndm</td>
+<td>Standard - адрес.</td>
+<td>0</td>
+<td>41</td>
+<td>0</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>43</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>25</td>
+<td>classica</td>
+<td>stock_classica</td>
+<td>Classica - безадрес.</td>
+<td>1</td>
+<td>43</td>
+<td>0</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>44</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>25</td>
+<td>classica</td>
+<td>stock_classica_ndm</td>
+<td>Classica - адрес.</td>
+<td>0</td>
+<td>44</td>
+<td>0</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>12</td>
+<td>2</td>
+<td>state</td>
+<td>Рынок ГЦБ (размещение)</td>
+<td>9</td>
+<td>index</td>
+<td>state_index</td>
+<td>Индексы ГКО/ОФЗ</td>
+<td>1</td>
+<td>12</td>
+<td>0</td>
+<td>null</td>
+<td>main</td>
+</tr>
+<tr>
+<td>10</td>
+<td>2</td>
+<td>state</td>
+<td>Рынок ГЦБ (размещение)</td>
+<td>6</td>
+<td>bonds</td>
+<td>state</td>
+<td>Основной режим</td>
+<td>1</td>
+<td>10</td>
+<td>0</td>
+<td>null</td>
+<td>main</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2</td>
+<td>state</td>
+<td>Рынок ГЦБ (размещение)</td>
+<td>7</td>
+<td>repo</td>
+<td>dealer_dealer</td>
+<td>Сделки междилерского РЕПО</td>
+<td>1</td>
+<td>3</td>
+<td>0</td>
+<td>null</td>
+<td>main</td>
+</tr>
+<tr>
+<td>11</td>
+<td>2</td>
+<td>state</td>
+<td>Рынок ГЦБ (размещение)</td>
+<td>8</td>
+<td>ndm</td>
+<td>state_ndm</td>
+<td>Внесистемные сделки</td>
+<td>1</td>
+<td>11</td>
+<td>0</td>
+<td>null</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1342</td>
+<td>3</td>
+<td>currency</td>
+<td>Валютный рынок</td>
+<td>1341</td>
+<td>otcindices</td>
+<td>currency_otcindices_fixing</td>
+<td>Внебиржевые индикаторы - фиксинги</td>
+<td>1</td>
+<td>1342</td>
+<td>1</td>
+<td>null</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1344</td>
+<td>3</td>
+<td>currency</td>
+<td>Валютный рынок</td>
+<td>1341</td>
+<td>otcindices</td>
+<td>currency_otcindices_rates</td>
+<td>Внебиржевые индикаторы - котировки</td>
+<td>0</td>
+<td>1344</td>
+<td>1</td>
+<td>null</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1349</td>
+<td>3</td>
+<td>currency</td>
+<td>Валютный рынок</td>
+<td>1341</td>
+<td>otcindices</td>
+<td>currency_otcindices_books</td>
+<td>Внебиржевые индикаторы - стаканы</td>
+<td>0</td>
+<td>1349</td>
+<td>1</td>
+<td>null</td>
+<td>main</td>
+</tr>
+<tr>
+<td>13</td>
+<td>3</td>
+<td>currency</td>
+<td>Валютный рынок</td>
+<td>10</td>
+<td>selt</td>
+<td>currency</td>
+<td>Системные сделки - безадрес.</td>
+<td>1</td>
+<td>13</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>100</td>
+<td>3</td>
+<td>currency</td>
+<td>Валютный рынок</td>
+<td>10</td>
+<td>selt</td>
+<td>currency_fixing</td>
+<td>Фиксинг системный - безадрес.</td>
+<td>0</td>
+<td>100</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>46</td>
+<td>3</td>
+<td>currency</td>
+<td>Валютный рынок</td>
+<td>10</td>
+<td>selt</td>
+<td>currency_ndm</td>
+<td>Внесистемные сделки - адрес.</td>
+<td>0</td>
+<td>46</td>
+<td>1</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>151</td>
+<td>3</td>
+<td>currency</td>
+<td>Валютный рынок</td>
+<td>10</td>
+<td>selt</td>
+<td>currency_selt_licu</td>
+<td>Внесистемные сделки урегулирования - безадрес.</td>
+<td>0</td>
+<td>151</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>101</td>
+<td>3</td>
+<td>currency</td>
+<td>Валютный рынок</td>
+<td>10</td>
+<td>selt</td>
+<td>currency_fixing_ndm</td>
+<td>Фиксинг внесистемный - адрес.</td>
+<td>0</td>
+<td>101</td>
+<td>1</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>149</td>
+<td>3</td>
+<td>currency</td>
+<td>Валютный рынок</td>
+<td>10</td>
+<td>selt</td>
+<td>currency_selt_waps</td>
+<td>Системные средневзвешенные - безадрес.</td>
+<td>0</td>
+<td>149</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>150</td>
+<td>3</td>
+<td>currency</td>
+<td>Валютный рынок</td>
+<td>10</td>
+<td>selt</td>
+<td>currency_selt_wapn</td>
+<td>Внесистемные средневзвешенные - адрес.</td>
+<td>0</td>
+<td>150</td>
+<td>1</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>70</td>
+<td>3</td>
+<td>currency</td>
+<td>Валютный рынок</td>
+<td>10</td>
+<td>selt</td>
+<td>currency_selt_cbr</td>
+<td>Аукцион ЦБР - адрес.</td>
+<td>0</td>
+<td>70</td>
+<td>1</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>140</td>
+<td>3</td>
+<td>currency</td>
+<td>Валютный рынок</td>
+<td>10</td>
+<td>selt</td>
+<td>currency_selt_settle</td>
+<td>Поставка</td>
+<td>0</td>
+<td>140</td>
+<td>1</td>
+<td>null</td>
+<td>main</td>
+</tr>
+<tr>
+<td>88</td>
+<td>3</td>
+<td>currency</td>
+<td>Валютный рынок</td>
+<td>34</td>
+<td>futures</td>
+<td>currency_futures</td>
+<td>Системные фьючерсные контракты  - безадрес.</td>
+<td>1</td>
+<td>88</td>
+<td>0</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>89</td>
+<td>3</td>
+<td>currency</td>
+<td>Валютный рынок</td>
+<td>34</td>
+<td>futures</td>
+<td>currency_futures_ndm</td>
+<td>Внесистемные фьючерсные контракты - адрес.</td>
+<td>0</td>
+<td>89</td>
+<td>0</td>
+<td>0</td>
+<td>main</td>
+</tr>
+<tr>
+<td>165</td>
+<td>3</td>
+<td>currency</td>
+<td>Валютный рынок</td>
+<td>41</td>
+<td>index</td>
+<td>currency_index</td>
+<td>Валютный фиксинг</td>
+<td>1</td>
+<td>165</td>
+<td>1</td>
+<td>null</td>
+<td>main</td>
+</tr>
+<tr>
+<td>261</td>
+<td>3</td>
+<td>currency</td>
+<td>Валютный рынок</td>
+<td>45</td>
+<td>otc</td>
+<td>currency_otc_liquidity</td>
+<td>Рынок OTC</td>
+<td>1</td>
+<td>261</td>
+<td>1</td>
+<td>null</td>
+<td>main</td>
+</tr>
+<tr>
+<td>263</td>
+<td>3</td>
+<td>currency</td>
+<td>Валютный рынок</td>
+<td>45</td>
+<td>otc</td>
+<td>currency_otc_darkpools</td>
+<td>Рынок OTC крупные сделки</td>
+<td>0</td>
+<td>263</td>
+<td>1</td>
+<td>null</td>
+<td>main</td>
+</tr>
+<tr>
+<td>45</td>
+<td>4</td>
+<td>futures</td>
+<td>Срочный рынок</td>
+<td>22</td>
+<td>forts</td>
+<td>futures_forts</td>
+<td>Фьючерсы</td>
+<td>1</td>
+<td>45</td>
+<td>1</td>
+<td>null</td>
+<td>main</td>
+</tr>
+<tr>
+<td>35</td>
+<td>4</td>
+<td>futures</td>
+<td>Срочный рынок</td>
+<td>24</td>
+<td>options</td>
+<td>futures_options</td>
+<td>Опционы</td>
+<td>1</td>
+<td>35</td>
+<td>1</td>
+<td>null</td>
+<td>main</td>
+</tr>
+<tr>
+<td>138</td>
+<td>4</td>
+<td>futures</td>
+<td>Срочный рынок</td>
+<td>37</td>
+<td>fortsiqs</td>
+<td>futures_fortsiqs</td>
+<td>Фьючерсы IQS</td>
+<td>1</td>
+<td>138</td>
+<td>0</td>
+<td>null</td>
+<td>main</td>
+</tr>
+<tr>
+<td>139</td>
+<td>4</td>
+<td>futures</td>
+<td>Срочный рынок</td>
+<td>38</td>
+<td>optionsiqs</td>
+<td>futures_optionsiqs</td>
+<td>Опционы IQS</td>
+<td>1</td>
+<td>139</td>
+<td>0</td>
+<td>null</td>
+<td>main</td>
+</tr>
+<tr>
+<td>15</td>
+<td>4</td>
+<td>futures</td>
+<td>Срочный рынок</td>
+<td>12</td>
+<td>main</td>
+<td>futures</td>
+<td>Срочные инструменты</td>
+<td>1</td>
+<td>15</td>
+<td>0</td>
+<td>null</td>
+<td>main</td>
+</tr>
+<tr>
+<td>20</td>
+<td>5</td>
+<td>commodity</td>
+<td>Товарный рынок</td>
+<td>18</td>
+<td>futures</td>
+<td>commodity_futures</td>
+<td>Стандартные контракты АО НТБ</td>
+<td>1</td>
+<td>20</td>
+<td>0</td>
+<td>null</td>
+<td>main</td>
+</tr>
+<tr>
+<td>24</td>
+<td>6</td>
+<td>interventions</td>
+<td>Товарные интервенции</td>
+<td>20</td>
+<td>grain</td>
+<td>interventions_grain</td>
+<td>Интервенции по продаже зерна</td>
+<td>1</td>
+<td>24</td>
+<td>1</td>
+<td>null</td>
+<td>main</td>
+</tr>
+<tr>
+<td>141</td>
+<td>7</td>
+<td>offboard</td>
+<td>ОТС-система</td>
+<td>39</td>
+<td>bonds</td>
+<td>offboard_bond_all</td>
+<td>ОТС-система: облигации</td>
+<td>1</td>
+<td>141</td>
+<td>0</td>
+<td>null</td>
+<td>otc</td>
+</tr>
+<tr>
+<td>271</td>
+<td>9</td>
+<td>agro</td>
+<td>Агро</td>
+<td>51</td>
+<td>spot</td>
+<td>agro_sugar_all</td>
+<td>Агро: Сахар</td>
+<td>1</td>
+<td>271</td>
+<td>1</td>
+<td>null</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1443</td>
+<td>9</td>
+<td>agro</td>
+<td>Агро</td>
+<td>51</td>
+<td>spot</td>
+<td>agro_spot_zern</td>
+<td>Спот рынок пшеницы</td>
+<td>0</td>
+<td>1443</td>
+<td>1</td>
+<td>1</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1032</td>
+<td>9</td>
+<td>agro</td>
+<td>Агро</td>
+<td>1031</td>
+<td>auctions</td>
+<td>agro_auctions_all</td>
+<td>Агро: Аукционы НТБ</td>
+<td>1</td>
+<td>1032</td>
+<td>1</td>
+<td>null</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1085</td>
+<td>9</td>
+<td>agro</td>
+<td>Агро</td>
+<td>1084</td>
+<td>buyauctions</td>
+<td>agro_buyauctions_all</td>
+<td>Агро: Закупочные аукционы НТБ</td>
+<td>1</td>
+<td>1085</td>
+<td>1</td>
+<td>null</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1367</td>
+<td>9</td>
+<td>agro</td>
+<td>Агро</td>
+<td>1366</td>
+<td>saleauctions</td>
+<td>agro_saleauctions_all</td>
+<td>Товарные интервенции НТБ</td>
+<td>1</td>
+<td>1367</td>
+<td>1</td>
+<td>null</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1258</td>
+<td>1012</td>
+<td>otc</td>
+<td>ОТС с ЦК</td>
+<td>1257</td>
+<td>shares</td>
+<td>otc_shares_tplus</td>
+<td>ОТС: Акции Т+ - безадресные</td>
+<td>1</td>
+<td>1258</td>
+<td>1</td>
+<td>1</td>
+<td>otc</td>
+</tr>
+<tr>
+<td>1021</td>
+<td>1012</td>
+<td>otc</td>
+<td>ОТС с ЦК</td>
+<td>1013</td>
+<td>bonds</td>
+<td>otc_bonds_tplus</td>
+<td>ОТС: Облигации Т+ - безадресные</td>
+<td>1</td>
+<td>1021</td>
+<td>1</td>
+<td>1</td>
+<td>otc</td>
+</tr>
+<tr>
+<td>1015</td>
+<td>1012</td>
+<td>otc</td>
+<td>ОТС с ЦК</td>
+<td>1013</td>
+<td>bonds</td>
+<td>otc_bonds_tplus_usd</td>
+<td>ОТС: Облигации Т+ (USD) - безадресные</td>
+<td>0</td>
+<td>1015</td>
+<td>1</td>
+<td>1</td>
+<td>otc</td>
+</tr>
+<tr>
+<td>1260</td>
+<td>1012</td>
+<td>otc</td>
+<td>ОТС с ЦК</td>
+<td>1262</td>
+<td>sharesndm</td>
+<td>otc_ndm_ccp_shares_rub</td>
+<td>ОТС: Акции РПС с ЦК - адресные</td>
+<td>1</td>
+<td>1260</td>
+<td>1</td>
+<td>0</td>
+<td>otc</td>
+</tr>
+<tr>
+<td>1303</td>
+<td>1012</td>
+<td>otc</td>
+<td>ОТС с ЦК</td>
+<td>1262</td>
+<td>sharesndm</td>
+<td>otc_ndm_shares_issuance</td>
+<td>OTC: Акции размещение - адресные</td>
+<td>0</td>
+<td>1303</td>
+<td>1</td>
+<td>0</td>
+<td>otc</td>
+</tr>
+<tr>
+<td>1305</td>
+<td>1012</td>
+<td>otc</td>
+<td>ОТС с ЦК</td>
+<td>1262</td>
+<td>sharesndm</td>
+<td>otc_ndm_shares_buyback</td>
+<td>OTC: Акции выкуп - адресные</td>
+<td>0</td>
+<td>1305</td>
+<td>1</td>
+<td>0</td>
+<td>otc</td>
+</tr>
+<tr>
+<td>1017</td>
+<td>1012</td>
+<td>otc</td>
+<td>ОТС с ЦК</td>
+<td>1014</td>
+<td>ndm</td>
+<td>otc_ndm_ccp_rub</td>
+<td>OTC: Облигации с ЦК - двусторонние</td>
+<td>1</td>
+<td>1017</td>
+<td>1</td>
+<td>0</td>
+<td>otc</td>
+</tr>
+<tr>
+<td>1019</td>
+<td>1012</td>
+<td>otc</td>
+<td>ОТС с ЦК</td>
+<td>1014</td>
+<td>ndm</td>
+<td>otc_ndm_ccp_usd</td>
+<td>OTC: Облигации с ЦК (USD) - двусторонние</td>
+<td>0</td>
+<td>1019</td>
+<td>1</td>
+<td>0</td>
+<td>otc</td>
+</tr>
+<tr>
+<td>1204</td>
+<td>1012</td>
+<td>otc</td>
+<td>ОТС с ЦК</td>
+<td>1014</td>
+<td>ndm</td>
+<td>otc_ndm_ccp_cny</td>
+<td>OTC: Облигации с ЦК (CNY) - двусторонние</td>
+<td>0</td>
+<td>1204</td>
+<td>1</td>
+<td>0</td>
+<td>otc</td>
+</tr>
+<tr>
+<td>1263</td>
+<td>1012</td>
+<td>otc</td>
+<td>ОТС с ЦК</td>
+<td>1014</td>
+<td>ndm</td>
+<td>otc_bondsndm_ccp_ndm_rub</td>
+<td>OTC: Облигации с ЦК адрес. - двусторонние</td>
+<td>0</td>
+<td>1263</td>
+<td>1</td>
+<td>0</td>
+<td>otc</td>
+</tr>
+<tr>
+<td>1265</td>
+<td>1012</td>
+<td>otc</td>
+<td>ОТС с ЦК</td>
+<td>1014</td>
+<td>ndm</td>
+<td>otc_bondsndm_ccp_ndm_cny</td>
+<td>OTC: Облигации с ЦК адрес. (CNY) - двусторонние</td>
+<td>0</td>
+<td>1265</td>
+<td>1</td>
+<td>0</td>
+<td>otc</td>
+</tr>
+<tr>
+<td>1267</td>
+<td>1012</td>
+<td>otc</td>
+<td>ОТС с ЦК</td>
+<td>1014</td>
+<td>ndm</td>
+<td>otc_bondsndm_ccp_ndm_usd</td>
+<td>OTC: Облигации с ЦК адрес. (USD) - двусторонние</td>
+<td>0</td>
+<td>1267</td>
+<td>1</td>
+<td>0</td>
+<td>otc</td>
+</tr>
+<tr>
+<td>1280</td>
+<td>1282</td>
+<td>quotes</td>
+<td>Квоты</td>
+<td>1279</td>
+<td>bonds</td>
+<td>quotes_bonds</td>
+<td>Квоты</td>
+<td>1</td>
+<td>1280</td>
+<td>1</td>
+<td>null</td>
+<td>quotes</td>
+</tr>
+<tr>
+<td>1332</td>
+<td>1326</td>
+<td>money</td>
+<td>Денежный рынок</td>
+<td>1328</td>
+<td>repo</td>
+<td>money_repo</td>
+<td>РЕПО с ФК: закрытая форма</td>
+<td>1</td>
+<td>1332</td>
+<td>1</td>
+<td>null</td>
+<td>main</td>
+</tr>
+<tr>
+<td>1329</td>
+<td>1326</td>
+<td>money</td>
+<td>Денежный рынок</td>
+<td>1327</td>
+<td>deposit</td>
+<td>money_deposit</td>
+<td>Депозиты ФК, закрытая форма</td>
+<td>1</td>
+<td>1329</td>
+<td>1</td>
+<td>null</td>
+<td>main</td>
+</tr>
+</tbody></table>
+<br><br>
+
+<h1>durations</h1>
+<table>
+<tbody><tr>
+<th>interval (int32)</th>
+<th>duration (int32)</th>
+<th>days (int32)</th>
+<th>title (string:765)</th>
+<th>hint (string:765)</th>
+</tr>
+<tr>
+<td>1</td>
+<td>60</td>
+<td>null</td>
+<td>минута</td>
+<td>1м</td>
+</tr>
+<tr>
+<td>10</td>
+<td>600</td>
+<td>null</td>
+<td>10 минут</td>
+<td>10м</td>
+</tr>
+<tr>
+<td>60</td>
+<td>3600</td>
+<td>null</td>
+<td>час</td>
+<td>1ч</td>
+</tr>
+<tr>
+<td>24</td>
+<td>86400</td>
+<td>null</td>
+<td>день</td>
+<td>1д</td>
+</tr>
+<tr>
+<td>7</td>
+<td>604800</td>
+<td>null</td>
+<td>неделя</td>
+<td>1н</td>
+</tr>
+<tr>
+<td>31</td>
+<td>2678400</td>
+<td>null</td>
+<td>месяц</td>
+<td>1М</td>
+</tr>
+<tr>
+<td>4</td>
+<td>8035200</td>
+<td>null</td>
+<td>квартал</td>
+<td>1К</td>
+</tr>
+</tbody></table>
+<br><br>
+
+<h1>securitytypes</h1>
+<table>
+<tbody><tr>
+<th>id (int32)</th>
+<th>trade_engine_id (int32)</th>
+<th>trade_engine_name (string:45)</th>
+<th>trade_engine_title (string:765)</th>
+<th>security_type_name (string:93)</th>
+<th>security_type_title (string:765)</th>
+<th>security_group_name (string:93)</th>
+<th>stock_type (string:3)</th>
+</tr>
+<tr>
+<td>3</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>common_share</td>
+<td>Акция обыкновенная</td>
+<td>stock_shares</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>preferred_share</td>
+<td>Акция привилегированная </td>
+<td>stock_shares</td>
+<td>2</td>
+</tr>
+<tr>
+<td>51</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>depositary_receipt</td>
+<td>Депозитарная расписка</td>
+<td>stock_dr</td>
+<td>D</td>
+</tr>
+<tr>
+<td>54</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>ofz_bond</td>
+<td>Государственная облигация</td>
+<td>stock_bonds</td>
+<td>3</td>
+</tr>
+<tr>
+<td>4</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>cb_bond</td>
+<td>Облигация центрального банка</td>
+<td>stock_bonds</td>
+<td>5</td>
+</tr>
+<tr>
+<td>41</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>subfederal_bond</td>
+<td>Региональная облигация</td>
+<td>stock_bonds</td>
+<td>4</td>
+</tr>
+<tr>
+<td>45</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>municipal_bond</td>
+<td>Муниципальная облигация</td>
+<td>stock_bonds</td>
+<td>C</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>corporate_bond</td>
+<td>Корпоративная облигация</td>
+<td>stock_bonds</td>
+<td>6</td>
+</tr>
+<tr>
+<td>43</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>exchange_bond</td>
+<td>Биржевая облигация</td>
+<td>stock_bonds</td>
+<td>8</td>
+</tr>
+<tr>
+<td>42</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>ifi_bond</td>
+<td>Облигация МФО</td>
+<td>stock_bonds</td>
+<td>7</td>
+</tr>
+<tr>
+<td>60</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>euro_bond</td>
+<td>Еврооблигации</td>
+<td>stock_eurobond</td>
+<td>null</td>
+</tr>
+<tr>
+<td>7</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>public_ppif</td>
+<td>Пай открытого ПИФа</td>
+<td>stock_ppif</td>
+<td>9</td>
+</tr>
+<tr>
+<td>8</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>interval_ppif</td>
+<td>Пай интервального ПИФа</td>
+<td>stock_ppif</td>
+<td>A</td>
+</tr>
+<tr>
+<td>53</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>rts_index</td>
+<td>Индекс РТС</td>
+<td>stock_index</td>
+<td>null</td>
+</tr>
+<tr>
+<td>9</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>private_ppif</td>
+<td>Пай закрытого ПИФа</td>
+<td>stock_ppif</td>
+<td>B</td>
+</tr>
+<tr>
+<td>57</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>stock_mortgage</td>
+<td>Ипотечный сертификат</td>
+<td>stock_mortgage</td>
+<td>F</td>
+</tr>
+<tr>
+<td>55</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>etf_ppif</td>
+<td>ETF</td>
+<td>stock_etf</td>
+<td>E</td>
+</tr>
+<tr>
+<td>44</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>stock_index</td>
+<td>Индекс фондового рынка</td>
+<td>stock_index</td>
+<td>null</td>
+</tr>
+<tr>
+<td>74</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>exchange_ppif</td>
+<td>Пай биржевого ПИФа</td>
+<td>stock_ppif</td>
+<td>J</td>
+</tr>
+<tr>
+<td>89</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>stock_index_ci</td>
+<td>Товарный индикатор</td>
+<td>stock_index</td>
+<td>null</td>
+</tr>
+<tr>
+<td>84</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>stock_index_eq</td>
+<td>Индекс акций</td>
+<td>stock_index</td>
+<td>null</td>
+</tr>
+<tr>
+<td>90</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>stock_index_im</td>
+<td>iNAV смешанный</td>
+<td>stock_index</td>
+<td>null</td>
+</tr>
+<tr>
+<td>85</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>stock_index_fi</td>
+<td>Индекс облигаций</td>
+<td>stock_index</td>
+<td>null</td>
+</tr>
+<tr>
+<td>87</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>stock_index_ie</td>
+<td>iNAV акций</td>
+<td>stock_index</td>
+<td>null</td>
+</tr>
+<tr>
+<td>86</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>stock_index_mx</td>
+<td>Индекс составной</td>
+<td>stock_index</td>
+<td>null</td>
+</tr>
+<tr>
+<td>88</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>stock_index_if</td>
+<td>iNAV облигаций</td>
+<td>stock_index</td>
+<td>null</td>
+</tr>
+<tr>
+<td>1030</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>stock_index_namex</td>
+<td>Индекс НТБ</td>
+<td>stock_index</td>
+<td>null</td>
+</tr>
+<tr>
+<td>1034</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>stock_index_rusfar</td>
+<td>RUSFAR</td>
+<td>stock_index</td>
+<td>null</td>
+</tr>
+<tr>
+<td>1155</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>stock_index_pf</td>
+<td>Ценовой фиксинг</td>
+<td>stock_index</td>
+<td>null</td>
+</tr>
+<tr>
+<td>1403</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>stock_index_ri</td>
+<td>Индекс RUSFAR</td>
+<td>stock_index</td>
+<td>null</td>
+</tr>
+<tr>
+<td>1410</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>stock_index_ot</td>
+<td>Прочие индексы</td>
+<td>stock_index</td>
+<td>null</td>
+</tr>
+<tr>
+<td>1413</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>stock_index_crypto</td>
+<td>Индексы криптовалют</td>
+<td>stock_index</td>
+<td>null</td>
+</tr>
+<tr>
+<td>63</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>stock_deposit</td>
+<td>Депозит с ЦК</td>
+<td>stock_deposit</td>
+<td>null</td>
+</tr>
+<tr>
+<td>78</td>
+<td>1</td>
+<td>stock</td>
+<td>Фондовый рынок и рынок депозитов</td>
+<td>non_exchange_bond</td>
+<td>Коммерческая облигация</td>
+<td>stock_bonds</td>
+<td>null</td>
+</tr>
+<tr>
+<td>10</td>
+<td>2</td>
+<td>state</td>
+<td>Рынок ГЦБ (размещение)</td>
+<td>state_bond</td>
+<td>Государственная облигация</td>
+<td>stock_eurobond</td>
+<td>null</td>
+</tr>
+<tr>
+<td>1347</td>
+<td>3</td>
+<td>currency</td>
+<td>Валютный рынок</td>
+<td>currency_otcindices</td>
+<td>Валютные внебиржевые индексы</td>
+<td>currency_otcindices</td>
+<td>null</td>
+</tr>
+<tr>
+<td>75</td>
+<td>3</td>
+<td>currency</td>
+<td>Валютный рынок</td>
+<td>currency_index</td>
+<td>Валютный фиксинг</td>
+<td>currency_indices</td>
+<td>null</td>
+</tr>
+<tr>
+<td>5</td>
+<td>3</td>
+<td>currency</td>
+<td>Валютный рынок</td>
+<td>currency</td>
+<td>Валюта</td>
+<td>currency_selt</td>
+<td>null</td>
+</tr>
+<tr>
+<td>58</td>
+<td>3</td>
+<td>currency</td>
+<td>Валютный рынок</td>
+<td>gold_metal</td>
+<td>Металл золото</td>
+<td>currency_metal</td>
+<td>null</td>
+</tr>
+<tr>
+<td>59</td>
+<td>3</td>
+<td>currency</td>
+<td>Валютный рынок</td>
+<td>silver_metal</td>
+<td>Металл серебро</td>
+<td>currency_metal</td>
+<td>null</td>
+</tr>
+<tr>
+<td>62</td>
+<td>3</td>
+<td>currency</td>
+<td>Валютный рынок</td>
+<td>currency_futures</td>
+<td>Валютный фьючерс</td>
+<td>currency_futures</td>
+<td>null</td>
+</tr>
+<tr>
+<td>73</td>
+<td>3</td>
+<td>currency</td>
+<td>Валютный рынок</td>
+<td>currency_fixing</td>
+<td>Валютный фиксинг</td>
+<td>currency_selt</td>
+<td>null</td>
+</tr>
+<tr>
+<td>76</td>
+<td>3</td>
+<td>currency</td>
+<td>Валютный рынок</td>
+<td>currency_wap</td>
+<td>Средневзвешенный курс</td>
+<td>currency_selt</td>
+<td>null</td>
+</tr>
+<tr>
+<td>1352</td>
+<td>3</td>
+<td>currency</td>
+<td>Валютный рынок</td>
+<td>other_metal</td>
+<td>Металл</td>
+<td>currency_metal</td>
+<td>null</td>
+</tr>
+<tr>
+<td>6</td>
+<td>4</td>
+<td>futures</td>
+<td>Срочный рынок</td>
+<td>futures</td>
+<td>Фьючерс</td>
+<td>futures_forts</td>
+<td>null</td>
+</tr>
+<tr>
+<td>1337</td>
+<td>4</td>
+<td>futures</td>
+<td>Срочный рынок</td>
+<td>futures_spread</td>
+<td>Календарный спред</td>
+<td>futures_forts</td>
+<td>null</td>
+</tr>
+<tr>
+<td>1338</td>
+<td>4</td>
+<td>futures</td>
+<td>Срочный рынок</td>
+<td>futures_collateral</td>
+<td>Коллатеральный инструмент</td>
+<td>futures_forts</td>
+<td>null</td>
+</tr>
+<tr>
+<td>52</td>
+<td>4</td>
+<td>futures</td>
+<td>Срочный рынок</td>
+<td>option</td>
+<td>Опцион</td>
+<td>futures_options</td>
+<td>null</td>
+</tr>
+<tr>
+<td>1031</td>
+<td>4</td>
+<td>futures</td>
+<td>Срочный рынок</td>
+<td>option_on_shares</td>
+<td>Опцион на акции</td>
+<td>futures_options</td>
+<td>null</td>
+</tr>
+<tr>
+<td>1291</td>
+<td>4</td>
+<td>futures</td>
+<td>Срочный рынок</td>
+<td>option_on_currency</td>
+<td>Опцион на валюту</td>
+<td>futures_options</td>
+<td>null</td>
+</tr>
+<tr>
+<td>1293</td>
+<td>4</td>
+<td>futures</td>
+<td>Срочный рынок</td>
+<td>option_on_indices</td>
+<td>Опцион на индексы</td>
+<td>futures_options</td>
+<td>null</td>
+</tr>
+<tr>
+<td>1295</td>
+<td>4</td>
+<td>futures</td>
+<td>Срочный рынок</td>
+<td>option_on_commodities</td>
+<td>Опцион на товары</td>
+<td>futures_options</td>
+<td>null</td>
+</tr>
+</tbody></table>
+<br><br>
+
+<h1>securitygroups</h1>
+<table>
+<tbody><tr>
+<th>id (int32)</th>
+<th>name (string:93)</th>
+<th>title (string:765)</th>
+<th>is_hidden (int32)</th>
+</tr>
+<tr>
+<td>12</td>
+<td>stock_index</td>
+<td>Индексы</td>
+<td>0</td>
+</tr>
+<tr>
+<td>4</td>
+<td>stock_shares</td>
+<td>Акции</td>
+<td>0</td>
+</tr>
+<tr>
+<td>3</td>
+<td>stock_bonds</td>
+<td>Облигации</td>
+<td>0</td>
+</tr>
+<tr>
+<td>9</td>
+<td>currency_selt</td>
+<td>Валюта</td>
+<td>0</td>
+</tr>
+<tr>
+<td>10</td>
+<td>futures_forts</td>
+<td>Фьючерсы</td>
+<td>0</td>
+</tr>
+<tr>
+<td>26</td>
+<td>futures_options</td>
+<td>Опционы</td>
+<td>0</td>
+</tr>
+<tr>
+<td>18</td>
+<td>stock_dr</td>
+<td>Депозитарные расписки</td>
+<td>0</td>
+</tr>
+<tr>
+<td>33</td>
+<td>stock_foreign_shares</td>
+<td>Иностранные ц.б.</td>
+<td>0</td>
+</tr>
+<tr>
+<td>6</td>
+<td>stock_eurobond</td>
+<td>Еврооблигации</td>
+<td>0</td>
+</tr>
+<tr>
+<td>5</td>
+<td>stock_ppif</td>
+<td>Паи ПИФов</td>
+<td>0</td>
+</tr>
+<tr>
+<td>20</td>
+<td>stock_etf</td>
+<td>Биржевые фонды</td>
+<td>0</td>
+</tr>
+<tr>
+<td>24</td>
+<td>currency_metal</td>
+<td>Драгоценные металлы</td>
+<td>0</td>
+</tr>
+<tr>
+<td>21</td>
+<td>stock_qnv</td>
+<td>Квал. инвесторы</td>
+<td>0</td>
+</tr>
+<tr>
+<td>27</td>
+<td>stock_gcc</td>
+<td>Клиринговые сертификаты участия</td>
+<td>0</td>
+</tr>
+<tr>
+<td>29</td>
+<td>stock_deposit</td>
+<td>Депозиты с ЦК</td>
+<td>0</td>
+</tr>
+<tr>
+<td>28</td>
+<td>currency_futures</td>
+<td>Валютный фьючерс</td>
+<td>0</td>
+</tr>
+<tr>
+<td>31</td>
+<td>currency_indices</td>
+<td>Валютные фиксинги</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1346</td>
+<td>currency_otcindices</td>
+<td>Валютные внебиржевые индексы</td>
+<td>0</td>
+</tr>
+<tr>
+<td>22</td>
+<td>stock_mortgage</td>
+<td>Ипотечный сертификат</td>
+<td>1</td>
+</tr>
+</tbody></table>
+<br><br>
+
+<h1>securitycollections</h1>
+<table>
+<tbody><tr>
+<th>id (int32)</th>
+<th>name (string:96)</th>
+<th>title (string:765)</th>
+<th>security_group_id (int32)</th>
+</tr>
+<tr>
+<td>72</td>
+<td>stock_index_all</td>
+<td>Все индексы</td>
+<td>12</td>
+</tr>
+<tr>
+<td>213</td>
+<td>stock_index_shares</td>
+<td>Основные индексы акций</td>
+<td>12</td>
+</tr>
+<tr>
+<td>210</td>
+<td>stock_index_shares_sectoral</td>
+<td>Отраслевые индексы акций</td>
+<td>12</td>
+</tr>
+<tr>
+<td>249</td>
+<td>stock_index_total_return</td>
+<td>Индексы акций полной доходности</td>
+<td>12</td>
+</tr>
+<tr>
+<td>211</td>
+<td>stock_index_shares_thematic</td>
+<td>Тематические индексы акций</td>
+<td>12</td>
+</tr>
+<tr>
+<td>207</td>
+<td>stock_index_bonds</td>
+<td>Основные индексы облигаций</td>
+<td>12</td>
+</tr>
+<tr>
+<td>214</td>
+<td>stock_index_bonds_state</td>
+<td>Индексы государственных облигаций</td>
+<td>12</td>
+</tr>
+<tr>
+<td>208</td>
+<td>stock_index_bonds_corporate</td>
+<td>Индексы корпоративных облигаций</td>
+<td>12</td>
+</tr>
+<tr>
+<td>212</td>
+<td>stock_index_bonds_municipal</td>
+<td>Индексы муниципальных облигаций</td>
+<td>12</td>
+</tr>
+<tr>
+<td>209</td>
+<td>stock_index_bonds_retiring</td>
+<td>Индексы активов пенсионных накоплений</td>
+<td>12</td>
+</tr>
+<tr>
+<td>328</td>
+<td>stock_index_eurobonds</td>
+<td>Индексы еврооблигаций</td>
+<td>12</td>
+</tr>
+<tr>
+<td>215</td>
+<td>stock_index_volatility</td>
+<td>Российские индексы волатильности</td>
+<td>12</td>
+</tr>
+<tr>
+<td>259</td>
+<td>stock_index_inav</td>
+<td>INAV</td>
+<td>12</td>
+</tr>
+<tr>
+<td>115</td>
+<td>stock_index_repo</td>
+<td>Индикаторы ставок РЕПО</td>
+<td>12</td>
+</tr>
+<tr>
+<td>329</td>
+<td>stock_index_pf</td>
+<td>Ценовые фиксинги</td>
+<td>12</td>
+</tr>
+<tr>
+<td>295</td>
+<td>stock_index_mmix</td>
+<td>Money market index</td>
+<td>12</td>
+</tr>
+<tr>
+<td>229</td>
+<td>stock_index_quotationlist_bond</td>
+<td>Облигационные индексы котировальных листов</td>
+<td>12</td>
+</tr>
+<tr>
+<td>324</td>
+<td>stock_index_commodity</td>
+<td>Товарные индексы</td>
+<td>12</td>
+</tr>
+<tr>
+<td>323</td>
+<td>stock_index_sdfi</td>
+<td>Индексы СПФИ</td>
+<td>12</td>
+</tr>
+<tr>
+<td>327</td>
+<td>stock_index_custom</td>
+<td>Заказные индексы</td>
+<td>12</td>
+</tr>
+<tr>
+<td>1369</td>
+<td>stock_index_shares_esg</td>
+<td>Индексы акций устойчивого развития</td>
+<td>12</td>
+</tr>
+<tr>
+<td>3</td>
+<td>stock_shares_all</td>
+<td>Все акции</td>
+<td>4</td>
+</tr>
+<tr>
+<td>160</td>
+<td>stock_shares_one</td>
+<td>Уровень 1</td>
+<td>4</td>
+</tr>
+<tr>
+<td>161</td>
+<td>stock_shares_two</td>
+<td>Уровень 2</td>
+<td>4</td>
+</tr>
+<tr>
+<td>162</td>
+<td>stock_shares_three</td>
+<td>Уровень 3</td>
+<td>4</td>
+</tr>
+<tr>
+<td>7</td>
+<td>stock_bonds_all</td>
+<td>Все</td>
+<td>3</td>
+</tr>
+<tr>
+<td>163</td>
+<td>stock_bonds_one</td>
+<td>Все уровень 1</td>
+<td>3</td>
+</tr>
+<tr>
+<td>164</td>
+<td>stock_bonds_two</td>
+<td>Все уровень 2</td>
+<td>3</td>
+</tr>
+<tr>
+<td>165</td>
+<td>stock_bonds_three</td>
+<td>Все уровень 3</td>
+<td>3</td>
+</tr>
+<tr>
+<td>189</td>
+<td>stock_bonds_corp_all</td>
+<td>Все корпоративные</td>
+<td>3</td>
+</tr>
+<tr>
+<td>202</td>
+<td>stock_bonds_corp_one</td>
+<td>Корпоративные уровень 1</td>
+<td>3</td>
+</tr>
+<tr>
+<td>194</td>
+<td>stock_bonds_corp_two</td>
+<td>Корпоративные уровень 2</td>
+<td>3</td>
+</tr>
+<tr>
+<td>188</td>
+<td>stock_bonds_corp_three</td>
+<td>Корпоративные уровень 3</td>
+<td>3</td>
+</tr>
+<tr>
+<td>200</td>
+<td>stock_bonds_exchange_all</td>
+<td>Все биржевые</td>
+<td>3</td>
+</tr>
+<tr>
+<td>185</td>
+<td>stock_exchange_corp_one</td>
+<td>Биржевые уровень 1</td>
+<td>3</td>
+</tr>
+<tr>
+<td>195</td>
+<td>stock_bonds_exchange_two</td>
+<td>Биржевые уровень 2</td>
+<td>3</td>
+</tr>
+<tr>
+<td>190</td>
+<td>stock_bonds_exchange_three</td>
+<td>Биржевые уровень 3</td>
+<td>3</td>
+</tr>
+<tr>
+<td>205</td>
+<td>stock_bonds_municipal_all</td>
+<td>Все муниципальные</td>
+<td>3</td>
+</tr>
+<tr>
+<td>201</td>
+<td>stock_bonds_municipal_one</td>
+<td>Муниципальные уровень 1</td>
+<td>3</td>
+</tr>
+<tr>
+<td>191</td>
+<td>stock_bonds_municipal_two</td>
+<td>Муниципальные уровень 2</td>
+<td>3</td>
+</tr>
+<tr>
+<td>203</td>
+<td>stock_bonds_municipal_three</td>
+<td>Муниципальные уровень 3</td>
+<td>3</td>
+</tr>
+<tr>
+<td>198</td>
+<td>stock_bonds_subfederal_all</td>
+<td>Все субъектов РФ</td>
+<td>3</td>
+</tr>
+<tr>
+<td>206</td>
+<td>stock_bonds_subfederal_one</td>
+<td>Субъектов РФ уровень 1</td>
+<td>3</td>
+</tr>
+<tr>
+<td>204</td>
+<td>stock_bonds_subfederal_two</td>
+<td>Субъектов РФ уровень 2</td>
+<td>3</td>
+</tr>
+<tr>
+<td>192</td>
+<td>stock_bonds_subfederal_three</td>
+<td>Субъектов РФ уровень 3</td>
+<td>3</td>
+</tr>
+<tr>
+<td>186</td>
+<td>stock_bonds_ofz_all</td>
+<td>Все ОФЗ</td>
+<td>3</td>
+</tr>
+<tr>
+<td>193</td>
+<td>stock_bonds_cb_all</td>
+<td>Все Банка России</td>
+<td>3</td>
+</tr>
+<tr>
+<td>197</td>
+<td>stock_bonds_ifi_all</td>
+<td>Все иностранных эмитентов</td>
+<td>3</td>
+</tr>
+<tr>
+<td>199</td>
+<td>stock_bonds_ifi_one</td>
+<td>Иностранных эмитентов уровень 1</td>
+<td>3</td>
+</tr>
+<tr>
+<td>187</td>
+<td>stock_bonds_ifi_two</td>
+<td>Иностранных эмитентов уровень 2</td>
+<td>3</td>
+</tr>
+<tr>
+<td>196</td>
+<td>stock_bonds_ifi_three</td>
+<td>Иностранных эмитентов уровень 3</td>
+<td>3</td>
+</tr>
+<tr>
+<td>303</td>
+<td>offboard_bonds_all</td>
+<td>Все Коммерческие</td>
+<td>3</td>
+</tr>
+<tr>
+<td>1315</td>
+<td>stock_bonds_replacements</td>
+<td>Замещающие облигации</td>
+<td>3</td>
+</tr>
+<tr>
+<td>177</td>
+<td>currency_selt_all_spot</td>
+<td>Все валюты СПОТ</td>
+<td>9</td>
+</tr>
+<tr>
+<td>170</td>
+<td>currency_selt_all_swap</td>
+<td>Все валюты СВОП</td>
+<td>9</td>
+</tr>
+<tr>
+<td>173</td>
+<td>currency_selt_usd_spot</td>
+<td>USD/RUB СПОТ</td>
+<td>9</td>
+</tr>
+<tr>
+<td>174</td>
+<td>currency_selt_usd_swap</td>
+<td>USD/RUB СВОП</td>
+<td>9</td>
+</tr>
+<tr>
+<td>172</td>
+<td>currency_selt_eur_spot</td>
+<td>EUR/RUB СПОТ</td>
+<td>9</td>
+</tr>
+<tr>
+<td>179</td>
+<td>currency_selt_eur_swap</td>
+<td>EUR/RUB СВОП</td>
+<td>9</td>
+</tr>
+<tr>
+<td>181</td>
+<td>currency_selt_cny_spot</td>
+<td>CNY/RUB СПОТ</td>
+<td>9</td>
+</tr>
+<tr>
+<td>176</td>
+<td>currency_selt_cny_swap</td>
+<td>CNY/RUB СВОП</td>
+<td>9</td>
+</tr>
+<tr>
+<td>178</td>
+<td>currency_selt_eurusd_spot</td>
+<td>EUR/USD СПОТ</td>
+<td>9</td>
+</tr>
+<tr>
+<td>180</td>
+<td>currency_selt_eurusd_swap</td>
+<td>EUR/USD СВОП</td>
+<td>9</td>
+</tr>
+<tr>
+<td>171</td>
+<td>currency_selt_other_spot</td>
+<td>Другие валюты СПОТ</td>
+<td>9</td>
+</tr>
+<tr>
+<td>175</td>
+<td>currency_selt_other_swap</td>
+<td>Другие валюты СВОП</td>
+<td>9</td>
+</tr>
+<tr>
+<td>227</td>
+<td>futures_forts_all</td>
+<td>Все фьючерсы</td>
+<td>10</td>
+</tr>
+<tr>
+<td>226</td>
+<td>futures_forts_index</td>
+<td>Фьючерсы на индексы</td>
+<td>10</td>
+</tr>
+<tr>
+<td>224</td>
+<td>futures_forts_shares</td>
+<td>Фьючерсы на акции</td>
+<td>10</td>
+</tr>
+<tr>
+<td>225</td>
+<td>futures_forts_currency</td>
+<td>Фьючерсы на валюты</td>
+<td>10</td>
+</tr>
+<tr>
+<td>228</td>
+<td>futures_forts_interest</td>
+<td>Фьючерсы на процентные ставки</td>
+<td>10</td>
+</tr>
+<tr>
+<td>223</td>
+<td>futures_forts_commodity</td>
+<td>Фьючерсы на товарные контракты</td>
+<td>10</td>
+</tr>
+<tr>
+<td>260</td>
+<td>futures_forts_ofz</td>
+<td>Фьючерсы на ОФЗ</td>
+<td>10</td>
+</tr>
+<tr>
+<td>218</td>
+<td>futures_options_all</td>
+<td>Все опционы</td>
+<td>26</td>
+</tr>
+<tr>
+<td>222</td>
+<td>futures_options_index</td>
+<td>Опционы ф. на индекс</td>
+<td>26</td>
+</tr>
+<tr>
+<td>221</td>
+<td>futures_options_shares</td>
+<td>Опционы ф. на акции</td>
+<td>26</td>
+</tr>
+<tr>
+<td>220</td>
+<td>futures_options_currency</td>
+<td>Опционы ф. на валюты</td>
+<td>26</td>
+</tr>
+<tr>
+<td>219</td>
+<td>futures_options_commodity</td>
+<td>Опционы ф. на товарные контракты</td>
+<td>26</td>
+</tr>
+<tr>
+<td>130</td>
+<td>stock_dr_all</td>
+<td>Все ДР</td>
+<td>18</td>
+</tr>
+<tr>
+<td>301</td>
+<td>stock_foreign_shares_all</td>
+<td>Иностранные ц.б.</td>
+<td>33</td>
+</tr>
+<tr>
+<td>60</td>
+<td>stock_eurobond_all</td>
+<td>Все</td>
+<td>6</td>
+</tr>
+<tr>
+<td>184</td>
+<td>stock_eurobond_one</td>
+<td>Уровень 1</td>
+<td>6</td>
+</tr>
+<tr>
+<td>182</td>
+<td>stock_eurobond_two</td>
+<td>Уровень 2</td>
+<td>6</td>
+</tr>
+<tr>
+<td>183</td>
+<td>stock_eurobond_three</td>
+<td>Уровень 3</td>
+<td>6</td>
+</tr>
+<tr>
+<td>59</td>
+<td>stock_ppif_all</td>
+<td>Все ПИФы</td>
+<td>5</td>
+</tr>
+<tr>
+<td>166</td>
+<td>stock_ppif_one</td>
+<td>Уровень 1</td>
+<td>5</td>
+</tr>
+<tr>
+<td>167</td>
+<td>stock_ppif_two</td>
+<td>Уровень 2</td>
+<td>5</td>
+</tr>
+<tr>
+<td>168</td>
+<td>stock_ppif_three</td>
+<td>Уровень 3</td>
+<td>5</td>
+</tr>
+<tr>
+<td>151</td>
+<td>stock_etf_all</td>
+<td>Все паи иностранных фондов</td>
+<td>20</td>
+</tr>
+<tr>
+<td>216</td>
+<td>currency_metal_gold</td>
+<td>Золото</td>
+<td>24</td>
+</tr>
+<tr>
+<td>217</td>
+<td>currency_metal_silver</td>
+<td>Серебро</td>
+<td>24</td>
+</tr>
+<tr>
+<td>1353</td>
+<td>currency_metal_other</td>
+<td>Прочие металлы</td>
+<td>24</td>
+</tr>
+<tr>
+<td>152</td>
+<td>stock_qnv_all</td>
+<td>Все квал. инвесторы</td>
+<td>21</td>
+</tr>
+<tr>
+<td>230</td>
+<td>stock_gcc_all</td>
+<td>Клиринговые сертификаты участия</td>
+<td>27</td>
+</tr>
+<tr>
+<td>258</td>
+<td>stock_deposit_all</td>
+<td>Депозиты с ЦК</td>
+<td>29</td>
+</tr>
+<tr>
+<td>286</td>
+<td>currency_futures_swap_all</td>
+<td>Все валюты поставочные СВОП КОНТРАКТЫ</td>
+<td>28</td>
+</tr>
+<tr>
+<td>254</td>
+<td>currency_futures_delivery_all</td>
+<td>Все валюты поставочные ФЬЮЧЕРСЫ</td>
+<td>28</td>
+</tr>
+<tr>
+<td>287</td>
+<td>currency_futures_swap_usd</td>
+<td>USD/RUB поставочный СВОП КОНТРАКТ</td>
+<td>28</td>
+</tr>
+<tr>
+<td>252</td>
+<td>currency_futures_delivery_usd</td>
+<td>USD/RUB поставочный ФЬЮЧЕРС</td>
+<td>28</td>
+</tr>
+<tr>
+<td>288</td>
+<td>currency_futures_swap_eur</td>
+<td>EUR/RUB поставочный СВОП КОНТРАКТ</td>
+<td>28</td>
+</tr>
+<tr>
+<td>255</td>
+<td>currency_futures_delivery_eur</td>
+<td>EUR/RUB поставочный ФЬЮЧЕРС</td>
+<td>28</td>
+</tr>
+<tr>
+<td>289</td>
+<td>currency_futures_swap_cny</td>
+<td>CNY/RUB поставочный СВОП КОНТРАКТ</td>
+<td>28</td>
+</tr>
+<tr>
+<td>250</td>
+<td>currency_futures_delivery_cny</td>
+<td>CNY/RUB поставочный ФЬЮЧЕРС</td>
+<td>28</td>
+</tr>
+<tr>
+<td>292</td>
+<td>currency_futures_swap_other</td>
+<td>Другие валюты поставочный СВОП КОНТРАКТ</td>
+<td>28</td>
+</tr>
+<tr>
+<td>293</td>
+<td>currency_futures_delivery_others</td>
+<td>Другие валюты поставочный ФЬЮЧЕРС</td>
+<td>28</td>
+</tr>
+<tr>
+<td>297</td>
+<td>currency_indices_all</td>
+<td>Все валютные фиксинги</td>
+<td>31</td>
+</tr>
+</tbody></table>
+<br><br>
+
+</body></html>
