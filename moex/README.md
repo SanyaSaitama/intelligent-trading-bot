@@ -58,16 +58,22 @@ Edit the `moex_config.json` file to configure the service:
 ```json
 {
     "db_path": "moex_quotes.db",
-    "securities": ["SBER", "GAZP", "LKOH", "ROSN", "VTBR", "TATN", "MGNT", "NVTK", "YNDX", "POLY"],
+    "securities": {
+        "stock": ["SBER", "GAZP", "LKOH", "ROSN", "VTBR", "TATN", "MGNT", "NVTK", "YNDX", "POLY"],
+        "futures": ["MXH6", "BRJ6"]
+    },
     "interval": 60,
-    "engine": "stock",
-    "market": "shares"
+    "engines": {
+        "stock": ["shares"],
+        "futures": ["forts"]
+    }
 }
 ```
 
 - `db_path`: Path to the SQLite database file
-- `securities`: List of security tickers to monitor
+- `securities`: Dictionary mapping engines to lists of security tickers
 - `interval`: Update interval in seconds
+- `engines`: Dictionary mapping MOEX engines to lists of markets
 - `engine`: MOEX engine (e.g., "stock")
 - `market`: MOEX market (e.g., "shares")
 

@@ -186,15 +186,31 @@ class MicexISSClient:
             # it's also possible to use the iss.json=extended argument instead
             # to get all the IDs together with data (leads to more traffic)
             jcols = jhist['columns']
-            secIdx = jcols.index('SECID')
-            closeIdx = jcols.index('LEGALCLOSEPRICE')
-            tradesIdx = jcols.index('NUMTRADES')
+
+            def _col_index(names):
+                for name in names:
+                    if name in jcols:
+                        return jcols.index(name), name
+                return None, None
+
+            secIdx, secName = _col_index(['SECID'])
+            closeIdx, closeName = _col_index(['LEGALCLOSEPRICE', 'CLOSE', 'LAST', 'PRICE'])
+            tradesIdx, tradesName = _col_index(['NUMTRADES', 'TRADES', 'VOLTODAY'])
+
+            if secIdx is None or closeIdx is None:
+                print(f"History response missing expected columns: SECID={secIdx}, CLOSE={closeName}")
+                break
+
+            if tradesIdx is None:
+                # not critical, just set trades to 0 if not present
+                tradesIdx = None
 
             result = []
             for sec in jdata:
-                result.append((sec[secIdx],
-                               del_null(sec[closeIdx]),
-                               del_null(sec[tradesIdx])))
+                secid = sec[secIdx]
+                close_val = del_null(sec[closeIdx])
+                trades_val = del_null(sec[tradesIdx]) if tradesIdx is not None else 0
+                result.append((secid, close_val, trades_val))
             # we return pieces of received data on each iteration
             # in order to be able to handle large volumes of data
             # and to start data processing without waiting for

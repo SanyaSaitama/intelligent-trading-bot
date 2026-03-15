@@ -13,8 +13,7 @@ Configuration:
     - db_path: Path to SQLite database file
     - securities: List of securities to monitor
     - interval: Fetch interval in seconds
-    - engine: MOEX engine (e.g., 'stock')
-    - market: MOEX market (e.g., 'shares')
+    - engines: Dictionary of engine to list of markets (e.g., {"stock": ["shares"], "currency": ["selt"]})
 """
 
 import argparse
@@ -37,8 +36,7 @@ with open('moex_config.json', 'r') as f:
 DB_PATH = config['db_path']
 SECURITIES = config['securities']
 INTERVAL = config['interval']
-ENGINE = config['engine']
-MARKET = config['market']
+ENGINE_MARKETS = [(engine, market) for engine, markets in config['engines'].items() for market in markets]
 
 # Setup logging
 logging.basicConfig(
@@ -78,9 +76,8 @@ class MOEXQuotesService:
         self.auth = None  # No authentication for public data
         self.client = MicexISSClient(self.config, self.auth, QuotesDataHandler, list)
 
-        # MOEX ISS context
-        self.engine = ENGINE
-        self.market = MARKET
+        # MOEX ISS context - list of (engine, market) tuples
+        self.engine_markets = ENGINE_MARKETS
 
     def init_db(self):
         """Initialize SQLite database with required tables."""
@@ -182,28 +179,28 @@ class MOEXQuotesService:
         c.execute("INSERT INTO exchanges (name, url) VALUES (?, ?)", (name, url))
         return c.lastrowid
 
-    def _get_or_create_market(self, conn):
+    def _get_or_create_market(self, conn, engine, market):
         c = conn.cursor()
         exchange_id = self._get_or_create_exchange(conn)
         c.execute(
             "SELECT market_id FROM markets WHERE exchange_id = ? AND engine = ? AND market = ?",
-            (exchange_id, self.engine, self.market)
+            (exchange_id, engine, market)
         )
         row = c.fetchone()
         if row:
             return row[0]
         c.execute(
             "INSERT INTO markets (exchange_id, engine, market) VALUES (?, ?, ?)",
-            (exchange_id, self.engine, self.market)
+            (exchange_id, engine, market)
         )
         return c.lastrowid
 
-    def _upsert_security(self, conn, secid, metadata):
+    def _upsert_security(self, conn, secid, metadata, engine, market):
         """Insert or update a security master row and return its security_id."""
         c = conn.cursor()
         c.execute("SELECT security_id FROM securities WHERE secid = ?", (secid,))
         row = c.fetchone()
-        market_id = self._get_or_create_market(conn)
+        market_id = self._get_or_create_market(conn, engine, market)
 
         # Normalize fields from metadata
         isin = metadata.get('ISIN')
@@ -227,9 +224,9 @@ class MOEXQuotesService:
         )
         return c.lastrowid
 
-    def _store_metadata(self, conn, response_type, columns):
+    def _store_metadata(self, conn, response_type, columns, engine, market):
         """Store the column metadata for a given response type."""
-        market_id = self._get_or_create_market(conn)
+        market_id = self._get_or_create_market(conn, engine, market)
         c = conn.cursor()
         c.execute(
             "INSERT INTO security_metadata (market_id, response_type, columns_json) VALUES (?, ?, ?)",
@@ -283,11 +280,11 @@ class MOEXQuotesService:
         row = c.fetchone()
         return row[0] if row else None
 
-    def fetch_security_data(self, secid):
+    def fetch_security_data(self, secid, engine, market):
         """Fetch data for a specific security and store it in the database."""
         try:
             # Get securities data (this is public)
-            securities_data = self.client.get_current_securities(self.engine, self.market)
+            securities_data = self.client.get_current_securities(engine, market)
             if securities_data and 'securities' in securities_data:
                 data = securities_data['securities']['data']
                 columns = securities_data['securities']['columns']
@@ -295,7 +292,7 @@ class MOEXQuotesService:
                 conn = sqlite3.connect(self.db_path)
                 try:
                     # Store column metadata for future reference
-                    self._store_metadata(conn, 'current_securities', columns)
+                    self._store_metadata(conn, 'current_securities', columns, engine, market)
 
                     # Find the security
                     secid_idx = columns.index('SECID')
@@ -303,7 +300,7 @@ class MOEXQuotesService:
                         if row[secid_idx] == secid:
                             row_map = {columns[i]: row[i] for i in range(len(columns))}
 
-                            security_id = self._upsert_security(conn, secid, row_map)
+                            security_id = self._upsert_security(conn, secid, row_map, engine, market)
 
                             market_data = {}
                             if 'LAST' in row_map:
@@ -336,7 +333,7 @@ class MOEXQuotesService:
 
             # Try orderbook (may require auth)
             try:
-                orderbook = self.client.get_current_orderbook(self.engine, self.market, secid)
+                orderbook = self.client.get_current_orderbook(engine, market, secid)
                 if orderbook and 'orderbook' in orderbook:
                     bids = orderbook['orderbook'].get('b', [])
                     asks = orderbook['orderbook'].get('a', [])
@@ -362,20 +359,31 @@ class MOEXQuotesService:
         except Exception as e:
             logger.error(f"Error fetching data for {secid}: {e}")
 
-    def load_history(self, date_str, board='TQBR'):
+    def load_history(self, date_str, board='TQBR', engine=None, market=None):
         """Fetch historical data for a single date and store it.
 
         Args:
             date_str: Date string in YYYY-MM-DD format.
             board: Market board (default 'TQBR').
+            engine: MOEX engine (if None, uses all configured engines).
+            market: MOEX market (if None, uses all configured markets).
         """
-        logger.info(f"Loading history for {date_str} (board={board})")
+        if engine is None or market is None:
+            # Load for all engine-market combinations
+            for eng, mkt in self.engine_markets:
+                self._load_history_single(date_str, board, eng, mkt)
+        else:
+            self._load_history_single(date_str, board, engine, market)
+
+    def _load_history_single(self, date_str, board, engine, market):
+        """Fetch historical data for a single date and engine-market combination."""
+        logger.info(f"Loading history for {date_str} (board={board}, engine={engine}, market={market})")
         client = MicexISSClient(self.config, self.auth, QuotesDataHandler, list)
-        client.get_history_securities(self.engine, self.market, board, date_str)
+        client.get_history_securities(engine, market, board, date_str)
 
         history = getattr(client.handler, 'data', None)
         if not history:
-            logger.warning(f"No history data returned for {date_str}")
+            logger.warning(f"No history data returned for {date_str} (engine={engine}, market={market})")
             return
 
         # Store the historical snapshot with timestamp set to the date.
@@ -383,15 +391,18 @@ class MOEXQuotesService:
         conn = sqlite3.connect(self.db_path)
         try:
             for secid, close_price, num_trades in history:
-                security_id = self._upsert_security(conn, secid, {'SECID': secid})
-                self._store_quote(
-                    conn,
-                    security_id,
-                    {'last_price': close_price, 'value': num_trades},
-                    source=f'history_{date_str}',
-                    raw_json={'secid': secid, 'close': close_price, 'trades': num_trades},
-                    timestamp=date_ts,
-                )
+                # Only store if this security belongs to this engine
+                engine_securities = SECURITIES.get(engine, [])
+                if secid in engine_securities:
+                    security_id = self._upsert_security(conn, secid, {'SECID': secid}, engine, market)
+                    self._store_quote(
+                        conn,
+                        security_id,
+                        {'last_price': close_price, 'value': num_trades},
+                        source=f'history_{date_str}',
+                        raw_json={'secid': secid, 'close': close_price, 'trades': num_trades},
+                        timestamp=date_ts,
+                    )
             conn.commit()
         finally:
             conn.close()
@@ -399,14 +410,18 @@ class MOEXQuotesService:
     def run(self):
         """ Main service loop """
         logger.info("Starting MOEX Quotes Service")
-        logger.info(f"Monitoring securities: {', '.join(SECURITIES)}")
+        logger.info(f"Engine-market combinations: {self.engine_markets}")
         logger.info(f"Update interval: {INTERVAL} seconds")
 
         while True:
             try:
-                for secid in SECURITIES:
-                    self.fetch_security_data(secid)
-                    time.sleep(1)  # Rate limiting between securities
+                for engine, market in self.engine_markets:
+                    logger.info(f"Fetching data for engine={engine}, market={market}")
+                    engine_securities = SECURITIES.get(engine, [])
+                    logger.info(f"Securities for {engine}: {engine_securities}")
+                    for secid in engine_securities:
+                        self.fetch_security_data(secid, engine, market)
+                        time.sleep(1)  # Rate limiting between securities
 
                 logger.info(f"Completed data fetch cycle. Sleeping for {INTERVAL} seconds...")
                 time.sleep(INTERVAL)
@@ -442,7 +457,10 @@ def main():
 
     if args.fetch:
         for sec in args.fetch:
-            service.fetch_security_data(sec)
+            for engine, market in ENGINE_MARKETS:
+                engine_securities = SECURITIES.get(engine, [])
+                if sec in engine_securities:
+                    service.fetch_security_data(sec, engine, market)
         return
 
     # Default behavior: run continuously
