@@ -53,13 +53,23 @@ python moex_service.py --history 2026-03-10 --history-board TQBR
 ```
 ### Configuration
 
-Edit the configuration variables at the top of `moex_service.py`:
+Edit the `moex_config.json` file to configure the service:
 
-```python
-DB_PATH = 'moex_quotes.db'  # Database file path
-SECURITIES = ['SBER', 'GAZP', 'LKOH', 'ROSN']  # Securities to monitor
-INTERVAL = 60  # Update interval in seconds
+```json
+{
+    "db_path": "moex_quotes.db",
+    "securities": ["SBER", "GAZP", "LKOH", "ROSN", "VTBR", "TATN", "MGNT", "NVTK", "YNDX", "POLY"],
+    "interval": 60,
+    "engine": "stock",
+    "market": "shares"
+}
 ```
+
+- `db_path`: Path to the SQLite database file
+- `securities`: List of security tickers to monitor
+- `interval`: Update interval in seconds
+- `engine`: MOEX engine (e.g., "stock")
+- `market`: MOEX market (e.g., "shares")
 
 ## Database Schema
 

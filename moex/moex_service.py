@@ -9,9 +9,12 @@ Usage:
     python moex_service.py
 
 Configuration:
-    - DB_PATH: Path to SQLite database file
-    - SECURITIES: List of securities to monitor
-    - INTERVAL: Fetch interval in seconds
+    Configuration is loaded from moex_config.json
+    - db_path: Path to SQLite database file
+    - securities: List of securities to monitor
+    - interval: Fetch interval in seconds
+    - engine: MOEX engine (e.g., 'stock')
+    - market: MOEX market (e.g., 'shares')
 """
 
 import argparse
@@ -27,10 +30,15 @@ except ImportError:
     # When imported as a package (e.g., `import moex.moex_service`)
     from .iss_simple_client import Config, MicexAuth, MicexISSClient, MicexISSDataHandler
 
-# Configuration
-DB_PATH = 'moex_quotes.db'
-SECURITIES = ['SBER', 'GAZP', 'LKOH', 'ROSN', 'VTBR', 'TATN', 'MGNT', 'NVTK', 'YNDX', 'POLY']
-INTERVAL = 60  # seconds
+# Load configuration
+with open('moex_config.json', 'r') as f:
+    config = json.load(f)
+
+DB_PATH = config['db_path']
+SECURITIES = config['securities']
+INTERVAL = config['interval']
+ENGINE = config['engine']
+MARKET = config['market']
 
 # Setup logging
 logging.basicConfig(
@@ -70,9 +78,9 @@ class MOEXQuotesService:
         self.auth = None  # No authentication for public data
         self.client = MicexISSClient(self.config, self.auth, QuotesDataHandler, list)
 
-        # MOEX ISS context (hardcoded for now)
-        self.engine = 'stock'
-        self.market = 'shares'
+        # MOEX ISS context
+        self.engine = ENGINE
+        self.market = MARKET
 
     def init_db(self):
         """Initialize SQLite database with required tables."""

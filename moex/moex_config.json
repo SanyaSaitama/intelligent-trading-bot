@@ -1,0 +1,7 @@
+{
+    "db_path": "moex_quotes.db",
+    "securities": ["SBER", "GAZP", "LKOH", "ROSN", "VTBR", "TATN", "MGNT", "NVTK", "YNDX", "POLY"],
+    "interval": 60,
+    "engine": "stock",
+    "market": "shares"
+}
