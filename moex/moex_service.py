@@ -118,16 +118,6 @@ class MOEXQuotesService:
                         FOREIGN KEY (market_id) REFERENCES markets(market_id)
                      )''')
 
-        # Metadata for API responses (columns, etc.)
-        c.execute('''CREATE TABLE IF NOT EXISTS security_metadata (
-                        meta_id INTEGER PRIMARY KEY AUTOINCREMENT,
-                        market_id INTEGER NOT NULL,
-                        response_type TEXT NOT NULL,
-                        columns_json TEXT NOT NULL,
-                        fetched_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-                        FOREIGN KEY (market_id) REFERENCES markets(market_id)
-                     )''')
-
         # Quote snapshots
         c.execute('''CREATE TABLE IF NOT EXISTS quotes (
                         quote_id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -144,26 +134,6 @@ class MOEXQuotesService:
                         raw_json TEXT,
                         UNIQUE(security_id, timestamp, source),
                         FOREIGN KEY (security_id) REFERENCES securities(security_id)
-                     )''')
-
-        # Orderbook snapshots and levels
-        c.execute('''CREATE TABLE IF NOT EXISTS orderbook_snapshots (
-                        orderbook_id INTEGER PRIMARY KEY AUTOINCREMENT,
-                        security_id INTEGER NOT NULL,
-                        timestamp DATETIME NOT NULL,
-                        source TEXT,
-                        raw_json TEXT,
-                        FOREIGN KEY (security_id) REFERENCES securities(security_id)
-                     )''')
-
-        c.execute('''CREATE TABLE IF NOT EXISTS orderbook_levels (
-                        level_id INTEGER PRIMARY KEY AUTOINCREMENT,
-                        orderbook_id INTEGER NOT NULL,
-                        side TEXT NOT NULL,
-                        level INTEGER NOT NULL,
-                        price REAL,
-                        quantity INTEGER,
-                        FOREIGN KEY (orderbook_id) REFERENCES orderbook_snapshots(orderbook_id)
                      )''')
 
         conn.commit()
@@ -224,15 +194,6 @@ class MOEXQuotesService:
         )
         return c.lastrowid
 
-    def _store_metadata(self, conn, response_type, columns, engine, market):
-        """Store the column metadata for a given response type."""
-        market_id = self._get_or_create_market(conn, engine, market)
-        c = conn.cursor()
-        c.execute(
-            "INSERT INTO security_metadata (market_id, response_type, columns_json) VALUES (?, ?, ?)",
-            (market_id, response_type, json.dumps(columns))
-        )
-
     def _store_quote(self, conn, security_id, data, source, raw_json=None, timestamp=None):
         c = conn.cursor()
         if timestamp is None:
@@ -254,26 +215,6 @@ class MOEXQuotesService:
             )
         )
 
-    def _store_orderbook(self, conn, security_id, bids, asks, source, raw_json=None):
-        if not bids and not asks:
-            return
-        c = conn.cursor()
-        timestamp = datetime.utcnow().replace(microsecond=0)
-        c.execute(
-            "INSERT INTO orderbook_snapshots (security_id, timestamp, source, raw_json) VALUES (?, ?, ?, ?)",
-            (security_id, timestamp, source, json.dumps(raw_json) if raw_json is not None else None)
-        )
-        orderbook_id = c.lastrowid
-
-        # store each level for bid and ask
-        for side, rows in (('bid', bids), ('ask', asks)):
-            for idx, level in enumerate(rows, start=1):
-                price, qty = level if len(level) >= 2 else (None, None)
-                c.execute(
-                    "INSERT INTO orderbook_levels (orderbook_id, side, level, price, quantity) VALUES (?, ?, ?, ?, ?)",
-                    (orderbook_id, side, idx, price, qty)
-                )
-
     def _get_security_id(self, conn, secid):
         c = conn.cursor()
         c.execute("SELECT security_id FROM securities WHERE secid = ?", (secid,))
@@ -291,9 +232,6 @@ class MOEXQuotesService:
 
                 conn = sqlite3.connect(self.db_path)
                 try:
-                    # Store column metadata for future reference
-                    self._store_metadata(conn, 'current_securities', columns, engine, market)
-
                     # Find the security
                     secid_idx = columns.index('SECID')
                     for row in data:
@@ -330,31 +268,6 @@ class MOEXQuotesService:
                     conn.close()
             else:
                 logger.error(f"No securities data received")
-
-            # Try orderbook (may require auth)
-            try:
-                orderbook = self.client.get_current_orderbook(engine, market, secid)
-                if orderbook and 'orderbook' in orderbook:
-                    bids = orderbook['orderbook'].get('b', [])
-                    asks = orderbook['orderbook'].get('a', [])
-                    if bids or asks:
-                        conn = sqlite3.connect(self.db_path)
-                        try:
-                            security_id = self._get_security_id(conn, secid)
-                            if security_id:
-                                self._store_orderbook(conn, security_id, bids, asks, 'current_orderbook', raw_json=orderbook)
-                                logger.info(f"Stored orderbook for {secid}")
-                            else:
-                                logger.warning(f"Skipping orderbook for {secid}: security not found")
-                            conn.commit()
-                        finally:
-                            conn.close()
-                    else:
-                        logger.debug(f"No orderbook data for {secid}")
-                else:
-                    logger.debug(f"No orderbook response for {secid}")
-            except Exception as e:
-                logger.debug(f"Orderbook not available for {secid}: {e}")
 
         except Exception as e:
             logger.error(f"Error fetching data for {secid}: {e}")

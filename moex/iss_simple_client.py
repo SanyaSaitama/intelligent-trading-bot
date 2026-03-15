@@ -15,6 +15,13 @@ import json
 import ssl
 import base64
 
+try:
+    # When run as a script from the moex directory
+    from logger import LoggedOpener
+except ImportError:
+    # When imported as a package (e.g., `import moex.iss_simple_client`)
+    from .logger import LoggedOpener
+
 
 requests = {
     'history_secs': 'https://iss.moex.com/iss/history/engines/%(engine)s/markets/%(market)s/boards/%(board)s/securities.json?date=%(date)s',
@@ -147,6 +154,8 @@ class MicexISSClient:
                 self.opener = urllib.request.build_opener(
                     urllib.request.HTTPSHandler(context=ssl.create_default_context())
                 )
+
+        self.opener = LoggedOpener(self.opener)
 
         if handler and container:
             self.handler = handler(container)
