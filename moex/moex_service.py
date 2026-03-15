@@ -14,6 +14,7 @@ Configuration:
     - INTERVAL: Fetch interval in seconds
 """
 
+import argparse
 import time
 import logging
 import sqlite3
@@ -44,12 +45,19 @@ logger = logging.getLogger(__name__)
 
 
 class QuotesDataHandler(MicexISSDataHandler):
-    """ Handler for processing quotes data """
+    """Handler for processing quotes data."""
+
     def __init__(self, container):
         super().__init__(container)
 
     def do(self, market_data):
-        self.data.history.extend(market_data)
+        # Support both container types:
+        # - list: extend directly
+        # - custom container with `.history` attribute
+        if hasattr(self.data, 'history'):
+            self.data.history.extend(market_data)
+        else:
+            self.data.extend(market_data)
 
 
 class MOEXQuotesService:
@@ -220,9 +228,10 @@ class MOEXQuotesService:
             (market_id, response_type, json.dumps(columns))
         )
 
-    def _store_quote(self, conn, security_id, data, source, raw_json=None):
+    def _store_quote(self, conn, security_id, data, source, raw_json=None, timestamp=None):
         c = conn.cursor()
-        timestamp = datetime.utcnow().replace(microsecond=0)
+        if timestamp is None:
+            timestamp = datetime.utcnow().replace(microsecond=0)
         c.execute(
             "INSERT OR REPLACE INTO quotes (security_id, timestamp, last_price, last_change, open_price, high_price, low_price, volume, value, source, raw_json) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
             (
@@ -345,6 +354,40 @@ class MOEXQuotesService:
         except Exception as e:
             logger.error(f"Error fetching data for {secid}: {e}")
 
+    def load_history(self, date_str, board='TQBR'):
+        """Fetch historical data for a single date and store it.
+
+        Args:
+            date_str: Date string in YYYY-MM-DD format.
+            board: Market board (default 'TQBR').
+        """
+        logger.info(f"Loading history for {date_str} (board={board})")
+        client = MicexISSClient(self.config, self.auth, QuotesDataHandler, list)
+        client.get_history_securities(self.engine, self.market, board, date_str)
+
+        history = getattr(client.handler, 'data', None)
+        if not history:
+            logger.warning(f"No history data returned for {date_str}")
+            return
+
+        # Store the historical snapshot with timestamp set to the date.
+        date_ts = datetime.fromisoformat(date_str)
+        conn = sqlite3.connect(self.db_path)
+        try:
+            for secid, close_price, num_trades in history:
+                security_id = self._upsert_security(conn, secid, {'SECID': secid})
+                self._store_quote(
+                    conn,
+                    security_id,
+                    {'last_price': close_price, 'value': num_trades},
+                    source=f'history_{date_str}',
+                    raw_json={'secid': secid, 'close': close_price, 'trades': num_trades},
+                    timestamp=date_ts,
+                )
+            conn.commit()
+        finally:
+            conn.close()
+
     def run(self):
         """ Main service loop """
         logger.info("Starting MOEX Quotes Service")
@@ -369,8 +412,32 @@ class MOEXQuotesService:
 
 
 def main():
-    """ Main entry point """
+    """Main entry point."""
+    parser = argparse.ArgumentParser(description='MOEX quotes service')
+    parser.add_argument('--init', action='store_true', help='Initialize database and exit')
+    parser.add_argument('--fetch', nargs='+', help='Fetch current data for listed securities (e.g., --fetch SBER GAZP)')
+    parser.add_argument('--history', help='Fetch historical data for a given date (YYYY-MM-DD)')
+    parser.add_argument('--history-board', default='TQBR', help='MOEX board for historical data (default: TQBR)')
+    parser.add_argument('--run', action='store_true', help='Run continuous service loop')
+
+    args = parser.parse_args()
+
     service = MOEXQuotesService()
+    if args.init:
+        # init_db already called in constructor
+        logger.info('Database initialized and ready.')
+        return
+
+    if args.history:
+        service.load_history(args.history, board=args.history_board)
+        return
+
+    if args.fetch:
+        for sec in args.fetch:
+            service.fetch_security_data(sec)
+        return
+
+    # Default behavior: run continuously
     service.run()
 
 

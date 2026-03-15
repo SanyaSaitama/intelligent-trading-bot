@@ -28,7 +28,29 @@ A Python service that fetches real-time quotes and market data from the Moscow E
 ```bash
 python moex_service.py
 ```
+### Initialize database only
 
+```bash
+python moex_service.py --init
+```
+
+### Fetch current quotes (one-time)
+
+```bash
+python moex_service.py --fetch SBER GAZP
+```
+
+### Fetch historical data for a specific date
+
+```bash
+python moex_service.py --history 2026-03-10
+```
+
+You can also specify a different MOEX board:
+
+```bash
+python moex_service.py --history 2026-03-10 --history-board TQBR
+```
 ### Configuration
 
 Edit the configuration variables at the top of `moex_service.py`:
