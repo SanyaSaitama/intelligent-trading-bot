@@ -21,6 +21,7 @@ import time
 import logging
 import sqlite3
 import json
+import re
 from datetime import datetime
 try:
     # When run as a script from the moex directory
@@ -49,6 +50,28 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+# Columns explicitly excluded from the dynamic securities schema.
+EXCLUDED_SECURITY_COLUMNS = {
+    'raw_json', 'accruedint', 'annualhigh', 'annuallow', 'assetcode', 'auctionprice',
+    'auctiontype', 'auctionnext', 'auctnextstop', 'boardid', 'boardname', 'bondsybtype',
+    'bondsubtype', 'bondtype', 'buybackdate', 'buybackprice', 'buysell', 'buyselldescr',
+    'buysellfee', 'calcmode', 'calloptiondate', 'centralstrike', 'commodityname',
+    'couponpercent', 'couponperiod', 'couponvalue', 'dateyieldfromissuer', 'decimals',
+    'delivarybasisname', 'deliverybasisname', 'deliverybasisshortname', 'exerciesefee',
+    'exercisefee', 'faceunit', 'facevalue', 'facevalueonsettledate', 'firsttradeddate',
+    'fosetypeid', 'forpricetype', 'highlimit', 'imbuy', 'imnp', 'imp', 'imtime',
+    'initialmargin', 'instrid', 'isqualifiedinvestors', 'issuesize', 'issuesizeplaced',
+    'lastdeldate', 'lastsettleprice', 'lasttradeddate', 'lotdivider', 'lotvalue',
+    'lotvolume', 'lowlimit', 'maxprice', 'name', 'negotiationedfee', 'nextcoupon',
+    'notes', 'offerdate', 'optiontype', 'prevdate', 'prevlast', 'prevlegalcloseprice',
+    'prevopenpostition', 'prevopenposition', 'prevprice', 'prevsettleprice',
+    'prevtradedate', 'prevwaprice', 'pricemvtlimit', 'primarydist', 'putcall',
+    'putoptiondate', 'remarks', 'repo2price', 'scaleperfee', 'sectorid', 'sectorname',
+    'settledate2', 'stepprice', 'strike', 'type', 'underlyingasset',
+    'underlyingassetprice', 'underlyingsettleprice', 'underlyingtype', 'unit',
+    'yieldatprevwaprice'
+}
+
 
 class QuotesDataHandler(MicexISSDataHandler):
     """Handler for processing quotes data."""
@@ -71,103 +94,88 @@ class MOEXQuotesService:
 
     def __init__(self, db_path=DB_PATH):
         self.db_path = db_path
-        self.init_db()
         self.config = Config(user='', password='')  # Public data doesn't require auth
         self.auth = None  # No authentication for public data
         self.client = MicexISSClient(self.config, self.auth, QuotesDataHandler, list)
+        self.security_columns = []
+        self.init_db()
 
         # MOEX ISS context - list of (engine, market) tuples
         self.engine_markets = ENGINE_MARKETS
 
     def init_db(self):
-        """Initialize SQLite database with required tables."""
-        conn = sqlite3.connect(self.db_path)
-        c = conn.cursor()
+          """Initialize SQLite database, create schema, and load reference/init data."""
+          conn = sqlite3.connect(self.db_path)
+          c = conn.cursor()
 
-        # ISS reference tables (populated from /iss/index.json on first init)
-        c.execute('''CREATE TABLE IF NOT EXISTS engines (
-                        id INTEGER PRIMARY KEY,
-                        name TEXT NOT NULL UNIQUE,
-                        title TEXT
-                     )''')
+          c.execute("PRAGMA foreign_keys = OFF")
+          c.execute("DROP TABLE IF EXISTS quotes")
+          c.execute("DROP TABLE IF EXISTS securities")
+          c.execute("DROP TABLE IF EXISTS markets")
+          c.execute("DROP TABLE IF EXISTS engines")
+          c.execute("DROP TABLE IF EXISTS durations")
+          c.execute("DROP TABLE IF EXISTS securitytypes")
+          c.execute("DROP TABLE IF EXISTS securitygroups")
+          c.execute("DROP TABLE IF EXISTS exchanges")
 
-        c.execute('''CREATE TABLE IF NOT EXISTS markets (
-                        market_id INTEGER PRIMARY KEY,
-                        engine_id INTEGER NOT NULL,
-                        engine TEXT NOT NULL,
-                        market TEXT NOT NULL,
-                        market_title TEXT,
-                        marketplace TEXT,
-                        board_order INTEGER,
-                        UNIQUE(engine, market),
-                        FOREIGN KEY (engine_id) REFERENCES engines(id)
-                     )''')
+          # ISS reference tables (filled from /iss/index.json)
+          c.execute('''CREATE TABLE engines (
+                                id INTEGER PRIMARY KEY,
+                                name TEXT NOT NULL UNIQUE,
+                                title TEXT
+                            )''')
 
-        c.execute('''CREATE TABLE IF NOT EXISTS durations (
-                        interval INTEGER PRIMARY KEY,
-                        duration INTEGER,
-                        days INTEGER,
-                        title TEXT,
-                        hint TEXT
-                     )''')
+          c.execute('''CREATE TABLE markets (
+                                market_id INTEGER PRIMARY KEY,
+                                engine_id INTEGER NOT NULL,
+                                engine TEXT NOT NULL,
+                                market TEXT NOT NULL,
+                                market_title TEXT,
+                                marketplace TEXT,
+                                board_order INTEGER,
+                                UNIQUE(engine, market),
+                                FOREIGN KEY (engine_id) REFERENCES engines(id)
+                            )''')
 
-        c.execute('''CREATE TABLE IF NOT EXISTS securitytypes (
-                        id INTEGER PRIMARY KEY,
-                        security_group_name TEXT,
-                        name TEXT NOT NULL,
-                        title TEXT,
-                        comment TEXT,
-                        is_ordered INTEGER
-                     )''')
+          c.execute('''CREATE TABLE durations (
+                                interval INTEGER PRIMARY KEY,
+                                duration INTEGER,
+                                days INTEGER,
+                                title TEXT,
+                                hint TEXT
+                            )''')
 
-        c.execute('''CREATE TABLE IF NOT EXISTS securitygroups (
-                        id INTEGER PRIMARY KEY,
-                        name TEXT NOT NULL UNIQUE,
-                        title TEXT,
-                        is_ordered INTEGER
-                     )''')
+          self._populate_reference_tables(conn)
+          self.security_columns = self._discover_security_columns(conn)
+          self._create_securities_table(conn, self.security_columns)
 
-        # Securities master table
-        c.execute('''CREATE TABLE IF NOT EXISTS securities (
-                        security_id INTEGER PRIMARY KEY AUTOINCREMENT,
-                        secid TEXT NOT NULL UNIQUE,
-                        isin TEXT,
-                        short_name TEXT,
-                        long_name TEXT,
-                        lot_size INTEGER,
-                        currency TEXT,
-                        board_id TEXT,
-                        market_id INTEGER,
-                        created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-                        updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-                        FOREIGN KEY (market_id) REFERENCES markets(market_id)
-                     )''')
+          # Quote snapshots
+          c.execute('''CREATE TABLE quotes (
+                                quote_id INTEGER PRIMARY KEY AUTOINCREMENT,
+                                security_id INTEGER NOT NULL,
+                                timestamp DATETIME NOT NULL,
+                                page INTEGER NOT NULL DEFAULT 0,
+                                last_price REAL,
+                                last_change REAL,
+                                open_price REAL,
+                                high_price REAL,
+                                low_price REAL,
+                                volume INTEGER,
+                                value REAL,
+                                source TEXT,
+                                raw_json TEXT,
+                                UNIQUE(security_id, timestamp, source, page),
+                                FOREIGN KEY (security_id) REFERENCES securities(security_id)
+                            )''')
 
-        # Quote snapshots
-        c.execute('''CREATE TABLE IF NOT EXISTS quotes (
-                        quote_id INTEGER PRIMARY KEY AUTOINCREMENT,
-                        security_id INTEGER NOT NULL,
-                        timestamp DATETIME NOT NULL,
-                        last_price REAL,
-                        last_change REAL,
-                        open_price REAL,
-                        high_price REAL,
-                        low_price REAL,
-                        volume INTEGER,
-                        value REAL,
-                        source TEXT,
-                        raw_json TEXT,
-                        UNIQUE(security_id, timestamp, source),
-                        FOREIGN KEY (security_id) REFERENCES securities(security_id)
-                     )''')
-
-        conn.commit()
-        self._populate_reference_tables(conn)
-        conn.close()
-        logger.info(f"Database initialized at {self.db_path}")
+          self._populate_initial_securities(conn)
+          c.execute("PRAGMA foreign_keys = ON")
+          conn.commit()
+          conn.close()
+          logger.info(f"Database initialized at {self.db_path}")
 
     def _populate_reference_tables(self, conn):
-        """Fetch /iss/index.json and upsert engines, markets, durations, securitytypes, securitygroups."""
+        """Fetch /iss/index.json and upsert engines, markets, durations."""
         try:
             cfg = Config()
             client = MicexISSClient(cfg)
@@ -212,75 +220,129 @@ class MOEXQuotesService:
                         (r.get('interval'), r.get('duration'), r.get('days'), r.get('title'), r.get('hint')),
                     )
 
-            if 'securitytypes' in index_data:
-                cols = index_data['securitytypes']['columns']
-                for row in index_data['securitytypes']['data']:
-                    r = dict(zip(cols, row))
-                    c.execute(
-                        "INSERT OR REPLACE INTO securitytypes "
-                        "(id, security_group_name, name, title, comment, is_ordered) VALUES (?, ?, ?, ?, ?, ?)",
-                        (r.get('id'), r.get('security_group_name'), r.get('name'),
-                         r.get('title'), r.get('comment'), r.get('is_ordered')),
-                    )
-
-            if 'securitygroups' in index_data:
-                cols = index_data['securitygroups']['columns']
-                for row in index_data['securitygroups']['data']:
-                    r = dict(zip(cols, row))
-                    c.execute(
-                        "INSERT OR REPLACE INTO securitygroups (id, name, title, is_ordered) VALUES (?, ?, ?, ?)",
-                        (r.get('id'), r.get('name'), r.get('title'), r.get('is_ordered')),
-                    )
-
             conn.commit()
             logger.info("Reference tables populated from ISS index")
         except Exception as e:
             logger.warning(f"Could not populate reference tables: {e}")
 
-    def _get_market_id(self, conn, engine, market):
-        c = conn.cursor()
-        c.execute("SELECT market_id FROM markets WHERE engine = ? AND market = ?", (engine, market))
-        row = c.fetchone()
-        return row[0] if row else None
+    def _sanitize_column_name(self, name):
+        col = re.sub(r'[^a-zA-Z0-9]+', '_', str(name)).strip('_').lower()
+        if not col:
+            col = 'field'
+        if col[0].isdigit():
+            col = f'c_{col}'
+        return col
 
-    def _upsert_security(self, conn, secid, metadata, engine, market):
-        """Insert or update a security master row and return its security_id."""
-        c = conn.cursor()
-        c.execute("SELECT security_id FROM securities WHERE secid = ?", (secid,))
-        row = c.fetchone()
-        market_id = self._get_market_id(conn, engine, market)
+    def _get_engine_market_pairs(self, conn):
+        # Restrict to configured engines/markets only.
+        return ENGINE_MARKETS
 
-        # Normalize fields from metadata
-        isin = metadata.get('ISIN')
-        short_name = metadata.get('SHORTNAME') or metadata.get('SHORTNAME')
-        long_name = metadata.get('NAME') or metadata.get('LONGNAME')
-        lot_size = metadata.get('LOTSIZE')
-        currency = metadata.get('CURRENCY')
-        board_id = metadata.get('BOARDID')
+    def _discover_security_columns(self, conn):
+        cols = {'secid'}
+        for engine, market in self._get_engine_market_pairs(conn):
+            try:
+                response = self.client.get_current_securities(engine, market)
+                if not response or 'securities' not in response:
+                    continue
+                for col in response['securities'].get('columns', []):
+                    normalized = self._sanitize_column_name(col)
+                    if normalized not in EXCLUDED_SECURITY_COLUMNS:
+                        cols.add(normalized)
+            except Exception as e:
+                logger.warning(f"Could not discover columns for {engine}/{market}: {e}")
+        return sorted(cols)
+
+    def _create_securities_table(self, conn, columns):
+        c = conn.cursor()
+        dynamic_cols = [
+            col for col in columns
+            if col not in {'security_id', 'engine', 'market', 'uploaded_at', 'updated_at', 'upload_source', 'raw_json'}
+            and col not in EXCLUDED_SECURITY_COLUMNS
+        ]
+        if 'secid' not in dynamic_cols:
+            dynamic_cols.insert(0, 'secid')
+
+        quoted_dynamic = ',\n                        '.join([f'"{col}" TEXT' for col in dynamic_cols])
+        create_sql = f'''CREATE TABLE securities (
+                        security_id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        engine TEXT NOT NULL,
+                        market TEXT NOT NULL,
+                        uploaded_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                        updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                        upload_source TEXT,
+                        {quoted_dynamic},
+                        UNIQUE(secid, engine, market)
+                     )'''
+        c.execute(create_sql)
+
+    def _upsert_security_row(self, conn, engine, market, row_map, upload_source='current_securities'):
+        c = conn.cursor()
+        normalized = {self._sanitize_column_name(k): v for k, v in row_map.items()}
+        secid = normalized.get('secid')
+        if not secid:
+            return None
+
+        c.execute(
+            "SELECT security_id FROM securities WHERE secid = ? AND engine = ? AND market = ?",
+            (secid, engine, market),
+        )
+        row = c.fetchone()
+
+        payload = {
+            'engine': engine,
+            'market': market,
+            'upload_source': upload_source,
+        }
+        for col in self.security_columns:
+            if col in normalized:
+                payload[col] = normalized[col]
 
         if row:
             security_id = row[0]
-            c.execute(
-                "UPDATE securities SET isin = ?, short_name = ?, long_name = ?, lot_size = ?, currency = ?, board_id = ?, market_id = ?, updated_at = CURRENT_TIMESTAMP WHERE security_id = ?",
-                (isin, short_name, long_name, lot_size, currency, board_id, market_id, security_id)
-            )
+            update_cols = [k for k in payload.keys() if k not in {'engine', 'market'}]
+            update_stmt = ', '.join([f'"{col}" = ?' for col in update_cols])
+            sql = f"UPDATE securities SET {update_stmt}, updated_at = CURRENT_TIMESTAMP WHERE security_id = ?"
+            params = [payload[col] for col in update_cols] + [security_id]
+            c.execute(sql, params)
             return security_id
 
-        c.execute(
-            "INSERT INTO securities (secid, isin, short_name, long_name, lot_size, currency, board_id, market_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
-            (secid, isin, short_name, long_name, lot_size, currency, board_id, market_id)
-        )
+        insert_cols = list(payload.keys())
+        placeholders = ', '.join(['?'] * len(insert_cols))
+        sql = f"INSERT INTO securities ({', '.join([f'\"{col}\"' for col in insert_cols])}) VALUES ({placeholders})"
+        params = [payload[col] for col in insert_cols]
+        c.execute(sql, params)
         return c.lastrowid
 
-    def _store_quote(self, conn, security_id, data, source, raw_json=None, timestamp=None):
+    def _populate_initial_securities(self, conn):
+        """Fill securities table using current_securities across all engine/market pairs from reference data."""
+        pairs = self._get_engine_market_pairs(conn)
+        loaded = 0
+        for engine, market in pairs:
+            response = self.client.get_current_securities(engine, market)
+            if not response or 'securities' not in response:
+                logger.warning(f"No current securities for {engine}/{market}")
+                continue
+
+            columns = response['securities'].get('columns', [])
+            rows = response['securities'].get('data', [])
+            for row in rows:
+                row_map = {columns[i]: row[i] for i in range(len(columns))}
+                if self._upsert_security_row(conn, engine, market, row_map, upload_source='init_load'):
+                    loaded += 1
+            conn.commit()
+
+        logger.info(f"Initial securities loaded: {loaded}")
+
+    def _store_quote(self, conn, security_id, data, source, raw_json=None, timestamp=None, page=0):
         c = conn.cursor()
         if timestamp is None:
             timestamp = datetime.utcnow().replace(microsecond=0)
         c.execute(
-            "INSERT OR REPLACE INTO quotes (security_id, timestamp, last_price, last_change, open_price, high_price, low_price, volume, value, source, raw_json) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+            "INSERT OR REPLACE INTO quotes (security_id, timestamp, page, last_price, last_change, open_price, high_price, low_price, volume, value, source, raw_json) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
             (
                 security_id,
                 timestamp,
+                page,
                 data.get('last_price'),
                 data.get('last_change'),
                 data.get('open_price'),
@@ -293,120 +355,59 @@ class MOEXQuotesService:
             )
         )
 
-    def _get_security_id(self, conn, secid):
+    def _get_security_id(self, conn, secid, engine, market):
         c = conn.cursor()
-        c.execute("SELECT security_id FROM securities WHERE secid = ?", (secid,))
+        c.execute("SELECT security_id FROM securities WHERE secid = ? AND engine = ? AND market = ?", (secid, engine, market))
         row = c.fetchone()
         return row[0] if row else None
 
-    def fetch_security_data(self, secid, engine, market):
+    def fetch_security_data(self, secid, engine, market, interval=1, position=0):
         """Fetch data for a specific security and store it in the database."""
         try:
-            # Get securities data (this is public)
-            securities_data = self.client.get_current_securities(engine, market)
-            if securities_data and 'securities' in securities_data:
-                data = securities_data['securities']['data']
-                columns = securities_data['securities']['columns']
+            candles_data = self.client.get_security_candles(engine, market, secid, interval, position)
+            if not candles_data or 'candles' not in candles_data:
+                logger.error(f"No candles data received for {secid}")
+                return
 
-                conn = sqlite3.connect(self.db_path)
-                try:
-                    # Find the security
-                    secid_idx = columns.index('SECID')
-                    for row in data:
-                        if row[secid_idx] == secid:
-                            row_map = {columns[i]: row[i] for i in range(len(columns))}
+            rows = candles_data['candles'].get('data', [])
+            columns = candles_data['candles'].get('columns', [])
+            if not rows:
+                logger.warning(f"No candles rows available for {secid}")
+                return
 
-                            security_id = self._upsert_security(conn, secid, row_map, engine, market)
+            row = rows[-1]
+            row_map = {columns[i]: row[i] for i in range(len(columns))}
 
-                            market_data = {}
-                            if 'LAST' in row_map:
-                                market_data['last_price'] = row_map['LAST']
-                            if 'CHANGE' in row_map:
-                                market_data['last_change'] = row_map['CHANGE']
-                            if 'OPEN' in row_map:
-                                market_data['open_price'] = row_map['OPEN']
-                            if 'HIGH' in row_map:
-                                market_data['high_price'] = row_map['HIGH']
-                            if 'LOW' in row_map:
-                                market_data['low_price'] = row_map['LOW']
-                            if 'VOLTODAY' in row_map:
-                                market_data['volume'] = row_map['VOLTODAY']
-                            if 'VALTODAY' in row_map:
-                                market_data['value'] = row_map['VALTODAY']
+            conn = sqlite3.connect(self.db_path)
+            try:
+                security_id = self._get_security_id(conn, secid, engine, market)
+                if security_id is None:
+                    security_id = self._upsert_security_row(conn, engine, market, {'SECID': secid}, upload_source='runtime')
 
-                            if market_data.get('last_price') is not None:
-                                self._store_quote(conn, security_id, market_data, 'current_securities', raw_json=row_map)
-                                logger.info(f"Stored market data for {secid}: {market_data.get('last_price')}")
-                            else:
-                                logger.warning(f"No price data available for {secid}")
-                            break
+                ts_str = row_map.get('begin') or row_map.get('BEGIN') or row_map.get('end') or row_map.get('END')
+                timestamp = datetime.fromisoformat(ts_str) if ts_str else datetime.utcnow().replace(microsecond=0)
 
-                    conn.commit()
-                finally:
-                    conn.close()
-            else:
-                logger.error(f"No securities data received")
+                market_data = {
+                    'last_price': row_map.get('close') if 'close' in row_map else row_map.get('CLOSE'),
+                    'open_price': row_map.get('open') if 'open' in row_map else row_map.get('OPEN'),
+                    'high_price': row_map.get('high') if 'high' in row_map else row_map.get('HIGH'),
+                    'low_price': row_map.get('low') if 'low' in row_map else row_map.get('LOW'),
+                    'volume': row_map.get('volume') if 'volume' in row_map else row_map.get('VOLUME'),
+                    'value': row_map.get('value') if 'value' in row_map else row_map.get('VALUE'),
+                }
+
+                if market_data.get('last_price') is not None:
+                    self._store_quote(conn, security_id, market_data, 'security_candles', raw_json=row_map, timestamp=timestamp, page=position)
+                    logger.info(f"Stored candle data for {secid}: {market_data.get('last_price')} (page={position})")
+                else:
+                    logger.warning(f"No close price available for {secid}")
+
+                conn.commit()
+            finally:
+                conn.close()
 
         except Exception as e:
             logger.error(f"Error fetching data for {secid}: {e}")
-
-    def load_history(self, date_str, board='TQBR', engine=None, market=None):
-        """Fetch historical data for a single date and store it.
-
-        Args:
-            date_str: Date string in YYYY-MM-DD format.
-            board: Market board (default 'TQBR').
-            engine: MOEX engine (if None, uses all configured engines).
-            market: MOEX market (if None, uses all configured markets).
-        """
-        if engine is None or market is None:
-            # Load for all engine-market combinations
-            for eng, mkt in self.engine_markets:
-                self._load_history_single(date_str, board, eng, mkt)
-        else:
-            self._load_history_single(date_str, board, engine, market)
-
-    def _load_history_single(self, date_str, board, engine, market):
-        """Fetch historical data for a single date and engine-market combination."""
-        logger.info(f"Loading history for {date_str} (board={board}, engine={engine}, market={market})")
-        client = MicexISSClient(self.config, self.auth)
-        hist_data = client.get_history_securities(engine, market, board, date_str)
-
-        if not hist_data or 'history' not in hist_data:
-            logger.warning(f"No history data returned for {date_str} (engine={engine}, market={market})")
-            return
-
-        cols = hist_data['history']['columns']
-        rows = hist_data['history']['data']
-        if not rows:
-            logger.warning(f"No history rows for {date_str} (engine={engine}, market={market})")
-            return
-
-        secid_idx = cols.index('SECID')
-        close_idx = cols.index('CLOSE') if 'CLOSE' in cols else None
-        numtrades_idx = cols.index('NUMTRADES') if 'NUMTRADES' in cols else None
-
-        date_ts = datetime.fromisoformat(date_str)
-        conn = sqlite3.connect(self.db_path)
-        try:
-            for row in rows:
-                secid = row[secid_idx]
-                engine_securities = SECURITIES.get(engine, [])
-                if secid in engine_securities:
-                    close_price = row[close_idx] if close_idx is not None else None
-                    num_trades = row[numtrades_idx] if numtrades_idx is not None else None
-                    security_id = self._upsert_security(conn, secid, {'SECID': secid}, engine, market)
-                    self._store_quote(
-                        conn,
-                        security_id,
-                        {'last_price': close_price, 'value': num_trades},
-                        source=f'history_{date_str}',
-                        raw_json={'secid': secid, 'close': close_price, 'trades': num_trades},
-                        timestamp=date_ts,
-                    )
-            conn.commit()
-        finally:
-            conn.close()
 
     def run(self):
         """ Main service loop """
@@ -440,8 +441,6 @@ def main():
     parser = argparse.ArgumentParser(description='MOEX quotes service')
     parser.add_argument('--init', action='store_true', help='Initialize database and exit')
     parser.add_argument('--fetch', nargs='+', help='Fetch current data for listed securities (e.g., --fetch SBER GAZP)')
-    parser.add_argument('--history', help='Fetch historical data for a given date (YYYY-MM-DD)')
-    parser.add_argument('--history-board', default='TQBR', help='MOEX board for historical data (default: TQBR)')
     parser.add_argument('--run', action='store_true', help='Run continuous service loop')
 
     args = parser.parse_args()
@@ -450,10 +449,6 @@ def main():
     if args.init:
         # init_db already called in constructor
         logger.info('Database initialized and ready.')
-        return
-
-    if args.history:
-        service.load_history(args.history, board=args.history_board)
         return
 
     if args.fetch:

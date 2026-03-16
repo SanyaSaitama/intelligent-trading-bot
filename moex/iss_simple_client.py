@@ -25,8 +25,7 @@ except ImportError:
 
 requests = {
     'current_securities': 'https://iss.moex.com/iss/engines/%(engine)s/markets/%(market)s/securities.json',
-    'security_candles': 'https://iss.moex.com/iss/engines/%(engine)s/markets/%(market)s/securities/%(security)s/candles.json?interval=%(interval)s',
-    'history_securities': 'https://iss.moex.com/iss/history/engines/%(engine)s/markets/%(market)s/boards/%(board)s/securities.json?date=%(date)s',
+    'security_candles': 'https://iss.moex.com/iss/engines/%(engine)s/markets/%(market)s/securities/%(security)s/candles.json?interval=%(interval)s&start=%(position)s',
     'index': 'https://iss.moex.com/iss/index.json',
     'security_spec': 'https://iss.moex.com/iss/securities/%(security)s.json',
 }
@@ -184,30 +183,17 @@ class MicexISSClient:
             print(f"Error getting current securities for {engine}/{market}: {e}")
             return None
 
-    def get_security_candles(self, engine, market, security, interval):
+    def get_security_candles(self, engine, market, security, interval, position=0):
         """ Get OHLCV candles for a security """
         url = requests['security_candles'] % {
             'engine': engine, 'market': market,
-            'security': security, 'interval': interval,
+            'security': security, 'interval': interval, 'position': position,
         }
         try:
             res = self.opener.open(url)
             return json.loads(res.read().decode('utf-8'))
         except Exception as e:
             print(f"Error getting candles for {security}: {e}")
-            return None
-
-    def get_history_securities(self, engine, market, board, date):
-        """ Get historical end-of-day data for all securities on a given board and date """
-        url = requests['history_securities'] % {
-            'engine': engine, 'market': market,
-            'board': board, 'date': date,
-        }
-        try:
-            res = self.opener.open(url)
-            return json.loads(res.read().decode('utf-8'))
-        except Exception as e:
-            print(f"Error getting history for {engine}/{market}/{board} on {date}: {e}")
             return None
 
     def get_security_spec(self, security):
