@@ -191,12 +191,12 @@ class MOEXQuotesService:
                                 timestamp DATETIME NOT NULL,
                                 page INTEGER NOT NULL DEFAULT 0,
                                 last_price REAL,
-                                last_change REAL,
                                 open_price REAL,
                                 high_price REAL,
                                 low_price REAL,
                                 volume INTEGER,
                                 value REAL,
+                                update_date DATETIME NOT NULL,
                                 UNIQUE(security_id, timestamp, page),
                                 FOREIGN KEY (security_id) REFERENCES securities(security_id)
                             )''')
@@ -370,21 +370,104 @@ class MOEXQuotesService:
         c = conn.cursor()
         if timestamp is None:
             timestamp = datetime.utcnow().replace(microsecond=0)
+        update_date = datetime.utcnow().replace(microsecond=0)
         c.execute(
-            "INSERT OR REPLACE INTO quotes (security_id, timestamp, page, last_price, last_change, open_price, high_price, low_price, volume, value) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+            "INSERT OR REPLACE INTO quotes (security_id, timestamp, page, last_price, open_price, high_price, low_price, volume, value, update_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
             (
                 security_id,
                 timestamp,
                 page,
                 data.get('last_price'),
-                data.get('last_change'),
                 data.get('open_price'),
                 data.get('high_price'),
                 data.get('low_price'),
                 data.get('volume', 0),
                 data.get('value', 0),
+                update_date,
             )
         )
+
+    def _quote_value_tuple(self, data):
+        def as_float(v):
+            return None if v is None else float(v)
+
+        def as_int(v):
+            return None if v is None else int(v)
+
+        return (
+            as_float(data.get('last_price')),
+            as_float(data.get('open_price')),
+            as_float(data.get('high_price')),
+            as_float(data.get('low_price')),
+            as_int(data.get('volume')),
+            as_float(data.get('value')),
+        )
+
+    def _get_existing_page_rows(self, conn, security_id, page):
+        c = conn.cursor()
+        c.execute(
+            "SELECT timestamp, last_price, open_price, high_price, low_price, volume, value FROM quotes WHERE security_id = ? AND page = ?",
+            (security_id, page),
+        )
+        rows = c.fetchall()
+        existing = {}
+        for ts, last_price, open_price, high_price, low_price, volume, value in rows:
+            key = str(ts)
+            existing[key] = (
+                None if last_price is None else float(last_price),
+                None if open_price is None else float(open_price),
+                None if high_price is None else float(high_price),
+                None if low_price is None else float(low_price),
+                None if volume is None else int(volume),
+                None if value is None else float(value),
+            )
+        return existing
+
+    def _load_one_page(self, conn, security_id, secid, engine, market, interval, page, page_size, compare_existing):
+        position = page * page_size
+        candles_data = self.client.get_security_candles(engine, market, secid, interval, position)
+        if not candles_data or 'candles' not in candles_data:
+            logger.error(f"No candles data received for {secid} (page={page}, start={position})")
+            return {'status': 'error', 'rows': 0, 'fetched': 0, 'page': page}
+
+        rows = candles_data['candles'].get('data', [])
+        columns = candles_data['candles'].get('columns', [])
+        if not rows:
+            logger.info(f"EOF for {secid} at page={page} (start={position})")
+            return {'status': 'eof', 'rows': 0, 'fetched': 0, 'page': page}
+
+        existing_rows = self._get_existing_page_rows(conn, security_id, page) if compare_existing else {}
+        stored_count = 0
+
+        for row in rows:
+            row_map = {columns[i]: row[i] for i in range(len(columns))}
+            ts_str = row_map.get('begin') or row_map.get('BEGIN') or row_map.get('end') or row_map.get('END')
+            timestamp = datetime.fromisoformat(ts_str) if ts_str else datetime.utcnow().replace(microsecond=0)
+
+            market_data = {
+                'last_price': row_map.get('close') if 'close' in row_map else row_map.get('CLOSE'),
+                'open_price': row_map.get('open') if 'open' in row_map else row_map.get('OPEN'),
+                'high_price': row_map.get('high') if 'high' in row_map else row_map.get('HIGH'),
+                'low_price': row_map.get('low') if 'low' in row_map else row_map.get('LOW'),
+                'volume': row_map.get('volume') if 'volume' in row_map else row_map.get('VOLUME'),
+                'value': row_map.get('value') if 'value' in row_map else row_map.get('VALUE'),
+            }
+
+            if market_data.get('last_price') is None:
+                continue
+
+            timestamp_key = str(timestamp)
+            value_tuple = self._quote_value_tuple(market_data)
+            if timestamp_key in existing_rows and existing_rows[timestamp_key] == value_tuple:
+                continue
+
+            self._store_quote(conn, security_id, market_data, timestamp=timestamp, page=page)
+            stored_count += 1
+
+        logger.info(
+            f"Loaded {stored_count} diff rows for {secid} (engine={engine}, market={market}, page={page}, start={position}, fetched={len(rows)})"
+        )
+        return {'status': 'ok', 'rows': stored_count, 'fetched': len(rows), 'page': page}
 
     def _resolve_security_context(self, secid, engine=None, market=None):
         if engine and market:
@@ -436,7 +519,7 @@ class MOEXQuotesService:
         return row[0] if row else None
 
     def quota_load(self, secid, engine=None, market=None, interval=INTERVAL, page_size=PAGE_SIZE, page=None, allow_init=True):
-        """Load one page of candles for secid, continuing from the last loaded page by default."""
+        """Load diffs from last page, then load subsequent pages until endpoint EOF."""
         try:
             engine, market = self._resolve_security_context(secid, engine, market)
             if not engine or not market:
@@ -456,27 +539,37 @@ class MOEXQuotesService:
                         if allow_init:
                             return self.quota_init(secid, engine=engine, market=market, interval=interval, page_size=page_size)
                         return {'status': 'no_data', 'secid': secid, 'page': None, 'rows': 0}
-                    page = last_page + 1
+                    page = last_page
 
-                position = page * page_size
-                candles_data = self.client.get_security_candles(engine, market, secid, interval, position)
-                if not candles_data or 'candles' not in candles_data:
-                    logger.error(f"No candles data received for {secid} (page={page}, start={position})")
-                    return {'status': 'error', 'secid': secid, 'page': page, 'rows': 0}
+                total_stored = 0
 
-                rows = candles_data['candles'].get('data', [])
-                columns = candles_data['candles'].get('columns', [])
-                if not rows:
-                    logger.info(f"EOF for {secid} at page={page} (start={position})")
-                    return {'status': 'eof', 'secid': secid, 'page': page, 'rows': 0}
-
-                stored_count = self._store_candles_page(conn, security_id, rows, columns, page)
-                conn.commit()
-
-                logger.info(
-                    f"Loaded {stored_count} rows for {secid} (engine={engine}, market={market}, page={page}, start={position})"
+                # 1) Re-check the last loaded page and store only changed/new rows.
+                current_page_result = self._load_one_page(
+                    conn, security_id, secid, engine, market, interval, page, page_size, compare_existing=True
                 )
-                return {'status': 'ok', 'secid': secid, 'page': page, 'rows': stored_count}
+                if current_page_result['status'] == 'error':
+                    return {'status': 'error', 'secid': secid, 'page': page, 'rows': total_stored}
+                if current_page_result['status'] == 'ok':
+                    total_stored += current_page_result['rows']
+
+                # 2) Load next pages until endpoint returns no rows.
+                next_page = page + 1
+                while True:
+                    next_page_result = self._load_one_page(
+                        conn, security_id, secid, engine, market, interval, next_page, page_size, compare_existing=True
+                    )
+
+                    if next_page_result['status'] == 'error':
+                        return {'status': 'error', 'secid': secid, 'page': next_page, 'rows': total_stored}
+
+                    if next_page_result['status'] == 'eof':
+                        break
+
+                    total_stored += next_page_result['rows']
+                    next_page += 1
+
+                conn.commit()
+                return {'status': 'ok', 'secid': secid, 'page': next_page - 1, 'rows': total_stored}
             finally:
                 conn.close()
 
@@ -521,7 +614,7 @@ class MOEXQuotesService:
         """ Main service loop """
         logger.info("Starting MOEX Quotes Service")
         logger.info(f"Engine-market combinations: {self.engine_markets}")
-        logger.info(f"Update interval: {INTERVAL} seconds")
+        logger.info(f"Update interval: {INTERVAL} minutes. Update frquency: {TIMEOUT} seconds.")
 
         while True:
             try:
@@ -533,8 +626,8 @@ class MOEXQuotesService:
                         self.quota_load(secid, engine=engine, market=market, interval=INTERVAL, page_size=PAGE_SIZE)
                         time.sleep(1)  # Rate limiting between securities
 
-                logger.info(f"Completed data fetch cycle. Sleeping for {INTERVAL} seconds...")
-                time.sleep(INTERVAL)
+                logger.info(f"Completed data fetch cycle. Sleeping for {TIMEOUT} seconds...")
+                time.sleep(TIMEOUT)
 
             except KeyboardInterrupt:
                 logger.info("Service stopped by user")
