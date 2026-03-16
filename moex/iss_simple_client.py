@@ -24,9 +24,11 @@ except ImportError:
 
 
 requests = {
-    'history_secs': 'https://iss.moex.com/iss/history/engines/%(engine)s/markets/%(market)s/boards/%(board)s/securities.json?date=%(date)s',
-    'current_orderbook': 'https://iss.moex.com/iss/engines/%(engine)s/markets/%(market)s/securities/%(security)s/orderbook.json',
-    'current_securities': 'https://iss.moex.com/iss/engines/%(engine)s/markets/%(market)s/securities.json'
+    'current_securities': 'https://iss.moex.com/iss/engines/%(engine)s/markets/%(market)s/securities.json',
+    'security_candles': 'https://iss.moex.com/iss/engines/%(engine)s/markets/%(market)s/securities/%(security)s/candles.json?interval=%(interval)s',
+    'history_securities': 'https://iss.moex.com/iss/history/engines/%(engine)s/markets/%(market)s/boards/%(board)s/securities.json?date=%(date)s',
+    'index': 'https://iss.moex.com/iss/index.json',
+    'security_spec': 'https://iss.moex.com/iss/securities/%(security)s.json',
 }
 
 
@@ -162,96 +164,60 @@ class MicexISSClient:
         else:
             self.handler = None
 
-    def get_history_securities(self, engine, market, board, date):
-        """ Get and parse historical data on all the securities at the
-        given engine, market, board
-        """
-        url = requests['history_secs'] % {'engine': engine,
-                                          'market': market,
-                                          'board': board,
-                                          'date': date}
-
-        # always remember about the 'start' argument to get long replies
-        start = 0
-        cnt = 1
-        while cnt > 0:
-            try:
-                res = self.opener.open(url + '&start=' + str(start))
-                jres = json.loads(res.read().decode('utf-8'))
-            except Exception as e:
-                print(f"Error opening URL: {e}")
-                break
-
-            # the following is also just a simple example
-            # it is recommended to keep metadata separately
-
-            # root node with historical data
-            jhist = jres['history']
-
-            # node with actual data
-            jdata = jhist['data']
-
-            # node with the list of column IDs in 'data' in correct order;
-            # it's also possible to use the iss.json=extended argument instead
-            # to get all the IDs together with data (leads to more traffic)
-            jcols = jhist['columns']
-
-            def _col_index(names):
-                for name in names:
-                    if name in jcols:
-                        return jcols.index(name), name
-                return None, None
-
-            secIdx, secName = _col_index(['SECID'])
-            closeIdx, closeName = _col_index(['LEGALCLOSEPRICE', 'CLOSE', 'LAST', 'PRICE'])
-            tradesIdx, tradesName = _col_index(['NUMTRADES', 'TRADES', 'VOLTODAY'])
-
-            if secIdx is None or closeIdx is None:
-                print(f"History response missing expected columns: SECID={secIdx}, CLOSE={closeName}")
-                break
-
-            if tradesIdx is None:
-                # not critical, just set trades to 0 if not present
-                tradesIdx = None
-
-            result = []
-            for sec in jdata:
-                secid = sec[secIdx]
-                close_val = del_null(sec[closeIdx])
-                trades_val = del_null(sec[tradesIdx]) if tradesIdx is not None else 0
-                result.append((secid, close_val, trades_val))
-            # we return pieces of received data on each iteration
-            # in order to be able to handle large volumes of data
-            # and to start data processing without waiting for
-            # the complete reply
-            self.handler.do(result)
-            cnt = len(jdata)
-            start = start + cnt
-        return True
-
-    def get_current_orderbook(self, engine, market, security):
-        """ Get current orderbook (quotes) for a specific security """
-        url = requests['current_orderbook'] % {'engine': engine,
-                                               'market': market,
-                                               'security': security}
+    def get_index(self):
+        """ Get global ISS reference data (engines, markets, durations, securitytypes, securitygroups) """
+        url = requests['index']
         try:
             res = self.opener.open(url)
-            jres = json.loads(res.read().decode('utf-8'))
-            return jres
+            return json.loads(res.read().decode('utf-8'))
         except Exception as e:
-            print(f"Error getting orderbook: {e}")
+            print(f"Error getting index: {e}")
             return None
 
     def get_current_securities(self, engine, market):
-        """ Get current securities data for a market """
-        url = requests['current_securities'] % {'engine': engine,
-                                                'market': market}
+        """ Get current trading data for all securities in a given engine/market """
+        url = requests['current_securities'] % {'engine': engine, 'market': market}
         try:
             res = self.opener.open(url)
-            jres = json.loads(res.read().decode('utf-8'))
-            return jres
+            return json.loads(res.read().decode('utf-8'))
         except Exception as e:
-            print(f"Error getting securities: {e}")
+            print(f"Error getting current securities for {engine}/{market}: {e}")
+            return None
+
+    def get_security_candles(self, engine, market, security, interval):
+        """ Get OHLCV candles for a security """
+        url = requests['security_candles'] % {
+            'engine': engine, 'market': market,
+            'security': security, 'interval': interval,
+        }
+        try:
+            res = self.opener.open(url)
+            return json.loads(res.read().decode('utf-8'))
+        except Exception as e:
+            print(f"Error getting candles for {security}: {e}")
+            return None
+
+    def get_history_securities(self, engine, market, board, date):
+        """ Get historical end-of-day data for all securities on a given board and date """
+        url = requests['history_securities'] % {
+            'engine': engine, 'market': market,
+            'board': board, 'date': date,
+        }
+        try:
+            res = self.opener.open(url)
+            return json.loads(res.read().decode('utf-8'))
+        except Exception as e:
+            print(f"Error getting history for {engine}/{market}/{board} on {date}: {e}")
+            return None
+
+    def get_security_spec(self, security):
+        """ Get specification for a security """
+        url = requests['security_spec'] % {'security': security}
+        try:
+            res = self.opener.open(url)
+            return json.loads(res.read().decode('utf-8'))
+        except Exception as e:
+            print(f"Error getting security spec for {security}: {e}")
             return None
 
 

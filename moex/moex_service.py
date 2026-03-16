@@ -84,22 +84,47 @@ class MOEXQuotesService:
         conn = sqlite3.connect(self.db_path)
         c = conn.cursor()
 
-        # Exchange/market metadata
-        c.execute('''CREATE TABLE IF NOT EXISTS exchanges (
-                        exchange_id INTEGER PRIMARY KEY AUTOINCREMENT,
+        # ISS reference tables (populated from /iss/index.json on first init)
+        c.execute('''CREATE TABLE IF NOT EXISTS engines (
+                        id INTEGER PRIMARY KEY,
                         name TEXT NOT NULL UNIQUE,
-                        url TEXT,
-                        created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+                        title TEXT
                      )''')
 
         c.execute('''CREATE TABLE IF NOT EXISTS markets (
-                        market_id INTEGER PRIMARY KEY AUTOINCREMENT,
-                        exchange_id INTEGER NOT NULL,
+                        market_id INTEGER PRIMARY KEY,
+                        engine_id INTEGER NOT NULL,
                         engine TEXT NOT NULL,
                         market TEXT NOT NULL,
-                        board TEXT,
-                        UNIQUE(exchange_id, engine, market, board),
-                        FOREIGN KEY (exchange_id) REFERENCES exchanges(exchange_id)
+                        market_title TEXT,
+                        marketplace TEXT,
+                        board_order INTEGER,
+                        UNIQUE(engine, market),
+                        FOREIGN KEY (engine_id) REFERENCES engines(id)
+                     )''')
+
+        c.execute('''CREATE TABLE IF NOT EXISTS durations (
+                        interval INTEGER PRIMARY KEY,
+                        duration INTEGER,
+                        days INTEGER,
+                        title TEXT,
+                        hint TEXT
+                     )''')
+
+        c.execute('''CREATE TABLE IF NOT EXISTS securitytypes (
+                        id INTEGER PRIMARY KEY,
+                        security_group_name TEXT,
+                        name TEXT NOT NULL,
+                        title TEXT,
+                        comment TEXT,
+                        is_ordered INTEGER
+                     )''')
+
+        c.execute('''CREATE TABLE IF NOT EXISTS securitygroups (
+                        id INTEGER PRIMARY KEY,
+                        name TEXT NOT NULL UNIQUE,
+                        title TEXT,
+                        is_ordered INTEGER
                      )''')
 
         # Securities master table
@@ -137,40 +162,93 @@ class MOEXQuotesService:
                      )''')
 
         conn.commit()
+        self._populate_reference_tables(conn)
         conn.close()
         logger.info(f"Database initialized at {self.db_path}")
 
-    def _get_or_create_exchange(self, conn, name='MOEX', url='https://iss.moex.com'):
-        c = conn.cursor()
-        c.execute("SELECT exchange_id FROM exchanges WHERE name = ?", (name,))
-        row = c.fetchone()
-        if row:
-            return row[0]
-        c.execute("INSERT INTO exchanges (name, url) VALUES (?, ?)", (name, url))
-        return c.lastrowid
+    def _populate_reference_tables(self, conn):
+        """Fetch /iss/index.json and upsert engines, markets, durations, securitytypes, securitygroups."""
+        try:
+            cfg = Config()
+            client = MicexISSClient(cfg)
+            index_data = client.get_index()
+            if not index_data:
+                logger.warning("Could not fetch ISS index — reference tables will be empty")
+                return
 
-    def _get_or_create_market(self, conn, engine, market):
+            c = conn.cursor()
+
+            if 'engines' in index_data:
+                cols = index_data['engines']['columns']
+                for row in index_data['engines']['data']:
+                    r = dict(zip(cols, row))
+                    c.execute(
+                        "INSERT OR REPLACE INTO engines (id, name, title) VALUES (?, ?, ?)",
+                        (r.get('id'), r.get('name'), r.get('title')),
+                    )
+
+            if 'markets' in index_data:
+                cols = index_data['markets']['columns']
+                for row in index_data['markets']['data']:
+                    r = dict(zip(cols, row))
+                    # ISS uses trade_engine_id / trade_engine_name / market_name
+                    engine_id = r.get('trade_engine_id') or r.get('engine_id')
+                    engine_name = r.get('trade_engine_name') or r.get('engine')
+                    market_name = r.get('market_name') or r.get('market')
+                    c.execute(
+                        "INSERT OR REPLACE INTO markets "
+                        "(market_id, engine_id, engine, market, market_title, marketplace, board_order) "
+                        "VALUES (?, ?, ?, ?, ?, ?, ?)",
+                        (r.get('id'), engine_id, engine_name, market_name,
+                         r.get('market_title'), r.get('marketplace'), r.get('board_order')),
+                    )
+
+            if 'durations' in index_data:
+                cols = index_data['durations']['columns']
+                for row in index_data['durations']['data']:
+                    r = dict(zip(cols, row))
+                    c.execute(
+                        "INSERT OR REPLACE INTO durations (interval, duration, days, title, hint) VALUES (?, ?, ?, ?, ?)",
+                        (r.get('interval'), r.get('duration'), r.get('days'), r.get('title'), r.get('hint')),
+                    )
+
+            if 'securitytypes' in index_data:
+                cols = index_data['securitytypes']['columns']
+                for row in index_data['securitytypes']['data']:
+                    r = dict(zip(cols, row))
+                    c.execute(
+                        "INSERT OR REPLACE INTO securitytypes "
+                        "(id, security_group_name, name, title, comment, is_ordered) VALUES (?, ?, ?, ?, ?, ?)",
+                        (r.get('id'), r.get('security_group_name'), r.get('name'),
+                         r.get('title'), r.get('comment'), r.get('is_ordered')),
+                    )
+
+            if 'securitygroups' in index_data:
+                cols = index_data['securitygroups']['columns']
+                for row in index_data['securitygroups']['data']:
+                    r = dict(zip(cols, row))
+                    c.execute(
+                        "INSERT OR REPLACE INTO securitygroups (id, name, title, is_ordered) VALUES (?, ?, ?, ?)",
+                        (r.get('id'), r.get('name'), r.get('title'), r.get('is_ordered')),
+                    )
+
+            conn.commit()
+            logger.info("Reference tables populated from ISS index")
+        except Exception as e:
+            logger.warning(f"Could not populate reference tables: {e}")
+
+    def _get_market_id(self, conn, engine, market):
         c = conn.cursor()
-        exchange_id = self._get_or_create_exchange(conn)
-        c.execute(
-            "SELECT market_id FROM markets WHERE exchange_id = ? AND engine = ? AND market = ?",
-            (exchange_id, engine, market)
-        )
+        c.execute("SELECT market_id FROM markets WHERE engine = ? AND market = ?", (engine, market))
         row = c.fetchone()
-        if row:
-            return row[0]
-        c.execute(
-            "INSERT INTO markets (exchange_id, engine, market) VALUES (?, ?, ?)",
-            (exchange_id, engine, market)
-        )
-        return c.lastrowid
+        return row[0] if row else None
 
     def _upsert_security(self, conn, secid, metadata, engine, market):
         """Insert or update a security master row and return its security_id."""
         c = conn.cursor()
         c.execute("SELECT security_id FROM securities WHERE secid = ?", (secid,))
         row = c.fetchone()
-        market_id = self._get_or_create_market(conn, engine, market)
+        market_id = self._get_market_id(conn, engine, market)
 
         # Normalize fields from metadata
         isin = metadata.get('ISIN')
@@ -291,22 +369,32 @@ class MOEXQuotesService:
     def _load_history_single(self, date_str, board, engine, market):
         """Fetch historical data for a single date and engine-market combination."""
         logger.info(f"Loading history for {date_str} (board={board}, engine={engine}, market={market})")
-        client = MicexISSClient(self.config, self.auth, QuotesDataHandler, list)
-        client.get_history_securities(engine, market, board, date_str)
+        client = MicexISSClient(self.config, self.auth)
+        hist_data = client.get_history_securities(engine, market, board, date_str)
 
-        history = getattr(client.handler, 'data', None)
-        if not history:
+        if not hist_data or 'history' not in hist_data:
             logger.warning(f"No history data returned for {date_str} (engine={engine}, market={market})")
             return
 
-        # Store the historical snapshot with timestamp set to the date.
+        cols = hist_data['history']['columns']
+        rows = hist_data['history']['data']
+        if not rows:
+            logger.warning(f"No history rows for {date_str} (engine={engine}, market={market})")
+            return
+
+        secid_idx = cols.index('SECID')
+        close_idx = cols.index('CLOSE') if 'CLOSE' in cols else None
+        numtrades_idx = cols.index('NUMTRADES') if 'NUMTRADES' in cols else None
+
         date_ts = datetime.fromisoformat(date_str)
         conn = sqlite3.connect(self.db_path)
         try:
-            for secid, close_price, num_trades in history:
-                # Only store if this security belongs to this engine
+            for row in rows:
+                secid = row[secid_idx]
                 engine_securities = SECURITIES.get(engine, [])
                 if secid in engine_securities:
+                    close_price = row[close_idx] if close_idx is not None else None
+                    num_trades = row[numtrades_idx] if numtrades_idx is not None else None
                     security_id = self._upsert_security(conn, secid, {'SECID': secid}, engine, market)
                     self._store_quote(
                         conn,
