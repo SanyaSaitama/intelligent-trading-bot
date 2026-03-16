@@ -5,6 +5,7 @@
         "futures": ["MXH6"]
     },
     "interval": 10,
+    "timeout": 3600,
     "page_size": 500,
     "engines": {
         "stock": ["shares"],

@@ -39,6 +39,7 @@ SECURITIES = config['securities']
 INTERVAL = config['interval']
 PAGE_SIZE = config.get('page_size', 500)
 ENGINE_MARKETS = [(engine, market) for engine, markets in config['engines'].items() for market in markets]
+TIMEOUT = config.get('timeout', 3600)  # Default to 1 hour timeout for API calls
 
 # Setup logging
 logging.basicConfig(
@@ -93,16 +94,49 @@ class QuotesDataHandler(MicexISSDataHandler):
 class MOEXQuotesService:
     """ Service to fetch and store MOEX quotes """
 
-    def __init__(self, db_path=DB_PATH):
+    def __init__(self, db_path=DB_PATH, auto_init=True):
         self.db_path = db_path
         self.config = Config(user='', password='')  # Public data doesn't require auth
         self.auth = None  # No authentication for public data
         self.client = MicexISSClient(self.config, self.auth, QuotesDataHandler, list)
         self.security_columns = []
-        self.init_db()
-
         # MOEX ISS context - list of (engine, market) tuples
         self.engine_markets = ENGINE_MARKETS
+
+        if auto_init:
+            if self._is_db_initialized():
+                self.security_columns = self._load_security_columns_from_db()
+                logger.info(f"Using existing initialized database at {self.db_path}")
+            else:
+                self.init_db()
+
+    def _is_db_initialized(self):
+        conn = sqlite3.connect(self.db_path)
+        try:
+            c = conn.cursor()
+            c.execute("SELECT name FROM sqlite_master WHERE type='table'")
+            existing = {row[0] for row in c.fetchall()}
+            required = {'engines', 'markets', 'durations', 'securities', 'quotes'}
+            return required.issubset(existing)
+        finally:
+            conn.close()
+
+    def _load_security_columns_from_db(self):
+        conn = sqlite3.connect(self.db_path)
+        try:
+            c = conn.cursor()
+            c.execute("PRAGMA table_info(securities)")
+            columns = [row[1] for row in c.fetchall()]
+            excluded = {
+                'security_id', 'engine', 'market', 'uploaded_at',
+                'updated_at', 'upload_source'
+            }
+            result = [col for col in columns if col not in excluded]
+            if 'secid' not in result:
+                result.insert(0, 'secid')
+            return result
+        finally:
+            conn.close()
 
     def init_db(self):
           """Initialize SQLite database, create schema, and load reference/init data."""
@@ -507,7 +541,7 @@ class MOEXQuotesService:
                 break
             except Exception as e:
                 logger.error(f"Error in main loop: {e}")
-                time.sleep(INTERVAL)
+                time.sleep(TIMEOUT)
 
 
 def main():
@@ -520,10 +554,10 @@ def main():
 
     args = parser.parse_args()
 
-    service = MOEXQuotesService()
+    service = MOEXQuotesService(auto_init=not args.init)
     if args.init:
-        # init_db already called in constructor
-        logger.info('Database initialized and ready.')
+        service.init_db()
+        logger.info('Database forcefully reinitialized and ready.')
         return
 
     if args.fetch:
