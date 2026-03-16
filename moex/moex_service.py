@@ -37,6 +37,7 @@ with open('moex_config.json', 'r') as f:
 DB_PATH = config['db_path']
 SECURITIES = config['securities']
 INTERVAL = config['interval']
+PAGE_SIZE = config.get('page_size', 500)
 ENGINE_MARKETS = [(engine, market) for engine, markets in config['engines'].items() for market in markets]
 
 # Setup logging
@@ -162,9 +163,7 @@ class MOEXQuotesService:
                                 low_price REAL,
                                 volume INTEGER,
                                 value REAL,
-                                source TEXT,
-                                raw_json TEXT,
-                                UNIQUE(security_id, timestamp, source, page),
+                                UNIQUE(security_id, timestamp, page),
                                 FOREIGN KEY (security_id) REFERENCES securities(security_id)
                             )''')
 
@@ -333,12 +332,12 @@ class MOEXQuotesService:
 
         logger.info(f"Initial securities loaded: {loaded}")
 
-    def _store_quote(self, conn, security_id, data, source, raw_json=None, timestamp=None, page=0):
+    def _store_quote(self, conn, security_id, data, timestamp=None, page=0):
         c = conn.cursor()
         if timestamp is None:
             timestamp = datetime.utcnow().replace(microsecond=0)
         c.execute(
-            "INSERT OR REPLACE INTO quotes (security_id, timestamp, page, last_price, last_change, open_price, high_price, low_price, volume, value, source, raw_json) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+            "INSERT OR REPLACE INTO quotes (security_id, timestamp, page, last_price, last_change, open_price, high_price, low_price, volume, value) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
             (
                 security_id,
                 timestamp,
@@ -350,10 +349,51 @@ class MOEXQuotesService:
                 data.get('low_price'),
                 data.get('volume', 0),
                 data.get('value', 0),
-                source,
-                json.dumps(raw_json) if raw_json is not None else None,
             )
         )
+
+    def _resolve_security_context(self, secid, engine=None, market=None):
+        if engine and market:
+            return engine, market
+
+        for configured_engine, configured_market in self.engine_markets:
+            engine_securities = SECURITIES.get(configured_engine, [])
+            if secid in engine_securities:
+                return configured_engine, configured_market
+
+        return None, None
+
+    def _get_last_loaded_page(self, conn, security_id):
+        c = conn.cursor()
+        c.execute("SELECT MAX(page) FROM quotes WHERE security_id = ?", (security_id,))
+        row = c.fetchone()
+        if not row or row[0] is None:
+            return None
+        return int(row[0])
+
+    def _store_candles_page(self, conn, security_id, rows, columns, page):
+        stored_count = 0
+        for row in rows:
+            row_map = {columns[i]: row[i] for i in range(len(columns))}
+            ts_str = row_map.get('begin') or row_map.get('BEGIN') or row_map.get('end') or row_map.get('END')
+            timestamp = datetime.fromisoformat(ts_str) if ts_str else datetime.utcnow().replace(microsecond=0)
+
+            market_data = {
+                'last_price': row_map.get('close') if 'close' in row_map else row_map.get('CLOSE'),
+                'open_price': row_map.get('open') if 'open' in row_map else row_map.get('OPEN'),
+                'high_price': row_map.get('high') if 'high' in row_map else row_map.get('HIGH'),
+                'low_price': row_map.get('low') if 'low' in row_map else row_map.get('LOW'),
+                'volume': row_map.get('volume') if 'volume' in row_map else row_map.get('VOLUME'),
+                'value': row_map.get('value') if 'value' in row_map else row_map.get('VALUE'),
+            }
+
+            if market_data.get('last_price') is None:
+                continue
+
+            self._store_quote(conn, security_id, market_data, timestamp=timestamp, page=page)
+            stored_count += 1
+
+        return stored_count
 
     def _get_security_id(self, conn, secid, engine, market):
         c = conn.cursor()
@@ -361,53 +401,87 @@ class MOEXQuotesService:
         row = c.fetchone()
         return row[0] if row else None
 
-    def fetch_security_data(self, secid, engine, market, interval=1, position=0):
-        """Fetch data for a specific security and store it in the database."""
+    def quota_load(self, secid, engine=None, market=None, interval=INTERVAL, page_size=PAGE_SIZE, page=None, allow_init=True):
+        """Load one page of candles for secid, continuing from the last loaded page by default."""
         try:
-            candles_data = self.client.get_security_candles(engine, market, secid, interval, position)
-            if not candles_data or 'candles' not in candles_data:
-                logger.error(f"No candles data received for {secid}")
-                return
-
-            rows = candles_data['candles'].get('data', [])
-            columns = candles_data['candles'].get('columns', [])
-            if not rows:
-                logger.warning(f"No candles rows available for {secid}")
-                return
-
-            row = rows[-1]
-            row_map = {columns[i]: row[i] for i in range(len(columns))}
+            engine, market = self._resolve_security_context(secid, engine, market)
+            if not engine or not market:
+                logger.error(f"Could not resolve engine/market for {secid}")
+                return {'status': 'error', 'secid': secid, 'page': page, 'rows': 0}
 
             conn = sqlite3.connect(self.db_path)
             try:
                 security_id = self._get_security_id(conn, secid, engine, market)
                 if security_id is None:
                     security_id = self._upsert_security_row(conn, engine, market, {'SECID': secid}, upload_source='runtime')
+                    conn.commit()
 
-                ts_str = row_map.get('begin') or row_map.get('BEGIN') or row_map.get('end') or row_map.get('END')
-                timestamp = datetime.fromisoformat(ts_str) if ts_str else datetime.utcnow().replace(microsecond=0)
+                if page is None:
+                    last_page = self._get_last_loaded_page(conn, security_id)
+                    if last_page is None:
+                        if allow_init:
+                            return self.quota_init(secid, engine=engine, market=market, interval=interval, page_size=page_size)
+                        return {'status': 'no_data', 'secid': secid, 'page': None, 'rows': 0}
+                    page = last_page + 1
 
-                market_data = {
-                    'last_price': row_map.get('close') if 'close' in row_map else row_map.get('CLOSE'),
-                    'open_price': row_map.get('open') if 'open' in row_map else row_map.get('OPEN'),
-                    'high_price': row_map.get('high') if 'high' in row_map else row_map.get('HIGH'),
-                    'low_price': row_map.get('low') if 'low' in row_map else row_map.get('LOW'),
-                    'volume': row_map.get('volume') if 'volume' in row_map else row_map.get('VOLUME'),
-                    'value': row_map.get('value') if 'value' in row_map else row_map.get('VALUE'),
-                }
+                position = page * page_size
+                candles_data = self.client.get_security_candles(engine, market, secid, interval, position)
+                if not candles_data or 'candles' not in candles_data:
+                    logger.error(f"No candles data received for {secid} (page={page}, start={position})")
+                    return {'status': 'error', 'secid': secid, 'page': page, 'rows': 0}
 
-                if market_data.get('last_price') is not None:
-                    self._store_quote(conn, security_id, market_data, 'security_candles', raw_json=row_map, timestamp=timestamp, page=position)
-                    logger.info(f"Stored candle data for {secid}: {market_data.get('last_price')} (page={position})")
-                else:
-                    logger.warning(f"No close price available for {secid}")
+                rows = candles_data['candles'].get('data', [])
+                columns = candles_data['candles'].get('columns', [])
+                if not rows:
+                    logger.info(f"EOF for {secid} at page={page} (start={position})")
+                    return {'status': 'eof', 'secid': secid, 'page': page, 'rows': 0}
 
+                stored_count = self._store_candles_page(conn, security_id, rows, columns, page)
                 conn.commit()
+
+                logger.info(
+                    f"Loaded {stored_count} rows for {secid} (engine={engine}, market={market}, page={page}, start={position})"
+                )
+                return {'status': 'ok', 'secid': secid, 'page': page, 'rows': stored_count}
             finally:
                 conn.close()
 
         except Exception as e:
-            logger.error(f"Error fetching data for {secid}: {e}")
+            logger.error(f"Error loading quotes for {secid}: {e}")
+            return {'status': 'error', 'secid': secid, 'page': page, 'rows': 0}
+
+    def quota_init(self, secid, engine=None, market=None, interval=INTERVAL, page_size=PAGE_SIZE):
+        """Initial load for secid: load all pages from 0 until endpoint EOF."""
+        current_page = 0
+        total_rows = 0
+        while True:
+            result = self.quota_load(
+                secid,
+                engine=engine,
+                market=market,
+                interval=interval,
+                page_size=page_size,
+                page=current_page,
+                allow_init=False,
+            )
+
+            status = result.get('status')
+            if status == 'ok':
+                total_rows += result.get('rows', 0)
+                current_page += 1
+                continue
+
+            if status == 'eof':
+                logger.info(f"Initial load complete for {secid}: {total_rows} rows")
+                return {'status': 'ok', 'secid': secid, 'rows': total_rows}
+
+            logger.error(f"Initial load failed for {secid} at page={current_page}")
+            return {'status': 'error', 'secid': secid, 'rows': total_rows}
+
+    def fetch_security_data(self, secid, engine=None, market=None, interval=INTERVAL, position=0):
+        """Backward-compatible wrapper that now uses the paged quota loader."""
+        page = int(position // PAGE_SIZE)
+        return self.quota_load(secid, engine=engine, market=market, interval=interval, page_size=PAGE_SIZE, page=page)
 
     def run(self):
         """ Main service loop """
@@ -422,7 +496,7 @@ class MOEXQuotesService:
                     engine_securities = SECURITIES.get(engine, [])
                     logger.info(f"Securities for {engine}: {engine_securities}")
                     for secid in engine_securities:
-                        self.fetch_security_data(secid, engine, market)
+                        self.quota_load(secid, engine=engine, market=market, interval=INTERVAL, page_size=PAGE_SIZE)
                         time.sleep(1)  # Rate limiting between securities
 
                 logger.info(f"Completed data fetch cycle. Sleeping for {INTERVAL} seconds...")
@@ -441,6 +515,7 @@ def main():
     parser = argparse.ArgumentParser(description='MOEX quotes service')
     parser.add_argument('--init', action='store_true', help='Initialize database and exit')
     parser.add_argument('--fetch', nargs='+', help='Fetch current data for listed securities (e.g., --fetch SBER GAZP)')
+    parser.add_argument('--quota-init', action='store_true', help='Load initial candles history for all configured securities')
     parser.add_argument('--run', action='store_true', help='Run continuous service loop')
 
     args = parser.parse_args()
@@ -456,7 +531,13 @@ def main():
             for engine, market in ENGINE_MARKETS:
                 engine_securities = SECURITIES.get(engine, [])
                 if sec in engine_securities:
-                    service.fetch_security_data(sec, engine, market)
+                    service.quota_load(sec, engine=engine, market=market, interval=INTERVAL, page_size=PAGE_SIZE)
+        return
+
+    if args.quota_init:
+        for engine, market in ENGINE_MARKETS:
+            for sec in SECURITIES.get(engine, []):
+                service.quota_init(sec, engine=engine, market=market, interval=INTERVAL, page_size=PAGE_SIZE)
         return
 
     # Default behavior: run continuously

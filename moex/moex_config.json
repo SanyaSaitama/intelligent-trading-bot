@@ -1,10 +1,11 @@
 {
     "db_path": "moex_quotes.db",
     "securities": {
-        "stock": ["SBER", "GAZP", "LKOH", "ROSN", "VTBR", "TATN", "MGNT", "NVTK", "YNDX", "POLY"],
-        "futures": ["MXH6", "BRJ6"]
+        "stock": ["SBER", "GAZP"],
+        "futures": ["MXH6"]
     },
-    "interval": 60,
+    "interval": 10,
+    "page_size": 500,
     "engines": {
         "stock": ["shares"],
         "futures": ["forts"]
