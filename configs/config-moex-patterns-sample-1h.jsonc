@@ -1,0 +1,71 @@
+{
+    "train": false,
+    "venue": "moex",
+
+    "moex_db_path": "moex/moex_quotes.db",
+    "symbol": "SBER",
+    "description": "MOEX pattern detection",
+    "freq": "1h",
+
+    "features_horizon": 120,
+    "predict_length": 48,
+    "append_overlap_records": 3,
+
+    "data_sources": [
+        {"folder": "SBER", "file": "quotes", "column_prefix": ""}
+    ],
+
+    "feature_sets": [
+        {
+            "column_prefix": "",
+            "generator": "patterns_ohlc",
+            "feature_prefix": "",
+            "config": {
+                "doji_body_to_range_max": 0.1,
+                "long_shadow_to_body_min": 2.0,
+                "breakout_window": 20,
+                "breakout_pct": 0.15,
+                "pattern_store": {
+                    "enabled": true,
+                    "db_path": "moex/moex_quotes.db"
+                }
+            }
+        }
+    ],
+
+    "train_features": [
+        "pattern_confidence_bullish_engulfing",
+        "pattern_confidence_bearish_engulfing",
+        "pattern_confidence_doji",
+        "pattern_confidence_hammer",
+        "pattern_confidence_shooting_star",
+        "pattern_confidence_breakout_up",
+        "pattern_confidence_breakout_down"
+    ],
+
+    "labels": [],
+    "train_feature_sets": [],
+    "signal_sets": [],
+
+    "output_sets": [
+        {
+            "generator": "pattern_notification_model",
+            "config": {
+                "pattern_notification": true,
+                "pattern_prefix": "pattern_",
+                "confidence_prefix": "pattern_confidence_",
+                "min_confidence": 0.55,
+                "llm_threshold": 0.75,
+                "nrows": 120,
+                "template_folder": "inputs/pattern_templates",
+                "llm": {
+                    "enabled": false,
+                    "endpoint": "https://api.openai.com/v1/chat/completions",
+                    // API key is loaded from .env via service/App.py (ITB_LLM_API_KEY) when omitted here.
+                    "model": "gpt-4.1-mini",
+                    "max_tokens": 120
+                }
+            }
+        }
+    ]
+}

@@ -253,3 +253,7 @@ config.json
 /config*.json  # Configs may have credentials
 /MODELS/
 /DATA/
+
+# Databases
+*.db
+*.sqlite

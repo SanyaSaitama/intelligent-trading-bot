@@ -2,14 +2,8 @@
     "train": true,
 
     "venue": "mt5",
+    // Credentials are loaded from .env via service/App.py (ITB_MT5_ACCOUNT_ID, ITB_MT5_PASSWORD, ITB_MT5_SERVER, ITB_TELEGRAM_BOT_TOKEN, ITB_TELEGRAM_CHAT_ID)
     
-    "mt5_account_id": "<mt5-account-id>",
-    "mt5_password": "<mt5-password>",
-    "mt5_server": "<mt5-server>",
-
-    "telegram_bot_token": "<token>",
-    "telegram_chat_id": "<chat-id-to-publish-messages>",
-
     "data_folder": "C:/DATA_ITB",
 
     "symbol": "BTCUSD",

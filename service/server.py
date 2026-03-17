@@ -142,7 +142,10 @@ def start_server(config_file):
         return
     
     fetch_klines_fn, health_check_fn = get_collector_functions(venue)
-    trader_funcs = get_trader_functions(venue)
+    try:
+        trader_funcs = get_trader_functions(venue)
+    except Exception:
+        trader_funcs = {}
     
     log.info(f"Initializing server. Venue: {venue.value}. Trade pair: {symbol}. Frequency: {freq}")
     

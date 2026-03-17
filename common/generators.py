@@ -9,6 +9,7 @@ from common.types import Venue
 from common.utils import *
 from common.model_store import *
 from common.gen_features import *
+from common.gen_patterns import generate_patterns_ohlc
 from common.gen_labels_highlow import generate_labels_highlow, generate_labels_highlow2
 from common.gen_labels_topbot import generate_labels_topbot, generate_labels_topbot2
 from common.gen_signals import (
@@ -49,6 +50,9 @@ def generate_feature_set(df: pd.DataFrame, fs: dict, config: dict, model_store: 
         features = generate_features_talib(f_df, gen_config, last_rows=last_rows)
     elif generator == "itbstats":
         features = generate_features_itbstats(f_df, gen_config, last_rows=last_rows)
+    elif generator == "patterns_ohlc":
+        pattern_config = gen_config | {"_runtime_config": config}
+        features = generate_patterns_ohlc(f_df, pattern_config, last_rows=last_rows)
 
     # Labels
     elif generator == "highlow":
@@ -242,6 +246,7 @@ def get_features_labels_algorithms(fs, config) -> Tuple[list, list, list]:
 async def output_feature_set(df, fs: dict, config: dict, model_store: ModelStore) -> None:
     from outputs.notifier_scores import send_score_notification
     from outputs.notifier_diagram import send_diagram
+    from outputs.notifier_patterns import send_pattern_alerts
     from outputs.notifier_trades import trader_simulation
     from outputs import get_trader_functions
 
@@ -255,6 +260,8 @@ async def output_feature_set(df, fs: dict, config: dict, model_store: ModelStore
         generator_fn = send_score_notification
     elif generator == "diagram_notification_model":
         generator_fn = send_diagram
+    elif generator == "pattern_notification_model":
+        generator_fn = send_pattern_alerts
     elif generator == "trader_simulation":
         generator_fn = trader_simulation
     elif generator == "trader_binance":

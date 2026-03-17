@@ -1,6 +1,7 @@
 from pathlib import Path
 from typing import Union
 import json
+import os
 from datetime import datetime, date, timedelta
 import re
 
@@ -64,20 +65,23 @@ class App:
     #
     config = {
         # Venue 
-        "venue": "",
+        "venue": "", # filled from env
         
         # Binance
-        "api_key": "",
-        "api_secret": "",
+        "api_key": "", # filled from env
+        "api_secret": "", # filled from env
         
         # MetaTrader5
-        "mt5_account_id": "",
-        "mt5_password": "",
-        "mt5_server": "",
+        "mt5_account_id": "", # filled from env
+        "mt5_password": "", # filled from env
+        "mt5_server": "", # filled from env
 
         # Telegram
-        "telegram_bot_token": "",  # Source address of messages
-        "telegram_chat_id": "",  # Destination address of messages
+        "telegram_bot_token": "",  # Source address of messages # filled from env
+        "telegram_chat_id": "",  # Destination address of messages # filled from env
+
+        # Optional LLM key for pattern adjudication notifier
+        "llm_api_key": "", # filled from env
 
         #
         # Conventions for the file and column names
@@ -221,6 +225,8 @@ def problems_exist():
 
 
 def load_config(config_file):
+    _load_env_file(PACKAGE_ROOT / ".env")
+
     if config_file:
         config_file_path = PACKAGE_ROOT / config_file
         with open(config_file_path, encoding='utf-8') as json_file:
@@ -232,6 +238,68 @@ def load_config(config_file):
 
             conf_json = json.loads(conf_str)
             App.config.update(conf_json)
+
+    _apply_env_overrides()
+
+
+def _load_env_file(env_path: Path):
+    if not env_path.exists():
+        return
+
+    with open(env_path, encoding='utf-8') as f:
+        for line in f:
+            line = line.strip()
+            if not line or line.startswith("#") or "=" not in line:
+                continue
+
+            key, value = line.split("=", 1)
+            key = key.strip()
+            value = value.strip()
+
+            if (value.startswith('"') and value.endswith('"')) or (value.startswith("'") and value.endswith("'")):
+                value = value[1:-1]
+
+            if key and key not in os.environ:
+                os.environ[key] = value
+
+
+def _apply_env_overrides():
+    env_map = {
+        "venue": ["ITB_VENUE", "VENUE"],
+        "api_key": ["ITB_API_KEY", "BINANCE_API_KEY", "API_KEY"],
+        "api_secret": ["ITB_API_SECRET", "BINANCE_API_SECRET", "API_SECRET"],
+        "mt5_account_id": ["ITB_MT5_ACCOUNT_ID", "MT5_ACCOUNT_ID"],
+        "mt5_password": ["ITB_MT5_PASSWORD", "MT5_PASSWORD"],
+        "mt5_server": ["ITB_MT5_SERVER", "MT5_SERVER"],
+        "telegram_bot_token": ["ITB_TELEGRAM_BOT_TOKEN", "TELEGRAM_BOT_TOKEN"],
+        "telegram_chat_id": ["ITB_TELEGRAM_CHAT_ID", "TELEGRAM_CHAT_ID"],
+        "llm_api_key": ["ITB_LLM_API_KEY", "OPENAI_API_KEY", "LLM_API_KEY"],
+        "moex_db_path": ["ITB_MOEX_DB_PATH", "MOEX_DB_PATH"],
+    }
+
+    for config_key, env_keys in env_map.items():
+        for env_key in env_keys:
+            value = os.getenv(env_key)
+            if value is None or value == "":
+                continue
+
+            # Keep current config types where possible.
+            current = App.config.get(config_key)
+            if isinstance(current, bool):
+                App.config[config_key] = value.lower() in ["1", "true", "yes", "on"]
+            elif isinstance(current, int):
+                try:
+                    App.config[config_key] = int(value)
+                except ValueError:
+                    App.config[config_key] = value
+            elif isinstance(current, float):
+                try:
+                    App.config[config_key] = float(value)
+                except ValueError:
+                    App.config[config_key] = value
+            else:
+                App.config[config_key] = value
+            break
 
 
 if __name__ == "__main__":

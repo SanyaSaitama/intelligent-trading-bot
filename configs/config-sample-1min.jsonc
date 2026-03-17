@@ -2,13 +2,9 @@
     "train": true,  // If true (offline) then models will be trained before use and more data will be processed. Use false for predict only (online) mode with only latest data
 
     "venue": "binance",
+    // Credentials are loaded from .env via service/App.py (ITB_API_KEY, ITB_API_SECRET, ITB_TELEGRAM_BOT_TOKEN, ITB_TELEGRAM_CHAT_ID)
     
     //"client_args": {"tld": "us"},
-    "api_key": "<binance-key>",
-    "api_secret": "<binance-secret>",
-
-    "telegram_bot_token": "<token>",
-    "telegram_chat_id": "<chat-id-to-publish-messages>",
 
     "data_folder": "C:/DATA_ITB",
 
